@@ -498,6 +498,13 @@ footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-colum
   nav{display:flex;justify-content:space-between;padding:0 1.25rem}
   .nav-wordmark{font-size:0.82rem}
   .hero-strip{display:none}
+  .page-hero .rail{display:none}
+  .page-hero > div[style*="padding-left"]{padding-left:var(--g)!important;padding-right:var(--g);text-align:center}
+  .page-hero h1{text-align:center}
+  .post-hero .rail{display:none}
+  .post-hero-inner{padding-left:var(--g)!important;padding-right:var(--g);text-align:center}
+  .post-hero h1{text-align:center}
+  .post-cat,.post-meta{justify-content:center}
 }
 
 /* ── SCROLL REVEAL ── */
