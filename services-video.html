@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video &amp; Photo — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+/* ── PAGE HERO ── */
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Video Hero.jpg') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+.page-breadcrumb{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;color:var(--steel);margin-bottom:1.5rem;
+}
+.page-breadcrumb a{color:var(--steel);text-decoration:none}
+.page-breadcrumb a:hover{color:var(--platinum)}
+
+/* ── REEL PANELS ── */
+.reel-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.reel-panel{
+  position:relative;overflow:hidden;border-radius:12px;
+  aspect-ratio:16/9;background:rgba(15,20,27,0.8);
+  cursor:none;
+}
+.reel-panel video{
+  width:100%;height:100%;object-fit:cover;
+  opacity:0.5;transition:opacity .8s,filter .8s;
+  filter:grayscale(10%);
+}
+.reel-panel:hover video{opacity:0.65;filter:none}
+.reel-panel-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(15,20,27,0.35) 0%,rgba(15,20,27,0.05) 40%,rgba(15,20,27,0.72) 100%);
+  transition:background .5s;
+}
+.reel-panel:hover .reel-panel-overlay{background:linear-gradient(180deg,rgba(15,20,27,0.2) 0%,rgba(15,20,27,0.0) 40%,rgba(15,20,27,0.82) 100%)}
+.reel-panel-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:2rem;z-index:2;
+}
+.reel-label{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--platinum);margin-bottom:0.5rem;opacity:0.8;
+}
+.reel-title{
+  font-family:'Sora',sans-serif;font-size:1.4rem;
+  font-weight:700;color:var(--paper);letter-spacing:-0.01em;
+}
+
+/* ── CAPABILITY CARDS ── */
+.cap-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;
+}
+.cap-card{
+  background:#fff;padding:2.25rem;border-radius:12px;
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  border:1px solid rgba(15,20,27,0.07);
+  box-shadow:0 2px 12px rgba(15,20,27,0.08);
+  transition:box-shadow .25s,transform .25s;
+}
+.cap-card:hover{box-shadow:0 6px 28px rgba(15,20,27,0.14);transform:translateY(-2px)}
+.cap-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--ink);border-radius:12px 12px 0 0;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.cap-card:hover::before{transform:scaleX(1)}
+.cap-card-label{
+  font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.75rem;margin-top:0.5rem;
+}
+.cap-card-desc{
+  font-family:'Spectral',serif;font-size:0.88rem;
+  line-height:1.78;color:#5A5A62;flex:1;
+}
+
+/* ── WORK GRID ── */
+.work-item{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid var(--ink-08);border-radius:12px;
+  overflow:hidden;margin-bottom:2rem;
+  transition:transform .3s,box-shadow .3s;
+}
+.work-item:last-child{margin-bottom:0}
+.work-item:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(15,20,27,0.08)}
+.work-item.flip .work-info{order:-1}
+.work-video iframe{width:100%;aspect-ratio:16/9;border:none;display:block;background:#e8e4dc}
+.work-info{
+  padding:2.5rem;display:flex;flex-direction:column;
+  justify-content:center;background:#fff;
+}
+.work-client{
+  font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;
+  letter-spacing:-0.01em;color:var(--ink);margin-bottom:0.3rem;
+}
+.work-type{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;color:var(--steel);
+  text-transform:uppercase;margin-bottom:0.85rem;
+}
+.work-desc{
+  font-family:'Spectral',serif;font-size:0.87rem;
+  line-height:1.75;color:#6A6A72;
+}
+
+/* ── VIDEO ISLANDS ── */
+.vid-island{
+  display:grid;grid-template-columns:1.3fr 1fr;
+  border:1px solid rgba(15,20,27,0.08);border-radius:16px;
+  overflow:hidden;margin-bottom:2rem;background:#fff;
+  box-shadow:0 2px 16px rgba(15,20,27,0.06);
+  transition:box-shadow .3s,transform .3s;
+}
+.vid-island:hover{box-shadow:0 8px 32px rgba(15,20,27,0.1);transform:translateY(-2px)}
+.vid-island.flip{grid-template-columns:1fr 1.3fr}
+.vid-island.flip .vi-video{order:2}
+.vid-island.flip .vi-info{order:1}
+.vi-video iframe{width:100%;aspect-ratio:16/9;border:none;display:block;background:#0F141B}
+.vi-info{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
+.vi-type{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:0.5rem;
+}
+.vi-client{
+  font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.75rem;letter-spacing:-0.01em;
+}
+.vi-desc{
+  font-family:'Spectral',serif;font-size:0.87rem;
+  line-height:1.75;color:#6A6A72;margin-bottom:1.25rem;flex:1;
+}
+.vi-link{
+  font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;
+  letter-spacing:0.05em;color:var(--ink);text-decoration:none;
+}
+.vi-link:hover{opacity:0.6}
+
+/* Matec double island — 2x2 grid */
+.vid-island-double{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:2px;background:rgba(15,20,27,0.08);
+  border-radius:16px;overflow:hidden;margin-bottom:2rem;
+  box-shadow:0 2px 16px rgba(15,20,27,0.06);
+}
+.vi-text-quad{
+  background:var(--navy);padding:2.5rem;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.vi-text-quad .vi-type{color:var(--steel)}
+.vi-text-quad .vi-client{color:var(--paper)}
+.vi-text-quad .vi-desc{color:rgba(239,241,244,0.72)}
+.vi-text-quad .vi-link{color:var(--platinum)}
+.vi-quad-video{background:#0F141B;overflow:hidden}
+.vi-quad-video iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+
+@media(max-width:1024px){
+  .reel-grid{grid-template-columns:1fr}
+  .cap-grid{grid-template-columns:1fr}
+  .work-item{grid-template-columns:1fr}
+  .work-item.flip .work-info{order:0}
+  .vid-island,.vid-island.flip{grid-template-columns:1fr}
+  .vid-island.flip .vi-video,.vid-island.flip .vi-info{order:0}
+  .vid-island-double{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Video</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-breadcrumb"><a href="services.html">Services</a> / Video &amp; Photo</div>
+    <div class="page-tag">Production</div>
+    <h1>Stories worth<br><em>watching.</em></h1>
+    <p class="page-hero-sub">Corporate interviews, brand films, industrial showcases, and product photography. 15+ years behind the lens — concept through final delivery, no handoffs.</p>
+  </div>
+</section>
+
+<!-- REELS -->
+<span class="ch-rule" style="display:block"></span>
+<section id="reels" style="background:var(--ink);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Reels</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="eyebrow">The Work</div>
+      <h2 class="h-sec" style="margin-bottom:2rem">Two reels. One standard.</h2>
+      <div class="reel-grid">
+        <div class="reel-panel">
+          <video src="https://falconecreativeservices.com/wp-content/uploads/2025/04/interviews-v2.mp4"
+            poster="https://falconecreativeservices.com/wp-content/uploads/2025/04/dsc05345.jpg"
+            muted loop playsinline preload="none" id="vid-int-page"></video>
+          <div class="reel-panel-overlay"></div>
+          <div class="reel-panel-content">
+            <div class="reel-label">Corporate &middot; Interview</div>
+            <div class="reel-title">Interview Reel</div>
+          </div>
+        </div>
+        <div class="reel-panel">
+          <video src="https://falconecreativeservices.com/wp-content/uploads/2025/04/product-montage-edit.mp4"
+            poster="https://i0.wp.com/falconecreativeservices.com/wp-content/uploads/2025/04/model-0300-0315-dc-s1-3-hdd-ssd-dark-stylized-operator.jpg?ssl=1"
+            muted loop playsinline preload="none" id="vid-pro-page"></video>
+          <div class="reel-panel-overlay"></div>
+          <div class="reel-panel-content">
+            <div class="reel-label">Product &middot; Industrial</div>
+            <div class="reel-title">Product Reel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="capabilities" style="background:var(--navy);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Capabilities</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="eyebrow">What&rsquo;s Included</div>
+      <h2 class="h-sec" style="margin-bottom:2rem">Full production. Start to finish.</h2>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-card-label">Corporate Interviews</div>
+          <p class="cap-card-desc">Executive profiles, employee spotlights, client testimonials, and panel discussions. Structured shoots that capture authentic voice without feeling staged.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-label">Brand Films</div>
+          <p class="cap-card-desc">Story-driven films that communicate who you are and why it matters. From 60-second social cuts to long-form documentary-style pieces.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-label">Product &amp; Industrial</div>
+          <p class="cap-card-desc">Product showcases, facility tours, and industrial process videos. Complex work made to feel compelling to an audience that didn&rsquo;t know they cared.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-label">Photography</div>
+          <p class="cap-card-desc">On-location and studio photography for products, teams, events, and brand content. Images built to work across print, web, and social.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-label">Post-Production</div>
+          <p class="cap-card-desc">Color grading, audio mixing, motion graphics, and editing. Edit-only engagements available for footage shot by other crews.</p>
+        </div>
+        <div class="cap-card" style="background:var(--ink);justify-content:center;align-items:center;text-align:center;border-color:transparent;box-shadow:0 2px 12px rgba(15,20,27,0.28)">
+          <div style="font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin-bottom:0.75rem">The FCS Difference</div>
+          <div style="font-family:'Spectral',serif;font-size:1rem;font-style:italic;color:var(--paper);line-height:1.75;max-width:26ch">&ldquo;Director. DP. Editor. One person, one vision, start to finish.&rdquo;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="work" style="background:var(--paper);position:relative">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark">Work</span></div>
+    <div class="rail-content dark">
+      <div class="eyebrow dark">Selected Projects</div>
+      <h2 class="h-sec dark" style="margin-bottom:2.5rem">Video work, client by client.</h2>
+
+      <!-- Island 1: Tata & Howard -->
+      <div class="vid-island">
+        <div class="vi-video"><iframe src="https://www.youtube-nocookie.com/embed/WiU7Tc0YZo0?controls=1&rel=0" allowfullscreen></iframe></div>
+        <div class="vi-info">
+          <div class="vi-type">Corporate &middot; Interview</div>
+          <div class="vi-client">Tata &amp; Howard</div>
+          <p class="vi-desc">Multi-day corporate interview shoot. 13 executive interviews captured across two locations. Final delivery includes individual cuts and a corporate overview edit.</p>
+          <a href="work.html" class="vi-link">View All Work &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Island 2: DIENES Commercial -->
+      <div class="vid-island flip">
+        <div class="vi-video"><iframe src="https://www.youtube-nocookie.com/embed/8ma3nnIGgzQ?controls=1&rel=0" allowfullscreen></iframe></div>
+        <div class="vi-info">
+          <div class="vi-type">Commercial</div>
+          <div class="vi-client">DIENES</div>
+          <p class="vi-desc">Commercial spot for a precision industrial cutting manufacturer. Technical product, cinematic treatment — built to run across digital and broadcast channels.</p>
+          <a href="work.html" class="vi-link">View All Work &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Island 3: DIENES Quickset Dual Station -->
+      <div class="vid-island">
+        <div class="vi-video"><iframe src="https://www.youtube-nocookie.com/embed/fuL45Fk6Boc?controls=1&rel=0" allowfullscreen></iframe></div>
+        <div class="vi-info">
+          <div class="vi-type">Commercial &middot; Machine Walkthrough</div>
+          <div class="vi-client">DIENES &mdash; Quickset Dual Station</div>
+          <p class="vi-desc">Product walkthrough for the Quickset Dual Station. Precision cutting technology made accessible &mdash; clear operation, clean execution, built for a technical sales audience.</p>
+          <a href="work.html" class="vi-link">View All Work &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Island 4: HBZ Media Relaunch -->
+      <div class="vid-island flip">
+        <div class="vi-video"><iframe src="https://www.youtube-nocookie.com/embed/AfR3GpKjJlk?controls=1&rel=0" allowfullscreen></iframe></div>
+        <div class="vi-info">
+          <div class="vi-type">Brand &middot; Relaunch</div>
+          <div class="vi-client">HBZ Media</div>
+          <p class="vi-desc">Relaunch video for HBZ Media&rsquo;s rebrand. Brand announcement, new identity, new direction &mdash; built to introduce the new HBZ to their existing audience and beyond.</p>
+          <a href="work.html" class="vi-link">View All Work &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Double Island: Matec (2×2 grid — text quad + 3 videos) -->
+      <div class="vid-island-double">
+        <div class="vi-text-quad">
+          <div class="vi-type">Industrial &middot; Product</div>
+          <div class="vi-client">Matec Instrument Companies</div>
+          <p class="vi-desc">Three-part industrial video series documenting Matec&rsquo;s precision equipment line &mdash; fan blade development, R&amp;D tank testing, and immersion systems. Complex engineering made visually compelling for technical and executive audiences alike.</p>
+          <a href="work.html" class="vi-link">View All Work &rarr;</a>
+        </div>
+        <div class="vi-quad-video"><iframe src="https://www.youtube-nocookie.com/embed/QxO50go38v4?controls=1&rel=0" allowfullscreen></iframe></div>
+        <div class="vi-quad-video"><iframe src="https://www.youtube-nocookie.com/embed/hFuJOdrLAL8?controls=1&rel=0" allowfullscreen></iframe></div>
+        <div class="vi-quad-video"><iframe src="https://www.youtube-nocookie.com/embed/Ci3Z83rq-Zs?controls=1&rel=0" allowfullscreen></iframe></div>
+      </div>
+
+      <div class="section-btn-wrap"><a href="work.html" class="section-btn">View All Work &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Let&rsquo;s make something<br>worth watching.</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
+    <a href="contact.html" class="btn-p">Get in touch &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="/main.js?v=9"></script>
+<script>
+// Video hover for reel panels on this page
+(function(){
+  [{'p':'vid-int-page'},{'p':'vid-pro-page'}].forEach(function(o){
+    var vid = document.getElementById(o.p);
+    if(!vid) return;
+    var panel = vid.closest('.reel-panel');
+    new IntersectionObserver(function(en){
+      if(en[0].isIntersecting) vid.preload='auto';
+    },{threshold:0.3}).observe(panel);
+    panel.addEventListener('mouseenter',function(){vid.play().catch(function(){});});
+    panel.addEventListener('mouseleave',function(){vid.pause();});
+  });
+})();
+</script>
+</body>
+</html>

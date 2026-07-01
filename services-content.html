@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copy &amp; Content — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Home Office Content.jpeg') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+.page-breadcrumb{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;color:var(--steel);margin-bottom:1.5rem;
+}
+.page-breadcrumb a{color:var(--steel);text-decoration:none}
+.page-breadcrumb a:hover{color:var(--platinum)}
+
+/* ── CONTENT TYPE CARDS ── */
+.content-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1.5rem;margin-top:2rem;
+}
+.content-card{
+  border:1px solid var(--ink-08);border-radius:12px;
+  padding:2rem 1.75rem;background:var(--paper);
+  transition:transform .25s,box-shadow .25s;
+}
+.content-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(15,20,27,0.08);
+}
+.content-card-icon{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:1.4rem;color:var(--steel);
+  margin-bottom:1rem;
+}
+.content-card-title{
+  font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.content-card-desc{
+  font-family:'Spectral',serif;font-size:0.87rem;
+  color:#5A5A62;line-height:1.8;
+}
+
+/* ── BLOG CARDS ── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.blog-card{
+  background:rgba(255,255,255,0.03);overflow:hidden;border-radius:10px;
+  border:1px solid rgba(183,194,204,0.07);text-decoration:none;
+  transition:background .2s,transform .2s;display:flex;flex-direction:column;
+}
+.blog-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px);}
+.blog-card-img{aspect-ratio:16/9;overflow:hidden;background:rgba(15,20,27,0.5);}
+.blog-card-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:brightness(0.85);transition:filter .4s,transform .4s;
+}
+.blog-card:hover .blog-card-img img{filter:brightness(1);transform:scale(1.03);}
+.blog-card-body{padding:1.5rem 1.5rem 2rem;flex:1;display:flex;flex-direction:column;}
+.blog-card-date{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.06em;color:var(--steel);margin-bottom:0.5rem;
+}
+.blog-card-title{
+  font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;
+  color:var(--paper);line-height:1.35;letter-spacing:-0.01em;flex:1;
+}
+
+/* ── RETAINER BLOCK ── */
+.retainer-block{
+  border:1px solid rgba(183,194,204,0.12);
+  border-radius:12px;padding:2.5rem;
+  background:rgba(255,255,255,0.03);
+  margin-top:2rem;
+}
+.retainer-title{
+  font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;
+  color:var(--paper);margin-bottom:0.6rem;
+}
+.retainer-desc{
+  font-family:'Spectral',serif;font-size:0.92rem;
+  color:var(--paper-86);line-height:1.8;margin-bottom:1.5rem;
+  max-width:52ch;
+}
+.retainer-includes{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 2rem;
+}
+.retainer-item{
+  font-family:'Spectral',serif;font-size:0.87rem;
+  color:var(--paper-86);padding:0.3rem 0;
+  display:flex;align-items:baseline;gap:0.6rem;
+  border-bottom:1px solid rgba(183,194,204,0.06);
+}
+.retainer-item::before{content:'—';color:var(--steel);font-size:0.7rem;flex-shrink:0}
+
+@media(max-width:1024px){
+  .content-grid{grid-template-columns:1fr 1fr}
+  .retainer-includes{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .content-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Content</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-breadcrumb"><a href="services.html">Services</a> / Copy &amp; Content</div>
+    <div class="page-tag">Content</div>
+    <h1>Words that do<br>the work <em>for you.</em></h1>
+    <p class="page-hero-sub">Blogs, email campaigns, LinkedIn, and print collateral. Every piece is written to your voice — not a template — and built to pull double duty across every channel.</p>
+  </div>
+</section>
+
+<!-- CONTENT TYPES -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="content-types" style="background:var(--paper);position:relative">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark">Services</span></div>
+    <div class="rail-content dark" style="padding-bottom:3.5rem">
+      <div class="eyebrow dark">What&rsquo;s Available</div>
+      <h2 class="h-sec dark" style="margin-bottom:0.5rem">Built for every channel.</h2>
+      <p class="body-lg dark" style="max-width:52ch;margin-bottom:0">Content that lives on your site, in your inbox, and across your feeds — consistent, on-brand, and actually useful.</p>
+      <div class="content-grid">
+        <div class="content-card">
+          <div class="content-card-icon">✍</div>
+          <div class="content-card-title">Blog &amp; Articles</div>
+          <p class="content-card-desc">Long-form content that builds authority and drives organic search. Industry insights, project recaps, and thought leadership — written to rank and to read.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card-icon">✉</div>
+          <div class="content-card-title">Email Campaigns</div>
+          <p class="content-card-desc">Newsletters, promotional sends, and drip sequences. Mailchimp setup, template design, and ongoing campaign management available.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card-icon">◈</div>
+          <div class="content-card-title">LinkedIn &amp; Social</div>
+          <p class="content-card-desc">Weekly posts, article series, and engagement copy written in your voice. Built for the platform — not recycled from a blog.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card-icon">◻</div>
+          <div class="content-card-title">Web Copy</div>
+          <p class="content-card-desc">Homepage, about, services, and landing page copy. Clear, conversion-focused writing that sounds like you — not a copywriting template.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card-icon">◱</div>
+          <div class="content-card-title">Print &amp; Collateral</div>
+          <p class="content-card-desc">Brochures, sell sheets, proposals, and event materials. Copy written to work alongside the design — not after the fact.</p>
+        </div>
+        <div class="content-card">
+          <div class="content-card-icon">◎</div>
+          <div class="content-card-title">Content Strategy</div>
+          <p class="content-card-desc">A content calendar, channel strategy, and editorial plan built around your goals. For clients who need a system, not just a piece.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG SAMPLES -->
+<span class="ch-rule" style="display:block"></span>
+<section id="samples" style="background:var(--ink);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Samples</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="eyebrow">The Work</div>
+      <h2 class="h-sec" style="margin-bottom:2.5rem">A few recent pieces.</h2>
+      <div class="blog-grid">
+        <a class="blog-card" href="https://www.hbzmedia.video/post/5-essentials-for-a-successful-brand-video-shoot" target="_blank" rel="noopener">
+          <div class="blog-card-img"><img src="/Images/HBZ Media Successful Brand Photoshoot 3.jpg" alt="5 Essentials for a Successful Brand Video Shoot" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">HBZ Media</div>
+            <div class="blog-card-title">5 Essentials for a Successful Brand Video Shoot</div>
+          </div>
+        </a>
+        <a class="blog-card" href="https://www.hbzmedia.video/post/how-to-communicate-your-wedding-vision-to-vendors" target="_blank" rel="noopener">
+          <div class="blog-card-img"><img src="/Images/HBZ Blog 2.jpeg" alt="How to Communicate Your Wedding Vision to Vendors" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">HBZ Media</div>
+            <div class="blog-card-title">How to Communicate Your Wedding Vision to Vendors</div>
+          </div>
+        </a>
+        <a class="blog-card" href="https://www.hbzmedia.video/post/why-global-brands-live-and-die-by-video-and-why-local-brands-should-follow" target="_blank" rel="noopener">
+          <div class="blog-card-img"><img src="/Images/HBZ Blog 3.jpeg" alt="Why Global Brands Live and Die by Video" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">HBZ Media</div>
+            <div class="blog-card-title">Why Global Brands Live and Die by Video — And Why Local Brands Should Follow</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RETAINER -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="retainer" style="background:var(--navy);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Retainer</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="eyebrow">Monthly Option</div>
+      <h2 class="h-sec" style="margin-bottom:0.5rem">Content that keeps going.</h2>
+      <p class="body-lg" style="max-width:52ch;margin-bottom:0">Most content clients find that a monthly retainer makes more sense than one-off pieces. Here&rsquo;s what a typical engagement includes.</p>
+      <div class="retainer-block">
+        <div class="retainer-title">Monthly Content Retainer</div>
+        <p class="retainer-desc">A recurring engagement designed to keep your content consistent without requiring your constant attention. Everything written, edited, and scheduled — you just review and approve.</p>
+        <div class="retainer-includes">
+          <div class="retainer-item">2 blog posts per month</div>
+          <div class="retainer-item">Weekly LinkedIn post</div>
+          <div class="retainer-item">Monthly email newsletter</div>
+          <div class="retainer-item">Editorial calendar</div>
+          <div class="retainer-item">Performance review</div>
+          <div class="retainer-item">One revision round per piece</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule" style="display:block"></span>
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Ready for content that<br>actually lands?</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
+    <a href="contact.html" class="btn-p">Get in touch &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Paul Smiling.JPG') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+
+/* ── BLOG GRID ── */
+/* Reuse news-grid/news-card from style.css but adapt for full page */
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.blog-card{
+  background:rgba(255,255,255,0.03);
+  overflow:hidden;border-radius:10px;
+  border:1px solid rgba(183,194,204,0.07);
+  text-decoration:none;
+  transition:background .2s,transform .2s;
+  display:flex;flex-direction:column;
+}
+.blog-card:hover{
+  background:rgba(255,255,255,0.06);
+  transform:translateY(-2px);
+}
+.blog-card-img{
+  aspect-ratio:16/9;overflow:hidden;
+  background:rgba(15,20,27,0.5);
+}
+.blog-card-img img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;filter:brightness(0.85);
+  transition:filter .4s,transform .4s;
+}
+.blog-card:hover .blog-card-img img{
+  filter:brightness(1);transform:scale(1.03);
+}
+.blog-card-body{
+  padding:1.5rem 1.5rem 2rem;flex:1;
+  display:flex;flex-direction:column;
+}
+.blog-card-date{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.06em;color:var(--steel);
+  margin-bottom:0.5rem;
+}
+.blog-card-title{
+  font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;
+  color:var(--paper);line-height:1.35;letter-spacing:-0.01em;
+  flex:1;
+}
+
+/* ── CATEGORY FILTER ── */
+.filter-bar{
+  display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem;
+}
+.filter-btn{
+  font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.35rem 0.9rem;border-radius:5px;
+  border:1px solid rgba(183,194,204,0.15);
+  color:var(--steel);background:transparent;
+  cursor:none;transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--platinum);color:var(--ink);border-color:var(--platinum);
+}
+
+@media(max-width:1024px){
+  .blog-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .blog-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Blog</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">Newsworthy</div>
+    <h1>Latest from<br><em>FCS.</em></h1>
+    <p class="page-hero-sub">Project recaps, industry thoughts, and updates from the studio. Written when there&rsquo;s something worth saying.</p>
+  </div>
+</section>
+
+<!-- POSTS -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="posts" style="background:var(--ink);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Posts</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="blog-grid">
+        <a class="blog-card" href="blog/building-fcs-site.html">
+          <div class="blog-card-img"><img src="/Images/On Set.JPG" alt="Building the FCS Site" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Jul 1, 2026</div>
+            <div class="blog-card-title">The Hardest Client I&rsquo;ve Ever Had Was Me</div>
+          </div>
+        </a>
+        <a class="blog-card" href="blog/don-ruperto.html">
+          <div class="blog-card-img"><img src="/Images/Don Ruperto Thumbnail.jpg" alt="Don Ruperto Cigars" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Apr 13, 2026</div>
+            <div class="blog-card-title">Luxury Branding Brought to Life: Don Ruperto Cigars</div>
+          </div>
+        </a>
+        <a class="blog-card" href="blog/matec.html">
+          <div class="blog-card-img"><img src="/Images/Matec Blog Thumbnail.png" alt="Matec Instrument Companies" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Feb 26, 2026</div>
+            <div class="blog-card-title">Bringing Industrial Precision to Screen: Matec Instrument Companies</div>
+          </div>
+        </a>
+        <a class="blog-card" href="blog/dear-hope.html">
+          <div class="blog-card-img"><img src="/Images/Dear Hope Blog Thumbnail.jpg" alt="10 Years of Dear Hope" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Feb 1, 2025</div>
+            <div class="blog-card-title">Celebrating 10 Years of Dear Hope</div>
+          </div>
+        </a>
+        <a class="blog-card" href="blog/hbz-media-relaunch.html">
+          <div class="blog-card-img"><img src="/Images/HBZ Media Zach.jpg" alt="HBZ Media Relaunch" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Jun 1, 2024</div>
+            <div class="blog-card-title">HBZ Media Relaunch</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule" style="display:block"></span>
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Work Together</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Seen something you like?</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Every project starts with a conversation. Let&rsquo;s talk about what you&rsquo;re building.</p>
+    <a href="contact.html" class="btn-p">Get in touch &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+<script>
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

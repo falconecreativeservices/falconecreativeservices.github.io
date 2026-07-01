@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Sabrina Dear Hope.jpg') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+
+/* ── CONTACT FORM ── */
+.contact-layout{
+  display:grid;grid-template-columns:1fr 1.6fr;
+  gap:5rem;align-items:start;
+}
+.contact-info-block{
+  padding-top:0.5rem;
+}
+.contact-info-label{
+  font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--navy);margin-bottom:0.5rem;
+}
+.contact-info-value{
+  font-family:'Spectral',serif;font-size:1rem;
+  color:var(--ink);line-height:1.7;margin-bottom:2rem;
+}
+.contact-note{
+  font-family:'Spectral',serif;font-size:0.9rem;font-style:italic;
+  color:#6A6A72;line-height:1.8;
+  padding-top:1.5rem;
+  border-top:1px solid var(--ink-08);
+}
+
+/* Form */
+.contact-form{display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-label{
+  font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);
+}
+.form-input,
+.form-textarea,
+.form-select{
+  font-family:'Spectral',serif;font-size:0.95rem;
+  color:var(--ink);background:#fff;
+  border:1px solid var(--ink-08);border-radius:8px;
+  padding:0.75rem 1rem;
+  outline:none;transition:border-color .2s,box-shadow .2s;
+  appearance:none;
+}
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus{
+  border-color:var(--navy);
+  box-shadow:0 0 0 3px rgba(32,50,76,0.08);
+}
+.form-textarea{resize:vertical;min-height:140px}
+.form-submit{
+  align-self:flex-start;
+  font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.04em;
+  background:var(--navy);color:var(--paper);
+  padding:0.75rem 2rem;border-radius:7px;
+  border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.form-submit:hover{background:var(--ink);transform:translateY(-1px)}
+
+@media(max-width:1024px){
+  .contact-layout{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">Get in Touch</div>
+    <h1>Every project starts<br>with a <em>conversation.</em></h1>
+    <p class="page-hero-sub">Tell me what you&rsquo;re working on. No intake forms, no automated responses. You&rsquo;ll hear back from me directly, usually within one business day.</p>
+  </div>
+</section>
+
+<!-- FORM + INFO -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="form-section" style="background:var(--paper);position:relative">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark">Contact</span></div>
+    <div class="rail-content dark" style="padding-bottom:3.5rem">
+      <div class="contact-layout">
+
+        <!-- Left: Info -->
+        <div class="contact-info-block">
+          <div class="contact-info-label">Based in</div>
+          <div class="contact-info-value">Auburn, MA<br>Serving clients nationwide.</div>
+          <div class="contact-info-label">Availability</div>
+          <div class="contact-info-value">Currently accepting new clients.<br>Referral-only studio.<br>Part time operation.</div>
+          <div class="contact-info-label">Response Time</div>
+          <div class="contact-info-value">Within one business day.</div>
+          <p class="contact-note">FCS is a referral-only practice. If you&rsquo;ve been referred by a current or former client, please mention their name — it helps me prioritize and personalize my response.</p>
+        </div>
+
+        <!-- Right: Form -->
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="f03a614f-a105-4f83-81c9-83835c1585d2">
+          <input type="hidden" name="subject" value="New Inquiry — Falcone Creative Services">
+          <input type="hidden" name="from_name" value="FCS Website">
+          <input type="hidden" name="redirect" value="false">
+          <input type="hidden" name="autoresponse" value="true">
+          <input type="checkbox" name="botcheck" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company">Company</label>
+              <input class="form-input" type="text" id="company" name="company" placeholder="Acme Co.">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="jane@acmeco.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="service">Service You&rsquo;re Interested In</label>
+            <select class="form-select" id="service" name="service">
+              <option value="">Select a service&hellip;</option>
+              <option>Video &amp; Photo</option>
+              <option>Web Design</option>
+              <option>Copy &amp; Content</option>
+              <option>Design &amp; Print</option>
+              <option>Strategy &amp; Systems</option>
+              <option>Multiple / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Tell Me What You&rsquo;re Working On</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="A brief description of your project, timeline, and any relevant context&hellip;" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="referral">Referred By (optional)</label>
+            <input class="form-input" type="text" id="referral" name="referral" placeholder="Name of the person who referred you">
+          </div>
+          <button class="form-submit" type="submit" id="form-btn">Send Message &rarr;</button>
+        </form>
+        <div id="form-success" style="display:none;padding:3rem 0;text-align:left">
+          <div style="font-family:'Sora',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);margin-bottom:1rem">Message Received</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:600;color:var(--navy);margin-bottom:0.85rem;line-height:1.3">You&rsquo;ll hear back<br>within one business day.</h2>
+          <p style="font-family:'Spectral',serif;font-size:1rem;color:#5A5A62;line-height:1.72;max-width:42ch">Thanks for reaching out. I read every message personally and will be in touch shortly. No automated replies, no runaround.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+<script>
+(function(){
+  var form = document.querySelector('.contact-form');
+  var btn = document.getElementById('form-btn');
+  var success = document.getElementById('form-success');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(res.ok){
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+        alert('Something went wrong — please try again or email directly.');
+      }
+    }).catch(function(){
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      alert('Something went wrong — please try again or email directly.');
+    });
+  });
+})();
+</script>
+</body>
+</html>

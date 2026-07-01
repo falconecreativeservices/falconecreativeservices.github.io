@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bringing Industrial Precision to Screen: Matec Instrument Companies — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.post-hero{background:linear-gradient(160deg,rgba(15,20,27,0.90) 0%,rgba(32,50,76,0.75) 100%),url('/Images/Matec Blog Thumbnail.png') center/cover no-repeat;padding:calc(var(--nav-h) + 7rem) var(--g) 9rem;position:relative;overflow:hidden;}
+.post-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:1;}
+.post-hero>*{position:relative;z-index:2}
+.post-hero-inner{padding-left:calc(56px + var(--g))}
+.post-cat{font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;}
+.post-cat::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.post-hero h1{font-family:'Sora',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);font-weight:700;line-height:1.07;letter-spacing:-0.02em;color:var(--paper);margin-bottom:1.5rem;max-width:760px;}
+.post-meta{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);display:flex;gap:2rem;align-items:center;flex-wrap:wrap;}
+.post-article{background:#fff;padding:0;position:relative;}
+.post-article::before{content:'';position:absolute;left:56px;top:0;bottom:0;width:1px;background:rgba(15,20,27,0.1);pointer-events:none;}
+.post-article::after{content:'';position:absolute;right:56px;top:0;bottom:0;width:1px;background:rgba(15,20,27,0.1);pointer-events:none;}
+.post-inner{max-width:720px;margin:0 auto;padding:6rem calc(56px + var(--g));}
+.post-lede{font-family:'Spectral',serif;font-size:1.15rem;line-height:1.85;color:#2A2A32;margin-bottom:3rem;border-left:3px solid var(--navy);padding-left:1.5rem;}
+.post-body p{font-family:'Spectral',serif;font-size:1rem;line-height:1.92;color:#4A4A52;margin-bottom:1.5rem;}
+.post-body h2{font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);margin:3rem 0 1rem;}
+.post-body ul{margin:0 0 1.5rem 0;padding-left:1.25rem;}
+.post-body ul li{font-family:'Spectral',serif;font-size:1rem;line-height:1.92;color:#4A4A52;margin-bottom:0.35rem;}
+.post-pull{font-family:'Spectral',serif;font-style:italic;font-size:1.35rem;line-height:1.6;color:var(--navy);border-top:1px solid rgba(32,50,76,0.15);border-bottom:1px solid rgba(32,50,76,0.15);padding:2rem 0;margin:3rem 0;}
+.post-img{width:100%;height:auto;display:block;margin:2.5rem 0;border-radius:2px;}
+.post-img-caption{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:var(--steel);text-transform:uppercase;margin-top:0.6rem;margin-bottom:2.5rem;}
+.post-foot{background:var(--ink);position:relative;}
+.post-foot::before{content:'';position:absolute;left:56px;top:0;bottom:0;width:1px;background:rgba(183,194,204,0.1);pointer-events:none;}
+.post-foot::after{content:'';position:absolute;right:56px;top:0;bottom:0;width:1px;background:rgba(183,194,204,0.1);pointer-events:none;}
+.post-foot-inner{padding:5rem calc(56px + var(--g));display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.post-back{font-family:'IBM Plex Mono',monospace;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);text-decoration:none;display:flex;align-items:center;gap:0.65rem;transition:color .2s;}
+.post-back::before{content:'←'}
+.post-back:hover{color:var(--paper)}
+.post-cta-wrap{text-align:right;}
+.post-cta-label{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin-bottom:1rem;}
+.post-cta-wrap .btn-p{margin-top:0.5rem;display:inline-block;}
+.post-video{width:100%;aspect-ratio:16/9;border:none;display:block;margin:2.5rem 0;border-radius:2px;background:var(--ink)}
+.post-video-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.5rem 0}
+.post-video-grid iframe{width:100%;aspect-ratio:16/9;border:none;display:block;border-radius:2px;background:var(--ink)}
+@media(max-width:600px){.post-video-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.post-inner{padding:4rem calc(56px + var(--g)) 4rem var(--g);}}
+@media(max-width:600px){.post-inner{padding:3rem var(--g);}.post-article::before,.post-article::after{display:none;}.post-foot-inner{padding:3rem var(--g);flex-direction:column;align-items:flex-start;}.post-cta-wrap{text-align:left;}}
+
+.post-more{background:var(--ink);padding:4rem calc(56px + var(--g));border-top:1px solid rgba(183,194,204,0.08)}
+.post-more-label{font-family:'IBM Plex Mono',monospace;font-size:0.67rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:2rem}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.blog-card{background:rgba(255,255,255,0.03);overflow:hidden;border-radius:10px;border:1px solid rgba(183,194,204,0.07);text-decoration:none;transition:background .2s,transform .2s;display:flex;flex-direction:column}
+.blog-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.blog-card-img{aspect-ratio:16/9;overflow:hidden;background:rgba(15,20,27,0.5)}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.85);transition:filter .4s,transform .4s}
+.blog-card:hover .blog-card-img img{filter:brightness(1);transform:scale(1.03)}
+.blog-card-body{padding:1.5rem 1.5rem 2rem;flex:1;display:flex;flex-direction:column}
+.blog-card-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:var(--steel);margin-bottom:0.5rem}
+.blog-card-title{font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;color:var(--paper);line-height:1.35;letter-spacing:-0.01em;flex:1}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div id="cur"></div>
+<nav id="nav">
+  <a href="/index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/services-video.html">Video &amp; Photo</a>
+        <a href="/services-web.html">Web Design</a>
+        <a href="/services-content.html">Copy &amp; Content</a>
+        <a href="/services-design.html">Design &amp; Print</a>
+        <a href="/services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="/work.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="/services-video.html">Video &amp; Photo</a>
+    <a href="/services-web.html">Web Design</a>
+    <a href="/services-content.html">Copy &amp; Content</a>
+    <a href="/services-design.html">Design &amp; Print</a>
+    <a href="/services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="/work.html">Work</a>
+  <a href="/about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="/contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<section class="post-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Blog</span>
+  </div>
+  <div class="post-hero-inner">
+    <div class="post-cat">Video &amp; Photo</div>
+    <h1>Bringing Industrial Precision to Screen: Matec Instrument Companies</h1>
+    <div class="post-meta">
+      <span>February 26, 2026</span>
+      <span>Paul Falcone</span>
+      <span>7 min read</span>
+    </div>
+  </div>
+</section>
+<section class="post-article" id="about-story">
+  <div class="post-inner">
+    <p class="post-lede">
+      Some projects stop you in your tracks the moment you walk through the door. Our
+      collaboration with Matec Instrument Companies was exactly that kind of project.
+    </p>
+    <div class="post-body">
+      <p>
+        Matec is an industry leader in ultrasonic nondestructive testing — a field that
+        sits at the intersection of cutting-edge engineering and real-world industrial
+        application. Their systems are massive, meticulously built, and genuinely
+        impressive to witness in person. When they came to us looking to create their
+        first pieces of video content, we knew we had something special to work with,
+        and partnered with both Parthena Design and HBZ Media to handle these colossal
+        pieces of machinery.
+      </p>
+      <p>
+        Matec provides a full suite of in-house services — mechanical and electronic
+        design, machining and fabrication, instrumentation and control, and data
+        acquisition and analysis software. What sets them apart is their ability to
+        deliver a seamlessly integrated solution under one roof, serving as a single
+        point of contact for their customers from design all the way through
+        installation, training, and long-term support.
+      </p>
+
+      <img class="post-img" src="/Images/Matec Blog Thumbnail.png" alt="Matec Instrument Companies" loading="lazy">
+      <p class="post-img-caption">Matec Instrument Companies — production</p>
+
+      <h2>The Challenge: Making Complex Technology Feel Tangible</h2>
+      <p>
+        The challenge for us was translating that depth of capability into video. These
+        aren&rsquo;t products you pick off a shelf. They&rsquo;re large-scale, custom-engineered
+        industrial systems that require a trained eye to fully appreciate. Our job was
+        to bridge that gap — to capture what makes Matec&rsquo;s equipment remarkable and
+        present it in a way that would resonate with the engineers, procurement teams,
+        and executives who make high-stakes purchasing decisions.
+      </p>
+
+      <h2>Our Approach: Overview Meets Commercial</h2>
+      <p>
+        We set out to create content that could do double duty: serve as a detailed
+        overview for prospects who want to understand what they&rsquo;re investing in, and
+        function as a compelling commercial that Matec could use to open doors with
+        new clients.
+      </p>
+      <p>
+        That meant being intentional about every shot. We wanted to capture the sheer
+        scale of the machinery — the kind of presence you feel when you&rsquo;re standing
+        next to it — while also highlighting the precision engineering and thoughtful
+        design that goes into every system. Wide establishing shots gave the equipment
+        room to breathe and communicate its size. Closer, detail-oriented shots brought
+        attention to the craftsmanship and sophistication that distinguishes Matec from
+        the competition.
+      </p>
+      <p>
+        Throughout production, we kept the end viewer in mind. A future Matec client
+        watching this video needs to come away with two things: confidence in the
+        technology, and confidence in the team behind it. Every frame was built around
+        delivering both.
+      </p>
+
+      <h2>Why This Kind of Content Matters for Industrial Companies</h2>
+      <p>
+        For companies operating at Matec&rsquo;s level, video content has historically been
+        an afterthought. The work speaks for itself on the shop floor, so why invest
+        in showing it elsewhere?
+      </p>
+      <p>
+        The answer is reach. Matec&rsquo;s systems solve serious problems for serious
+        industries — but only if the right people know they exist. A well-produced
+        video lets their equipment walk into rooms that their team can&rsquo;t physically
+        be in, making the case clearly and professionally before a single conversation
+        even happens. It extends their sales process, supports their existing team,
+        and signals to potential clients that Matec takes their brand as seriously as
+        they take their engineering.
+      </p>
+
+      <h2>The Result</h2>
+      <p>
+        What we came away with was a set of videos that genuinely capture what Matec
+        is all about — industrial capability at the highest level, backed by a team
+        that handles everything from design to ongoing customer support. Content
+        that&rsquo;s ready to anchor a pitch, live on their website, or be shared with
+        prospects who need to see it to believe it.
+      </p>
+      <iframe class="post-video" src="https://www.youtube-nocookie.com/embed/QxO50go38v4?controls=1&rel=0" allowfullscreen title="Matec — Fan Blade Development"></iframe>
+      <div class="post-video-grid">
+        <iframe src="https://www.youtube-nocookie.com/embed/hFuJOdrLAL8?controls=1&rel=0" allowfullscreen title="Matec — R&D Tank Testing"></iframe>
+        <iframe src="https://www.youtube-nocookie.com/embed/Ci3Z83rq-Zs?controls=1&rel=0" allowfullscreen title="Matec — Immersion Systems"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="post-more">
+  <div class="post-more-label">More from the blog</div>
+  <div class="blog-grid">
+        <a class="blog-card" href="/blog/building-fcs-site.html">
+          <div class="blog-card-img"><img src="/Images/On Set.JPG" alt="Building the FCS Site" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Jul 1, 2026</div>
+            <div class="blog-card-title">The Hardest Client I&rsquo;ve Ever Had Was Me</div>
+          </div>
+        </a>
+        <a class="blog-card" href="/blog/don-ruperto.html">
+          <div class="blog-card-img"><img src="/Images/Don Ruperto Thumbnail.jpg" alt="Don Ruperto Cigars" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Apr 13, 2026</div>
+            <div class="blog-card-title">Luxury Branding Brought to Life: Don Ruperto Cigars</div>
+          </div>
+        </a>
+        <a class="blog-card" href="/blog/dear-hope.html">
+          <div class="blog-card-img"><img src="/Images/Dear Hope Blog Thumbnail.jpg" alt="10 Years of Dear Hope" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Feb 1, 2025</div>
+            <div class="blog-card-title">Celebrating 10 Years of Dear Hope</div>
+          </div>
+        </a>
+  </div>
+</section>
+<section class="post-foot">
+  <div class="post-foot-inner">
+    <a href="/blog.html" class="post-back">Back to all posts</a>
+    <div class="post-cta-wrap">
+      <div class="post-cta-label">Have a project in mind?</div>
+      <a href="/contact.html" class="btn-p">Let&rsquo;s talk &rarr;</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+</body>
+
+</body>
+</html>

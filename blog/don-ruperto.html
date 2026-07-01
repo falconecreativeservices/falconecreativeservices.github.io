@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Branding Brought to Life: Don Ruperto Cigars — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+
+/* ── POST HERO ── */
+.post-hero{
+  background:
+    linear-gradient(160deg,rgba(15,20,27,0.90) 0%,rgba(32,50,76,0.75) 100%),
+    url('/Images/Don Ruperto Homepage.png') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 9rem;
+  position:relative;overflow:hidden;
+}
+.post-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.post-hero>*{position:relative;z-index:2}
+.post-hero-inner{padding-left:calc(56px + var(--g))}
+.post-cat{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.post-cat::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.post-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);
+  font-weight:700;line-height:1.07;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:1.5rem;max-width:760px;
+}
+.post-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);
+  display:flex;gap:2rem;align-items:center;flex-wrap:wrap;
+}
+
+/* ── ARTICLE BODY ── */
+.post-article{
+  background:#fff;
+  padding:0;
+  position:relative;
+}
+.post-article::before{
+  content:'';position:absolute;left:56px;top:0;bottom:0;
+  width:1px;background:rgba(15,20,27,0.1);pointer-events:none;
+}
+.post-article::after{
+  content:'';position:absolute;right:56px;top:0;bottom:0;
+  width:1px;background:rgba(15,20,27,0.1);pointer-events:none;
+}
+.post-inner{
+  max-width:720px;
+  margin:0 auto;
+  padding:6rem calc(56px + var(--g));
+}
+.post-lede{
+  font-family:'Spectral',serif;font-size:1.15rem;
+  line-height:1.85;color:#2A2A32;
+  margin-bottom:3rem;
+  border-left:3px solid var(--navy);
+  padding-left:1.5rem;
+}
+.post-body p{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.92;color:#4A4A52;
+  margin-bottom:1.5rem;
+}
+.post-body h2{
+  font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--navy);margin:3rem 0 1rem;
+}
+.post-pull{
+  font-family:'Spectral',serif;font-style:italic;
+  font-size:1.35rem;line-height:1.6;
+  color:var(--navy);
+  border-top:1px solid rgba(32,50,76,0.15);
+  border-bottom:1px solid rgba(32,50,76,0.15);
+  padding:2rem 0;margin:3rem 0;
+}
+.post-img{
+  width:100%;height:auto;display:block;
+  margin:2.5rem 0;
+  border-radius:2px;
+}
+.post-img-caption{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;color:var(--steel);
+  text-transform:uppercase;margin-top:0.6rem;
+  margin-bottom:2.5rem;
+}
+
+/* ── POST FOOTER / BACK LINK ── */
+.post-foot{
+  background:var(--ink);
+  position:relative;
+}
+.post-foot::before{
+  content:'';position:absolute;left:56px;top:0;bottom:0;
+  width:1px;background:rgba(183,194,204,0.1);pointer-events:none;
+}
+.post-foot::after{
+  content:'';position:absolute;right:56px;top:0;bottom:0;
+  width:1px;background:rgba(183,194,204,0.1);pointer-events:none;
+}
+.post-foot-inner{
+  padding:5rem calc(56px + var(--g));
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.post-back{
+  font-family:'IBM Plex Mono',monospace;font-size:0.67rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;
+  display:flex;align-items:center;gap:0.65rem;
+  transition:color .2s;
+}
+.post-back::before{content:'←';font-style:normal;}
+.post-back:hover{color:var(--paper);}
+.post-cta-wrap{text-align:right;}
+.post-cta-label{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:1rem;
+}
+.post-cta-wrap .btn-p{margin-top:0.5rem;display:inline-block;}
+.post-video{width:100%;aspect-ratio:16/9;border:none;display:block;margin:2.5rem 0;border-radius:2px;background:var(--ink)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .post-inner{padding:4rem calc(56px + var(--g)) 4rem var(--g);}
+}
+@media(max-width:600px){
+  .post-inner{padding:3rem var(--g);}
+  .post-article::before,.post-article::after{display:none;}
+  .post-foot-inner{padding:3rem var(--g);flex-direction:column;align-items:flex-start;}
+  .post-cta-wrap{text-align:left;}
+}
+
+.post-more{background:var(--ink);padding:4rem calc(56px + var(--g));border-top:1px solid rgba(183,194,204,0.08)}
+.post-more-label{font-family:'IBM Plex Mono',monospace;font-size:0.67rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:2rem}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.blog-card{background:rgba(255,255,255,0.03);overflow:hidden;border-radius:10px;border:1px solid rgba(183,194,204,0.07);text-decoration:none;transition:background .2s,transform .2s;display:flex;flex-direction:column}
+.blog-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.blog-card-img{aspect-ratio:16/9;overflow:hidden;background:rgba(15,20,27,0.5)}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.85);transition:filter .4s,transform .4s}
+.blog-card:hover .blog-card-img img{filter:brightness(1);transform:scale(1.03)}
+.blog-card-body{padding:1.5rem 1.5rem 2rem;flex:1;display:flex;flex-direction:column}
+.blog-card-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:var(--steel);margin-bottom:0.5rem}
+.blog-card-title{font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;color:var(--paper);line-height:1.35;letter-spacing:-0.01em;flex:1}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<div id="cur"></div>
+
+<nav id="nav">
+  <a href="/index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/services-video.html">Video &amp; Photo</a>
+        <a href="/services-web.html">Web Design</a>
+        <a href="/services-content.html">Copy &amp; Content</a>
+        <a href="/services-design.html">Design &amp; Print</a>
+        <a href="/services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="/work.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="/services-video.html">Video &amp; Photo</a>
+    <a href="/services-web.html">Web Design</a>
+    <a href="/services-content.html">Copy &amp; Content</a>
+    <a href="/services-design.html">Design &amp; Print</a>
+    <a href="/services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="/work.html">Work</a>
+  <a href="/about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="/contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+
+<!-- POST HERO -->
+<section class="post-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Blog</span>
+  </div>
+  <div class="post-hero-inner">
+    <div class="post-cat">Branding &amp; Print</div>
+    <h1>Luxury Branding Brought to Life: Don Ruperto Cigars</h1>
+    <div class="post-meta">
+      <span>April 13, 2026</span>
+      <span>Paul Falcone</span>
+      <span>6 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<section class="post-article" id="about-story">
+  <div class="post-inner">
+
+    <p class="post-lede">
+      Don Ruperto Cigars came to me with a straightforward problem. They had a site.
+      It just didn&rsquo;t feel like it represented them or their product as a luxury business.
+    </p>
+
+    <div class="post-body">
+
+      <p>
+        The brand is a trade-exclusive, hand-rolled Honduran cigar line with real history
+        behind it, passed from founder to grandson, built on Cuban-seed tobacco and
+        Honduran soil. Our kickoff call was great because I got to share that I recently
+        spent two weeks in Honduras with my wife&rsquo;s family. It made for a great introduction.
+      </p>
+      <p>
+        After getting to know Sheena and the Don Ruperto mission the ask became simple:
+        build something that reflects who we are.
+      </p>
+
+      <h2>Starting with the Site</h2>
+      <p>
+        I spent time inside the brand before touching anything. Understanding the story,
+        the buyers, the visual language. From there, we built a landing page on WordPress
+        and Elementor Pro with animated reveals, a custom gold-and-crimson cursor, and a
+        gated catalog download flow. The palette stayed consistent throughout. Custom CSS
+        kept it from feeling like a template.
+      </p>
+
+      <iframe class="post-video" src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=1&rel=0" allowfullscreen title="Don Ruperto Cigars — Website Scroll"></iframe>
+      <img class="post-img" src="/Images/Don Ruperto Homepage.png" alt="Don Ruperto website design" loading="lazy">
+      <p class="post-img-caption">Don Ruperto Cigars — landing page</p>
+
+      <h2>What Good Work Earns</h2>
+      <p>
+        Once the site was in a good place, the conversation naturally expanded. If the
+        web presence reflected the brand, the print materials should too.
+      </p>
+      <p>
+        That led to an extension of our collaboration into an 11-page product catalog
+        covering all four wrapper lines: Connecticut, Habano, Maduro, and Double Wrapper.
+        Each line got its own two-page spread with lifestyle photography, a line
+        description, and a full SKU reference for retail buyers that stayed on brand
+        with the luxury landing page we designed. The photography was provided by
+        <a href="http://www.GabrielaBerinstein.com" target="_blank" rel="noopener">Gabriela Berinstein Photography</a>.
+      </p>
+
+      <img class="post-img" src="/PDFs/Don Ruperto Product Catalog/Don Ruperto Product Catalog copy.jpg" alt="Don Ruperto Product Catalog Cover" loading="lazy">
+      <p class="post-img-caption">Don Ruperto Product Catalog — cover</p>
+
+      <img class="post-img" src="/Images/Don Ruperto Catalog Example.png" alt="Don Ruperto Catalog interior spread" loading="lazy">
+      <p class="post-img-caption">Interior spread — wrapper line detail pages</p>
+
+      <h2>An Ongoing Partnership</h2>
+      <p>
+        This one is still going. New materials, an evolving digital presence, and more
+        as the brand continues to grow.
+      </p>
+      <p>
+        That&rsquo;s the kind of work I enjoy most. Not just a deliverable, but an <a href="/blog/hbz-media-relaunch.html">ongoing
+        relationship</a> where you&rsquo;re actually invested in where the brand ends up.
+      </p>
+      <p>
+        Don Ruperto Cigars is available exclusively through trade. Learn more at
+        <a href="https://donrupertocigars.com" target="_blank" rel="noopener">donrupertocigars.com</a>.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- POST FOOT -->
+<section class="post-more">
+  <div class="post-more-label">More from the blog</div>
+  <div class="blog-grid">
+        <a class="blog-card" href="/blog/building-fcs-site.html">
+          <div class="blog-card-img"><img src="/Images/On Set.JPG" alt="Building the FCS Site" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Jul 1, 2026</div>
+            <div class="blog-card-title">The Hardest Client I&rsquo;ve Ever Had Was Me</div>
+          </div>
+        </a>
+        <a class="blog-card" href="/blog/matec.html">
+          <div class="blog-card-img"><img src="/Images/Matec Blog Thumbnail.png" alt="Matec Instrument Companies" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Feb 26, 2026</div>
+            <div class="blog-card-title">Bringing Industrial Precision to Screen: Matec Instrument Companies</div>
+          </div>
+        </a>
+        <a class="blog-card" href="/blog/dear-hope.html">
+          <div class="blog-card-img"><img src="/Images/Dear Hope Blog Thumbnail.jpg" alt="10 Years of Dear Hope" loading="lazy"></div>
+          <div class="blog-card-body">
+            <div class="blog-card-date">Feb 1, 2025</div>
+            <div class="blog-card-title">Celebrating 10 Years of Dear Hope</div>
+          </div>
+        </a>
+  </div>
+</section>
+<section class="post-foot">
+  <div class="post-foot-inner">
+    <a href="/blog.html" class="post-back">Back to all posts</a>
+    <div class="post-cta-wrap">
+      <div class="post-cta-label">Have a project in mind?</div>
+      <a href="/contact.html" class="btn-p">Let&rsquo;s talk &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+</body>
+
+</body>
+</html>

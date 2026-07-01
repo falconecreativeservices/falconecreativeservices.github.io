@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude Code workspace
+.claude/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Logs
+*.log
+
+# Internal / dev-only files
+fcs-v7.html
+logo-export.html
+FCS_CLAUDE_CODE_BRIEFING.md

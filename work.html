@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Matec Blog Thumbnail.png') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+
+/* ── FILTER ── */
+.filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.filter-btn{
+  font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.4rem 1rem;border-radius:5px;
+  border:1px solid rgba(15,20,27,0.15);
+  color:var(--navy);background:transparent;cursor:none;transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--navy);color:var(--paper);border-color:var(--navy);
+}
+
+/* ── FEATURED ── */
+.work-featured{
+  position:relative;overflow:hidden;border-radius:12px;
+  aspect-ratio:21/9;margin-bottom:12px;cursor:none;
+  text-decoration:none;display:block;
+}
+.work-featured img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(0.6);transition:filter .6s,transform .6s;
+}
+.work-featured:hover img{filter:brightness(0.78);transform:scale(1.02)}
+.work-featured-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,20,27,0.88) 0%,transparent 55%);
+}
+.work-featured-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:2.5rem 3rem;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;
+}
+.work-featured-cat{
+  font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--platinum);margin-bottom:0.5rem;opacity:0.8;
+}
+.work-featured-title{
+  font-family:'Sora',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);
+  font-weight:700;letter-spacing:-0.02em;color:var(--paper);line-height:1.1;
+}
+.work-featured-desc{
+  font-family:'Spectral',serif;font-size:0.92rem;
+  color:rgba(239,241,244,0.75);line-height:1.7;
+  max-width:36ch;flex-shrink:0;
+}
+
+/* ── WORK GRID ── */
+.work-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;
+}
+.work-card{
+  position:relative;overflow:hidden;border-radius:12px;
+  aspect-ratio:4/3;cursor:none;text-decoration:none;display:block;
+}
+.work-card.tall{aspect-ratio:3/4;grid-row:span 2}
+.work-card img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(0.6) saturate(0.8);
+  transition:filter .5s,transform .5s;
+}
+.work-card:hover img{filter:brightness(0.82) saturate(1);transform:scale(1.04)}
+.work-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,20,27,0.9) 0%,rgba(15,20,27,0.1) 55%,transparent 100%);
+  transition:background .4s;
+}
+.work-card-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.5rem 1.75rem 1.75rem;
+  transform:translateY(4px);transition:transform .35s;
+}
+.work-card:hover .work-card-content{transform:translateY(0)}
+.work-card-cat{
+  font-family:'IBM Plex Mono',monospace;font-size:0.6rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--platinum);opacity:0;margin-bottom:0.4rem;
+  transition:opacity .35s;
+}
+.work-card:hover .work-card-cat{opacity:0.8}
+.work-card-client{
+  font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--paper);letter-spacing:-0.01em;line-height:1.2;margin-bottom:0.25rem;
+}
+.work-card-type{
+  font-family:'Spectral',serif;font-size:0.82rem;
+  color:rgba(239,241,244,0.6);
+}
+
+/* Placeholder card (no image) */
+.work-card-blank{
+  position:relative;overflow:hidden;border-radius:12px;
+  aspect-ratio:4/3;cursor:none;text-decoration:none;display:block;
+  background:rgba(15,20,27,0.04);
+  border:1px solid rgba(15,20,27,0.08);
+}
+.work-card-blank .work-card-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.5rem 1.75rem 1.75rem;
+}
+.work-card-blank .work-card-cat{opacity:0.6}
+.work-card-blank .work-card-client{color:var(--navy)}
+.work-card-blank .work-card-type{color:rgba(15,20,27,0.5)}
+.work-card-blank img{transition:transform .5s}
+.work-card-blank:hover img{transform:scale(1.04)}
+.placeholder-label{
+  position:absolute;top:1.25rem;right:1.25rem;
+  font-family:'IBM Plex Mono',monospace;font-size:0.58rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--navy);opacity:0.4;
+  border:1px solid rgba(15,20,27,0.12);
+  padding:0.2rem 0.5rem;border-radius:3px;
+}
+
+/* ── VIDEO STRIP ── */
+.video-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.video-strip-item{
+  position:relative;overflow:hidden;border-radius:12px;
+  aspect-ratio:16/9;background:var(--ink);
+}
+.video-strip-item iframe{width:100%;height:100%;border:none;display:block}
+.video-strip-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.25rem 1.5rem;
+  background:linear-gradient(to top,rgba(15,20,27,0.85),transparent);
+  pointer-events:none;
+}
+.video-strip-cat{
+  font-family:'IBM Plex Mono',monospace;font-size:0.58rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--platinum);opacity:0.7;margin-bottom:0.25rem;
+}
+.video-strip-title{
+  font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:600;
+  color:var(--paper);
+}
+
+@media(max-width:1024px){
+  .work-grid{grid-template-columns:1fr 1fr}
+  .work-card.tall{aspect-ratio:4/3;grid-row:span 1}
+  .video-strip{grid-template-columns:1fr}
+  .work-featured{aspect-ratio:16/9}
+  .work-featured-desc{display:none}
+}
+@media(max-width:640px){.work-grid{grid-template-columns:1fr}}
+
+/* ── VIDEO HOVER ── */
+.wc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;z-index:2;pointer-events:none}
+.work-card.video-hover:hover .wc-vid,.work-featured.video-hover:hover .wc-vid{opacity:1}
+.work-card.video-hover .work-card-overlay,.work-card.video-hover .work-card-content{z-index:3}
+.work-featured.video-hover .work-featured-overlay,.work-featured.video-hover .work-featured-content{z-index:3}
+.wc-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:5;pointer-events:none;transition:opacity .3s}
+.wc-play-btn{width:50px;height:50px;border-radius:50%;background:rgba(239,241,244,0.12);border:1.5px solid rgba(239,241,244,0.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center}
+.work-card.video-hover:hover .wc-play,.work-featured.video-hover:hover .wc-play{opacity:0}
+
+/* ── EXPAND HOVER (design/other) ── */
+.work-card.expand-hover{z-index:1;transition:filter .5s,transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s}
+.work-card.expand-hover:hover{transform:scale(1.18);z-index:10;box-shadow:0 32px 80px rgba(0,0,0,0.65)}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Work</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">Portfolio</div>
+    <h1>Work worth<br><em>talking about.</em></h1>
+    <p class="page-hero-sub">A selection of projects across video, web, design, and strategy. Every engagement is different &mdash; but the standard stays the same.</p>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<span class="ch-rule" style="display:block"></span>
+<section id="showcase" style="background:var(--paper);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label dark">Projects</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="strategy">Strategy</button>
+      </div>
+
+      <!-- Featured -->
+      <a class="work-featured" href="https://youtu.be/WiU7Tc0YZo0" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/WiU7Tc0YZo0">
+        <img src="https://img.youtube.com/vi/WiU7Tc0YZo0/maxresdefault.jpg" alt="Tata and Howard">
+        <div class="work-featured-overlay"></div>
+        <div class="work-featured-content">
+          <div>
+            <div class="work-featured-cat">Corporate Video &middot; Multi-Day Shoot</div>
+            <div class="work-featured-title">Tata &amp; Howard</div>
+          </div>
+          <p class="work-featured-desc">13 executive interviews captured across two locations. Final delivery: individual cuts and a corporate overview edit used across the organization.</p>
+        </div>
+      </a>
+
+      <!-- Grid -->
+      <div class="work-grid">
+
+        <a class="work-card" href="https://youtu.be/ukTQGYn_d5U" target="_blank" rel="noopener noreferrer" data-category="web" data-video-src="https://youtu.be/ukTQGYn_d5U">
+          <img src="https://img.youtube.com/vi/ukTQGYn_d5U/maxresdefault.jpg" alt="Don Ruperto Cigars Website" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Web &middot; Brand</div>
+            <div class="work-card-client">Don Ruperto Cigars</div>
+            <div class="work-card-type">Landing page build &amp; brand rollout</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/8ma3nnIGgzQ" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/8ma3nnIGgzQ">
+          <img src="https://img.youtube.com/vi/8ma3nnIGgzQ/maxresdefault.jpg" alt="Dienes Corporation" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Video &middot; Manufacturing</div>
+            <div class="work-card-client">Dienes Corporation</div>
+            <div class="work-card-type">Commercial direction &amp; edit</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/6h6BxgHyENM" target="_blank" rel="noopener noreferrer" data-category="web" data-video-src="https://youtu.be/6h6BxgHyENM">
+          <img src="https://img.youtube.com/vi/6h6BxgHyENM/maxresdefault.jpg" alt="HBZ Media" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Web &middot; Design &middot; Strategy</div>
+            <div class="work-card-client">HBZ Media</div>
+            <div class="work-card-type">Rebrand, site build, retainer</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/QxO50go38v4" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/QxO50go38v4">
+          <img src="https://img.youtube.com/vi/QxO50go38v4/maxresdefault.jpg" alt="Matec Instrument Companies" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Video &middot; Industrial</div>
+            <div class="work-card-client">Matec Instrument Companies</div>
+            <div class="work-card-type">Custom Fan Blade Immersion Tank</div>
+          </div>
+        </a>
+
+        <div class="work-card" data-category="strategy" style="background:var(--ink)">
+          <img src="/Images/Mailchimp Logo.png" alt="Mailchimp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(1) saturate(1);pointer-events:none;" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Strategy &middot; Email &middot; Mailchimp</div>
+            <div class="work-card-client">HBZ Media</div>
+            <div class="work-card-type">Audience config, templates &amp; campaigns</div>
+          </div>
+        </div>
+
+        <a class="work-card" href="https://youtu.be/fTTW5r078hU" target="_blank" rel="noopener noreferrer" data-category="web" data-video-src="https://youtu.be/fTTW5r078hU">
+          <img src="https://img.youtube.com/vi/fTTW5r078hU/maxresdefault.jpg" alt="Olympic Wine and Liquors" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Web &middot; GoDaddy Aero</div>
+            <div class="work-card-client">Olympic Wine &amp; Liquors</div>
+            <div class="work-card-type">Full site build</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/hFuJOdrLAL8" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/hFuJOdrLAL8">
+          <img src="https://img.youtube.com/vi/hFuJOdrLAL8/maxresdefault.jpg" alt="Matec Instrument Companies" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Video &middot; Industrial</div>
+            <div class="work-card-client">Matec Instrument Companies</div>
+            <div class="work-card-type">Custom R&amp;D Tank showcase</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/MEyVo2l9mAA" target="_blank" rel="noopener noreferrer" data-category="web" data-video-src="https://youtu.be/MEyVo2l9mAA">
+          <img src="https://img.youtube.com/vi/MEyVo2l9mAA/maxresdefault.jpg" alt="Chris McLernon" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Web &middot; Strategy &middot; Email</div>
+            <div class="work-card-client">Chris McLernon</div>
+            <div class="work-card-type">Site, Mailchimp &amp; book launch</div>
+          </div>
+        </a>
+
+        <a class="work-card" data-category="design">
+          <img src="/Images/Don Ruperto Catalog Example.png" alt="Don Ruperto Cigars" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Design &middot; Print &middot; Brand</div>
+            <div class="work-card-client">Don Ruperto Cigars</div>
+            <div class="work-card-type">Rebrand, catalog &amp; print</div>
+          </div>
+        </a>
+
+        <div class="work-card" data-category="strategy" style="background:var(--ink)">
+          <img src="/Images/honeybook-logo 43.jpg" alt="HoneyBook" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(1) saturate(1);pointer-events:none;" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Strategy &middot; CRM &middot; HoneyBook</div>
+            <div class="work-card-client">HBZ Media</div>
+            <div class="work-card-type">Pipelines, proposals &amp; automations</div>
+          </div>
+        </div>
+
+        <a class="work-card" href="https://youtu.be/4U0V5bbmgIA" target="_blank" rel="noopener noreferrer" data-category="web" data-video-src="https://youtu.be/4U0V5bbmgIA">
+          <img src="https://img.youtube.com/vi/4U0V5bbmgIA/maxresdefault.jpg" alt="Jennings Canine Consulting" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Web &middot; WordPress &middot; Elementor</div>
+            <div class="work-card-client">Jennings Canine Consulting</div>
+            <div class="work-card-type">Full site build</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/Ci3Z83rq-Zs" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/Ci3Z83rq-Zs">
+          <img src="https://img.youtube.com/vi/Ci3Z83rq-Zs/maxresdefault.jpg" alt="Matec Instrument Companies" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Video &middot; Industrial</div>
+            <div class="work-card-client">Matec Instrument Companies</div>
+            <div class="work-card-type">Immersion Tank showcase</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/fuL45Fk6Boc" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/fuL45Fk6Boc">
+          <img src="https://img.youtube.com/vi/fuL45Fk6Boc/maxresdefault.jpg" alt="DIENES Quickset Dual Station" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Video &middot; Manufacturing</div>
+            <div class="work-card-client">Dienes Corporation</div>
+            <div class="work-card-type">Quickset Dual Station walkthrough</div>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://youtu.be/AfR3GpKjJlk" target="_blank" rel="noopener noreferrer" data-category="video" data-video-src="https://youtu.be/AfR3GpKjJlk">
+          <img src="https://img.youtube.com/vi/AfR3GpKjJlk/maxresdefault.jpg" alt="HBZ Media Relaunch" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Video &middot; Brand</div>
+            <div class="work-card-client">HBZ Media</div>
+            <div class="work-card-type">Brand relaunch video</div>
+          </div>
+        </a>
+
+        <div class="work-card" data-category="strategy" style="background:var(--ink)">
+          <img src="/Images/Mailchimp Logo.png" alt="Mailchimp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(1) saturate(1);pointer-events:none;" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Strategy &middot; Email &middot; Book Launch</div>
+            <div class="work-card-client">Chris McLernon</div>
+            <div class="work-card-type">List setup, sequences &amp; campaigns</div>
+          </div>
+        </div>
+
+        <a class="work-card" data-category="design">
+          <img src="/Images/hbz-catalog-example.png" alt="HBZ Media catalog" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Design &middot; Print &middot; Brand</div>
+            <div class="work-card-client">HBZ Media</div>
+            <div class="work-card-type">Brand catalog &amp; collateral</div>
+          </div>
+        </a>
+
+        <a class="work-card" data-category="design">
+          <img src="/Images/hbz-business-card-front.png" alt="HBZ Media business card" loading="lazy">
+          <div class="work-card-overlay"></div>
+          <div class="work-card-content">
+            <div class="work-card-cat">Design &middot; Print &middot; Brand</div>
+            <div class="work-card-client">HBZ Media</div>
+            <div class="work-card-type">Business card design</div>
+          </div>
+        </a>
+
+        <div class="work-card-blank" data-category="strategy" style="display:flex;align-items:center;justify-content:center;">
+          <img src="/Images/honeybook-logo 43.jpg" alt="HoneyBook" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(1) saturate(1);pointer-events:none;" loading="lazy">
+          <div class="work-card-content">
+            <div class="work-card-cat">Strategy &middot; CRM &middot; HoneyBook</div>
+            <div class="work-card-client">Hawk Visuals</div>
+            <div class="work-card-type">Full HoneyBook pipeline build</div>
+          </div>
+        </div>
+
+      </div><!-- /work-grid -->
+
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Work Together</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Seen something you like?</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Every project starts with a conversation. Tell me what you&rsquo;re building.</p>
+    <a href="contact.html" class="btn-p">Get in touch &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+<script>
+(function(){
+  var btns = document.querySelectorAll('.filter-btn[data-filter]');
+  var cards = document.querySelectorAll('[data-category]');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var filter = btn.getAttribute('data-filter');
+      btns.forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      cards.forEach(function(card){
+        var cats = card.getAttribute('data-category').split(' ');
+        var show = filter==='all' || cats.indexOf(filter)>-1;
+        card.style.opacity = show?'1':'0.12';
+        card.style.pointerEvents = show?'auto':'none';
+        card.style.transition = 'opacity .35s';
+      });
+    });
+  });
+})();
+
+// Video hover (video/web cards) + expand hover (design/other cards)
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var playBtn='<div class="wc-play" aria-hidden="true"><div class="wc-play-btn"><svg viewBox="0 0 16 16" width="16" height="16"><polygon points="3,1 14,8 3,15" fill="rgba(239,241,244,0.9)"/></svg></div></div>';
+
+  function ytId(url){
+    var m=url.match(/(?:youtu\.be\/|v=|embed\/)([^&?\/\s]+)/);
+    return m?m[1]:null;
+  }
+
+  document.querySelectorAll('.work-card,.work-featured').forEach(function(card){
+    var cats=(card.getAttribute('data-category')||'').split(' ');
+    var isAV=cats.indexOf('video')>-1||cats.indexOf('web')>-1;
+    if(isAV){
+      card.insertAdjacentHTML('beforeend',playBtn);
+      card.classList.add('video-hover');
+      if(!rm){
+        card.addEventListener('mouseenter',function(){
+          var el=card.querySelector('.wc-vid');
+          if(el){
+            // Resume from paused frame
+            if(el.tagName==='IFRAME') el.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
+            else el.play().catch(function(){});
+            return;
+          }
+          var src=card.getAttribute('data-video-src');
+          if(!src) return;
+          var id=ytId(src);
+          if(id){
+            el=document.createElement('iframe');
+            el.setAttribute('frameborder','0');
+            el.allow='autoplay; encrypted-media';
+            el.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&mute=1&controls=0&loop=1&playlist='+id+'&rel=0&enablejsapi=1';
+          } else {
+            el=document.createElement('video');
+            el.muted=true;el.loop=true;el.setAttribute('playsinline','');
+            el.src=src;
+          }
+          el.className='wc-vid';
+          el.style.opacity='0';
+          var img=card.querySelector('img');
+          if(img) card.insertBefore(el,img.nextSibling); else card.insertBefore(el,card.firstChild);
+          if(el.tagName==='VIDEO') el.play().catch(function(){});
+          // Set inline opacity=1 so it stays visible after mouseleave (overrides CSS)
+          requestAnimationFrame(function(){requestAnimationFrame(function(){el.style.opacity='1';});});
+        });
+        card.addEventListener('mouseleave',function(){
+          var el=card.querySelector('.wc-vid');
+          if(!el) return;
+          // Pause on current frame — opacity stays at 1 (set inline above), frame remains visible
+          if(el.tagName==='IFRAME') el.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+          else{el.pause();}
+        });
+      }
+    } else if(!rm){
+      card.classList.add('expand-hover');
+    }
+  });
+})();
+</script>
+</body>
+</html>

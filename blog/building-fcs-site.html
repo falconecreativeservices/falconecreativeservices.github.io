@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hardest Client I've Ever Had Was Me — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+
+/* ── POST HERO ── */
+.post-hero{
+  background:
+    linear-gradient(160deg,rgba(15,20,27,0.88) 0%,rgba(32,50,76,0.78) 100%),
+    url('/Images/On Set.JPG') center 30%/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 9rem;
+  position:relative;overflow:hidden;
+}
+.post-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.post-hero>*{position:relative;z-index:2}
+.post-hero-inner{padding-left:calc(56px + var(--g))}
+.post-cat{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.post-cat::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.post-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);
+  font-weight:700;line-height:1.07;letter-spacing:-0.02em;
+  color:var(--paper);margin-bottom:1.5rem;max-width:760px;
+}
+.post-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);
+  display:flex;gap:2rem;align-items:center;flex-wrap:wrap;
+}
+
+/* ── ARTICLE BODY ── */
+.post-article{
+  background:#fff;
+  padding:0;
+  position:relative;
+}
+.post-article::before{
+  content:'';position:absolute;left:56px;top:0;bottom:0;
+  width:1px;background:rgba(15,20,27,0.1);pointer-events:none;
+}
+.post-article::after{
+  content:'';position:absolute;right:56px;top:0;bottom:0;
+  width:1px;background:rgba(15,20,27,0.1);pointer-events:none;
+}
+.post-inner{
+  max-width:720px;
+  margin:0 auto;
+  padding:6rem calc(56px + var(--g));
+}
+.post-lede{
+  font-family:'Spectral',serif;font-size:1.15rem;
+  line-height:1.85;color:#2A2A32;
+  margin-bottom:3rem;
+  border-left:3px solid var(--navy);
+  padding-left:1.5rem;
+}
+.post-body p{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.92;color:#4A4A52;
+  margin-bottom:1.5rem;
+}
+.post-body h2{
+  font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--navy);margin:3rem 0 1rem;
+}
+.post-pull{
+  font-family:'Spectral',serif;font-style:italic;
+  font-size:1.35rem;line-height:1.6;
+  color:var(--navy);
+  border-top:1px solid rgba(32,50,76,0.15);
+  border-bottom:1px solid rgba(32,50,76,0.15);
+  padding:2rem 0;margin:3rem 0;
+}
+.post-img{
+  width:100%;height:auto;display:block;
+  margin:2.5rem 0;
+  border-radius:2px;
+}
+.color-palette{display:flex;margin:2.5rem 0;border-radius:6px;overflow:hidden}
+.color-swatch{flex:1;height:120px;display:flex;align-items:flex-end;padding:0.75rem}
+.swatch-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase}
+
+.post-img-caption{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;color:var(--steel);
+  text-transform:uppercase;margin-top:0.6rem;
+  margin-bottom:2.5rem;
+}
+
+/* ── POST FOOTER / BACK LINK ── */
+.post-foot{
+  background:var(--ink);
+  position:relative;
+}
+.post-foot::before{
+  content:'';position:absolute;left:56px;top:0;bottom:0;
+  width:1px;background:rgba(183,194,204,0.1);pointer-events:none;
+}
+.post-foot::after{
+  content:'';position:absolute;right:56px;top:0;bottom:0;
+  width:1px;background:rgba(183,194,204,0.1);pointer-events:none;
+}
+.post-foot-inner{
+  padding:5rem calc(56px + var(--g));
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.post-back{
+  font-family:'IBM Plex Mono',monospace;font-size:0.67rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;
+  display:flex;align-items:center;gap:0.65rem;
+  transition:color .2s;
+}
+.post-back::before{content:'←';font-style:normal;}
+.post-back:hover{color:var(--paper);}
+.post-cta-wrap{text-align:right;}
+.post-cta-label{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:1rem;
+}
+.post-cta-wrap .btn-p{margin-top:0.5rem;display:inline-block;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .post-inner{padding:4rem calc(56px + var(--g)) 4rem var(--g);}
+}
+@media(max-width:600px){
+  .post-inner{padding:3rem var(--g);}
+  .post-article::before,.post-article::after{display:none;}
+  .post-foot-inner{padding:3rem var(--g);flex-direction:column;align-items:flex-start;}
+  .post-cta-wrap{text-align:left;}
+}
+
+.post-more{background:var(--ink);padding:4rem calc(56px + var(--g));border-top:1px solid rgba(183,194,204,0.08)}
+.post-more-label{font-family:'IBM Plex Mono',monospace;font-size:0.67rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:2rem}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.blog-card{background:rgba(255,255,255,0.03);overflow:hidden;border-radius:10px;border:1px solid rgba(183,194,204,0.07);text-decoration:none;transition:background .2s,transform .2s;display:flex;flex-direction:column}
+.blog-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px)}
+.blog-card-img{aspect-ratio:16/9;overflow:hidden;background:rgba(15,20,27,0.5)}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.85);transition:filter .4s,transform .4s}
+.blog-card:hover .blog-card-img img{filter:brightness(1);transform:scale(1.03)}
+.blog-card-body{padding:1.5rem 1.5rem 2rem;flex:1;display:flex;flex-direction:column}
+.blog-card-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:var(--steel);margin-bottom:0.5rem}
+.blog-card-title{font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;color:var(--paper);line-height:1.35;letter-spacing:-0.01em;flex:1}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<div id="cur"></div>
+
+<nav id="nav">
+  <a href="/index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/services-video.html">Video &amp; Photo</a>
+        <a href="/services-web.html">Web Design</a>
+        <a href="/services-content.html">Copy &amp; Content</a>
+        <a href="/services-design.html">Design &amp; Print</a>
+        <a href="/services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="/work.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="/services-video.html">Video &amp; Photo</a>
+    <a href="/services-web.html">Web Design</a>
+    <a href="/services-content.html">Copy &amp; Content</a>
+    <a href="/services-design.html">Design &amp; Print</a>
+    <a href="/services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="/work.html">Work</a>
+  <a href="/about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="/contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+
+<!-- POST HERO -->
+<section class="post-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Blog</span>
+  </div>
+  <div class="post-hero-inner">
+    <div class="post-cat">Behind the Studio</div>
+    <h1>The Hardest Client I&rsquo;ve Ever Had Was Me</h1>
+    <div class="post-meta">
+      <span>Jul 1, 2026</span>
+      <span>Paul Falcone</span>
+      <span>5 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE -->
+<section class="post-article" id="about-story">
+  <div class="post-inner">
+
+    <p class="post-lede">
+      Every client I&rsquo;ve worked with has had the same conversation with me at some point:
+      the brand isn&rsquo;t reflecting who we are anymore. Usually I can see it the moment
+      I look at their site. It took me two years to finally have that conversation with myself.
+    </p>
+
+    <div class="post-body">
+
+      <p>
+        The cobbler&rsquo;s children have no shoes. It&rsquo;s a clich&eacute; because it&rsquo;s true.
+        Creative people are notoriously bad at applying their own skills to themselves.
+        There&rsquo;s always a client project that&rsquo;s more urgent, a deadline that matters more,
+        a reason to push the portfolio update to next month.
+      </p>
+      <p>
+        I finally ran out of excuses. Here&rsquo;s what building my own site actually looked like.
+      </p>
+
+      <h2>The Brief</h2>
+      <p>
+        Writing a brief for yourself is harder than it sounds. With a client you ask questions.
+        You push back. You draw out what they mean when they say they want something that
+        &ldquo;feels premium&rdquo; or &ldquo;tells our story.&rdquo;
+        When you&rsquo;re the client, you skip straight to the keyboard and wonder why nothing
+        feels right three hours later.
+      </p>
+      <p>
+        I started by writing out what the site needed to communicate before I opened a design
+        file. A few things were non-negotiable: the work is part-time, intentionally small,
+        referral-only by design. Not because I can&rsquo;t take on more, but because the
+        clients I work best with tend to find me through someone they already trust.
+      </p>
+      <p>
+        The site couldn&rsquo;t oversell it. No stock photos of boardrooms. No inflated
+        capability lists. Just an honest look at what the work is, who it&rsquo;s for, and
+        what it feels like to hire someone who treats your project like it&rsquo;s the only one on their desk.
+      </p>
+
+      <div class="post-pull">
+        &ldquo;The site couldn&rsquo;t oversell it. I needed it to say: this is exactly what it is, and that&rsquo;s the point.&rdquo;
+      </div>
+
+      <h2>Designing the System</h2>
+      <p>
+        I started with color. The palette is dark by design&mdash;most of the site lives on
+        near-black backgrounds, lifted by a progression of cooler blues and grays. I wanted
+        something that felt considered rather than default, restrained rather than trendy.
+      </p>
+
+      <div class="color-palette" role="img" aria-label="FCS color palette: Ink, Navy, Steel, Platinum, Paper">
+        <div class="color-swatch" style="background:#0F141B">
+          <span class="swatch-label" style="color:rgba(239,241,244,0.55)">Ink</span>
+        </div>
+        <div class="color-swatch" style="background:#20324C">
+          <span class="swatch-label" style="color:rgba(239,241,244,0.55)">Navy</span>
+        </div>
+        <div class="color-swatch" style="background:#9FB1C2">
+          <span class="swatch-label" style="color:rgba(15,20,27,0.5)">Steel</span>
+        </div>
+        <div class="color-swatch" style="background:#B7C2CC">
+          <span class="swatch-label" style="color:rgba(15,20,27,0.5)">Platinum</span>
+        </div>
+        <div class="color-swatch" style="background:#EFF1F4;border:1px solid rgba(15,20,27,0.1)">
+          <span class="swatch-label" style="color:rgba(15,20,27,0.4)">Paper</span>
+        </div>
+      </div>
+
+      <p>
+        Three typefaces, each with a specific job: a modern geometric for headings, a readable
+        serif for body copy, and a monospaced font for the small labels and metadata that frame
+        the content. Nothing decorative. Everything functional.
+      </p>
+      <p>
+        The custom cursor&mdash;a small dot that shifts in size and color based on what
+        you&rsquo;re hovering&mdash;was the last thing I added and the first thing most
+        people mention. Sometimes the smallest detail does the most work.
+      </p>
+
+      <h2>The Build</h2>
+      <p>
+        Most of the sites I&rsquo;ve built for clients have lived on platforms&mdash;WordPress,
+        Squarespace, Webflow. Those tools are the right call for most projects: they&rsquo;re
+        fast to stand up, easy for clients to maintain, and I know them well.
+      </p>
+      <p>
+        My new full-time job is a different environment. We work in code. Real HTML, CSS,
+        JavaScript&mdash;files and a text editor, not a drag-and-drop panel. I wanted to
+        close that gap on the side, and building my own site seemed like the right place to do it.
+      </p>
+      <p>
+        It was humbling in the best way. Things I&rsquo;d normally let the platform handle&mdash;navigation
+        states, scroll behavior, responsive breakpoints&mdash;I had to think through and build
+        from scratch. It took longer than a CMS build would have. It was also more satisfying
+        than any site I&rsquo;ve built in a long time.
+      </p>
+
+      <h2>The Real Constraint</h2>
+      <p>
+        FCS is part-time. I have a full-time job. This site was built in the margins&mdash;early
+        mornings, late evenings, a few weekend sprints where I could string together a few
+        hours without interruption.
+      </p>
+      <p>
+        That constraint actually made the site better. When you only have an hour, you don&rsquo;t
+        spend it re-litigating a decision you already made. You build the next thing and move.
+        It forced prioritization in a way that an open schedule never does.
+      </p>
+      <p>
+        What I cut: a portfolio filter I spent three hours on before realizing most visitors
+        will scroll, not filter. An animated logo reveal that looked great in isolation and
+        strange in context. A pricing page that raised more questions than it answered.
+      </p>
+      <p>
+        What I kept: the work, the writing, a contact form that sends me the message directly,
+        and enough honesty about what the studio is that the wrong client self-selects out
+        before they ever reach out.
+      </p>
+
+      <p>
+        Building your own site is the clearest mirror I know for how good you actually are
+        at what you say you do. Every decision you push off&mdash;the right copy, the honest
+        positioning, the color that finally feels right&mdash;is a decision you&rsquo;d push
+        a client on.
+      </p>
+      <p>
+        The site is done now. Or close enough. It&rsquo;s a living document, like every good
+        creative project. But it represents the work as it actually is: focused, honest, and
+        built by hand.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- MORE FROM BLOG -->
+<section class="post-more">
+  <div class="post-more-label">More from the blog</div>
+  <div class="blog-grid">
+    <a class="blog-card" href="/blog/don-ruperto.html">
+      <div class="blog-card-img"><img src="/Images/Don Ruperto Thumbnail.jpg" alt="Don Ruperto Cigars" loading="lazy"></div>
+      <div class="blog-card-body">
+        <div class="blog-card-date">Apr 13, 2026</div>
+        <div class="blog-card-title">Luxury Branding Brought to Life: Don Ruperto Cigars</div>
+      </div>
+    </a>
+    <a class="blog-card" href="/blog/matec.html">
+      <div class="blog-card-img"><img src="/Images/Matec Blog Thumbnail.png" alt="Matec Instrument Companies" loading="lazy"></div>
+      <div class="blog-card-body">
+        <div class="blog-card-date">Feb 26, 2026</div>
+        <div class="blog-card-title">Bringing Industrial Precision to Screen: Matec Instrument Companies</div>
+      </div>
+    </a>
+    <a class="blog-card" href="/blog/dear-hope.html">
+      <div class="blog-card-img"><img src="/Images/Dear Hope Blog Thumbnail.jpg" alt="10 Years of Dear Hope" loading="lazy"></div>
+      <div class="blog-card-body">
+        <div class="blog-card-date">Feb 1, 2025</div>
+        <div class="blog-card-title">Celebrating 10 Years of Dear Hope</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- POST FOOT -->
+<section class="post-foot">
+  <div class="post-foot-inner">
+    <a href="/blog.html" class="post-back">Back to all posts</a>
+    <div class="post-cta-wrap">
+      <div class="post-cta-label">Have a project in mind?</div>
+      <a href="/contact.html" class="btn-p">Let&rsquo;s talk &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+</body>
+</html>

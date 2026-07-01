@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design &amp; Print — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Design Hero.jpg') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+.page-breadcrumb{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;color:var(--steel);margin-bottom:1.5rem;
+}
+.page-breadcrumb a{color:var(--steel);text-decoration:none}
+.page-breadcrumb a:hover{color:var(--platinum)}
+
+/* ── DELIVERABLE CARDS ── */
+.deliv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+.deliv-card{
+  background:#fff;padding:2.25rem;border-radius:12px;
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  border:1px solid rgba(15,20,27,0.07);
+  box-shadow:0 2px 12px rgba(15,20,27,0.08);
+  transition:box-shadow .25s,transform .25s;
+}
+.deliv-card:hover{box-shadow:0 6px 28px rgba(15,20,27,0.14);transform:translateY(-2px)}
+.deliv-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--ink);border-radius:12px 12px 0 0;
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+}
+.deliv-card:hover::before{transform:scaleX(1)}
+.deliv-num{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  color:var(--steel);letter-spacing:0.04em;margin-bottom:0.75rem;
+}
+.deliv-name{
+  font-family:'Sora',sans-serif;font-size:0.95rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.deliv-desc{
+  font-family:'Spectral',serif;font-size:0.85rem;
+  line-height:1.72;color:#5A5A62;flex:1;
+}
+
+/* ── EXPANDED MASONRY GRID ── */
+.design-grid-full{
+  columns:3;column-gap:14px;margin-top:2rem;
+}
+.dg-item-full{
+  overflow:hidden;border-radius:8px;
+  margin-bottom:14px;break-inside:avoid;
+  background:rgba(15,20,27,0.5);
+}
+.dg-item-full img{
+  width:100%;height:auto;display:block;
+  filter:saturate(0.7) brightness(0.85);
+  transition:filter .4s;
+}
+.dg-item-full:hover img{filter:saturate(1) brightness(1)}
+
+/* ── CASE STUDY ── */
+.case-study{
+  border:1px solid var(--ink-08);border-radius:12px;
+  overflow:hidden;margin-bottom:1.5rem;
+  background:var(--paper);
+}
+.case-study:last-child{margin-bottom:0}
+.case-top{
+  padding:2.5rem 2.5rem 0;
+}
+.case-type{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:0.4rem;
+}
+.case-title{
+  font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;
+  color:var(--ink);letter-spacing:-0.01em;margin-bottom:0.6rem;
+}
+.case-desc{
+  font-family:'Spectral',serif;font-size:0.88rem;
+  color:#5A5A62;line-height:1.8;margin-bottom:1.5rem;
+  max-width:52ch;
+}
+.case-img{
+  width:100%;height:240px;object-fit:cover;
+  display:block;filter:grayscale(15%);
+  transition:filter .4s;
+}
+.case-study:hover .case-img{filter:none}
+
+@media(max-width:1024px){
+  .design-grid-full{columns:2}
+}
+@media(max-width:640px){
+  .deliv-grid{grid-template-columns:1fr}
+}
+
+/* ── CATALOG FLIPBOOK ── */
+.flip-outer{max-width:680px}
+.flipbook{
+  position:relative;width:100%;aspect-ratio:17/11;
+  overflow:hidden;border-radius:3px;
+  box-shadow:0 2px 8px rgba(15,20,27,0.1),0 12px 40px rgba(15,20,27,0.15),inset 0 0 0 1px rgba(15,20,27,0.06);
+}
+.flip-spine{
+  position:absolute;left:50%;top:0;bottom:0;width:4px;
+  background:linear-gradient(90deg,rgba(0,0,0,0.35),rgba(0,0,0,0.06));
+  transform:translateX(-50%);z-index:10;pointer-events:none;
+}
+.flip-spread{
+  position:absolute;inset:0;display:flex;
+  opacity:0;pointer-events:none;
+}
+.flip-spread.active{
+  opacity:1;pointer-events:all;
+  animation:flipIn .42s cubic-bezier(.25,.46,.45,.94) both;
+}
+.flip-spread.going-out{animation:flipOut .26s ease forwards}
+@keyframes flipIn{from{opacity:0;transform:perspective(800px) rotateY(10deg)}to{opacity:1;transform:none}}
+@keyframes flipOut{from{opacity:1;transform:none}to{opacity:0;transform:perspective(800px) rotateY(-10deg)}}
+.flip-left,.flip-right{overflow:hidden}
+.flip-controls{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:1rem}
+.flip-btn{
+  font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:transparent;border:1px solid rgba(15,20,27,0.15);
+  color:var(--ink);padding:0.45rem 1.2rem;border-radius:4px;
+  cursor:pointer;transition:background .2s,border-color .2s;
+}
+.flip-btn:hover:not(:disabled){background:rgba(15,20,27,0.05);border-color:rgba(15,20,27,0.3)}
+.flip-btn:disabled{opacity:0.22;cursor:default}
+.flip-page-num{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;color:var(--navy);min-width:120px;text-align:center;
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Design</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-breadcrumb"><a href="services.html">Services</a> / Design &amp; Print</div>
+    <div class="page-tag">Design</div>
+    <h1>Print that represents<br>your brand <em>at its best.</em></h1>
+    <p class="page-hero-sub">Brand collateral, catalogs, brochures, and pricing sheets. Design built to hold up in print and look right in every format — from a folder leave-behind to a 40-page catalog.</p>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="deliverables" style="background:var(--paper);position:relative">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark">Deliverables</span></div>
+    <div class="rail-content dark" style="padding-bottom:3.5rem">
+      <div class="eyebrow dark">What We Build</div>
+      <h2 class="h-sec dark" style="margin-bottom:0.5rem">Everything your brand needs in print.</h2>
+      <p class="body-lg dark" style="max-width:52ch;margin-bottom:0">From a single sell sheet to a full brand system — built to hand off to any printer, in any format.</p>
+      <div class="deliv-grid">
+        <div class="deliv-card">
+          <div class="deliv-num">01</div>
+          <div class="deliv-name">Brand Brochures</div>
+          <div class="deliv-desc">Multi-page formatted materials built for sales conversations and leave-behinds.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">02</div>
+          <div class="deliv-name">Pricing Sheets</div>
+          <div class="deliv-desc">Clean, structured layouts that make your rates easy to read and act on.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">03</div>
+          <div class="deliv-name">Product Catalogs</div>
+          <div class="deliv-desc">Paginated spec books built to hold up across print runs and digital formats.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">04</div>
+          <div class="deliv-name">Sell Sheets</div>
+          <div class="deliv-desc">One-page sales support — clear, focused, and ready for any audience.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">05</div>
+          <div class="deliv-name">Trade Show Booths</div>
+          <div class="deliv-desc">Booth graphics, backdrops, and display systems built to stop foot traffic.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">06</div>
+          <div class="deliv-name">Proposal Templates</div>
+          <div class="deliv-desc">Structured, reusable document templates that make your pitch look the part.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">07</div>
+          <div class="deliv-name">Business Cards</div>
+          <div class="deliv-desc">Cards and stationery built to represent the brand from the first handshake.</div>
+        </div>
+        <div class="deliv-card">
+          <div class="deliv-num">08</div>
+          <div class="deliv-name">Event Signage</div>
+          <div class="deliv-desc">Banners, displays, and printed signage scaled and formatted for any venue.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN & COLLATERAL GALLERY -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="gallery" style="background:var(--navy);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Gallery</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="eyebrow">Design &amp; Collateral</div>
+      <h2 class="h-sec" style="margin-bottom:0.5rem">Built for the brand in every format.</h2>
+      <p class="body-lg" style="max-width:52ch;margin-bottom:0">Print pieces, brand collateral, and photography — from first concept to final file.</p>
+      <div class="design-grid-full">
+        <div class="dg-item-full"><img src="/PDFs/Don Ruperto Product Catalog/Don Ruperto Product Catalog copy.jpg" alt="Don Ruperto Catalog Cover" loading="lazy"></div>
+        <div class="dg-item-full"><img src="https://i0.wp.com/falconecreativeservices.com/wp-content/uploads/2025/04/hbz-media-collections-spread.jpg?ssl=1" alt="HBZ Collections spread" loading="lazy"></div>
+        <div class="dg-item-full"><img src="/Images/Don Ruperto Catalog Example.png" alt="Don Ruperto Catalog spread" loading="lazy"></div>
+        <div class="dg-item-full"><img src="/Images/hbz-business-card-front.png" alt="HBZ Media Business Card Front" loading="lazy"></div>
+        <div class="dg-item-full"><img src="/Images/HBZ Media Business Card Back.png" alt="HBZ Media Business Card Back" loading="lazy"></div>
+        <div class="dg-item-full"><img src="https://i0.wp.com/falconecreativeservices.com/wp-content/uploads/2025/04/nsn-poster-for-bases_page_1.jpg?ssl=1" alt="NSN Poster" loading="lazy"></div>
+        <div class="dg-item-full"><img src="/Images/hbz-catalog-example.png" alt="HBZ Catalog spread" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG FLIPBOOK -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="catalog-preview" style="background:#fff;position:relative">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark">Catalog</span></div>
+    <div class="rail-content dark" style="padding-bottom:3.5rem">
+      <div class="eyebrow dark" style="margin-bottom:0.75rem">In the Studio</div>
+      <h2 class="h-sec dark" style="margin-bottom:0.5rem">Inside the Don Ruperto catalog.</h2>
+      <p class="body-lg" style="max-width:50ch;margin-bottom:2.5rem;color:#5A5A62">Product pages, pricing tables, and order forms — all under one cover. Click through to see how the print system comes together.</p>
+      <div class="flip-outer" style="margin:0 auto">
+        <div class="flipbook" id="drCatalog">
+          <div class="flip-spine"></div>
+          <div id="drLoading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#f5f5f5;z-index:5;">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(15,20,27,0.3)">Loading catalog&hellip;</span>
+          </div>
+        </div>
+        <div class="flip-controls">
+          <button class="flip-btn" id="drPrev" disabled>&#8592; Prev</button>
+          <span class="flip-page-num" id="drNum">Cover</span>
+          <button class="flip-btn" id="drNext">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Ready to make something<br>worth handing out?</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
+    <a href="contact.html" class="btn-p">Get in touch &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+<script>
+(function(){
+  var BASE = '/pdfs/don%20ruperto%20product%20catalog/Don%20Ruperto%20Product%20Catalog%20copy';
+  var PAGES = [BASE + '.jpg'];
+  for (var n = 2; n <= 14; n++) PAGES.push(BASE + n + '.jpg');
+
+  // Build spread groups: cover alone, pairs, back cover alone
+  var SPREADS = [[0]];
+  for (var i = 1; i <= PAGES.length - 2; i += 2) SPREADS.push([i, i + 1]);
+  SPREADS.push([PAGES.length - 1]);
+
+  var catalog  = document.getElementById('drCatalog');
+  var spine    = catalog.querySelector('.flip-spine');
+  var prevBtn  = document.getElementById('drPrev');
+  var nextBtn  = document.getElementById('drNext');
+  var numEl    = document.getElementById('drNum');
+  var spreadEls = [];
+  var cur = 0;
+
+  function label(i) {
+    if (i === 0) return 'Cover';
+    if (i === SPREADS.length - 1) return 'Back Cover';
+    return (SPREADS[i][0] + 1) + '–' + (SPREADS[i][1] + 1);
+  }
+
+  function goto(n) {
+    var leaving = spreadEls[cur];
+    leaving.classList.remove('active');
+    leaving.classList.add('going-out');
+    leaving.addEventListener('animationend', function once() {
+      leaving.classList.remove('going-out');
+      leaving.removeEventListener('animationend', once);
+    });
+    cur = n;
+    spreadEls[cur].classList.add('active');
+    numEl.textContent = label(cur);
+    prevBtn.disabled = (cur === 0);
+    nextBtn.disabled = (cur === spreadEls.length - 1);
+    spine.style.opacity = SPREADS[cur].length === 2 ? '1' : '0';
+  }
+
+  prevBtn.addEventListener('click', function() { if (cur > 0) goto(cur - 1); });
+  nextBtn.addEventListener('click', function() { if (cur < spreadEls.length - 1) goto(cur + 1); });
+
+  var first = new Image();
+  first.onload = function() {
+    var totalW  = catalog.offsetWidth;
+    var targetH = Math.round(first.naturalHeight * (totalW / 2 / first.naturalWidth));
+    catalog.style.height = targetH + 'px';
+    catalog.innerHTML = '';
+    catalog.appendChild(spine);
+    spine.style.opacity = '0'; // hidden on cover
+
+    SPREADS.forEach(function(pages, si) {
+      var wrap = document.createElement('div');
+      wrap.className = 'flip-spread';
+      var isSingle = pages.length === 1;
+      if (isSingle) {
+        wrap.style.justifyContent = 'center';
+      }
+      pages.forEach(function(pi) {
+        var img = document.createElement('img');
+        img.src = PAGES[pi];
+        img.alt = si === 0 ? 'Cover' : (si === SPREADS.length - 1 ? 'Back Cover' : 'Pages ' + (SPREADS[si][0]+1) + '–' + (SPREADS[si][1]+1));
+        img.style.cssText = 'width:50%;height:100%;object-fit:fill;display:block;flex-shrink:0;';
+        wrap.appendChild(img);
+      });
+      catalog.appendChild(wrap);
+      spreadEls.push(wrap);
+      if (si === 0) {
+        wrap.classList.add('active');
+        numEl.textContent = 'Cover';
+        prevBtn.disabled = true;
+        nextBtn.disabled = SPREADS.length <= 1;
+      }
+    });
+  };
+  first.src = PAGES[0];
+})();
+</script>
+</body>
+</html>

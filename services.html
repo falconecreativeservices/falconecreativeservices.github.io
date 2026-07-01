@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+/* ── PAGE HERO — services overview ── */
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/On Set.JPG') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-hero-inner{
+  max-width:680px;
+}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;font-weight:400;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+
+/* ── SERVICE PILLAR CARDS ── */
+.pillar-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+}
+.pillar-card{
+  background:#fff;
+  padding:2.75rem 2.5rem;
+  border-radius:12px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  border:1px solid rgba(15,20,27,0.07);
+  box-shadow:0 2px 12px rgba(15,20,27,0.05);
+  transition:background .25s, box-shadow .25s, transform .25s;
+  text-decoration:none;
+}
+.pillar-card:hover{
+  background:#fff;
+  box-shadow:0 6px 28px rgba(15,20,27,0.1);
+  transform:translateY(-2px);
+}
+.pillar-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--navy);
+  border-radius:12px 12px 0 0;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.pillar-card:hover::before{transform:scaleX(1)}
+.pillar-num{
+  font-family:'Sora',sans-serif;font-size:4rem;font-weight:700;
+  letter-spacing:-0.04em;color:rgba(15,20,27,0.05);
+  line-height:1;margin-bottom:1.5rem;
+  transition:color .3s;
+}
+.pillar-card:hover .pillar-num{color:rgba(32,50,76,0.08)}
+.pillar-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);
+  margin-bottom:0.5rem;
+}
+.pillar-title{
+  font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:700;
+  letter-spacing:-0.01em;color:var(--ink);
+  margin-bottom:0.85rem;
+}
+.pillar-desc{
+  font-family:'Spectral',serif;font-size:0.9rem;
+  line-height:1.8;color:#5A5A62;
+  flex:1;margin-bottom:1.5rem;
+}
+.pillar-link{
+  font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--navy);
+  display:inline-flex;align-items:center;gap:0.4rem;
+  transition:gap .2s,color .2s;
+}
+.pillar-card:hover .pillar-link{gap:0.5rem;color:var(--navy)}
+.pillar-arrow{display:inline-block;transition:transform .2s}
+.pillar-card:hover .pillar-arrow{transform:translateX(4px)}
+
+/* ── PROCESS SECTION ── */
+.process-strip{
+  display:grid;grid-template-columns:80px 1fr;
+  gap:2.5rem;align-items:start;
+  padding:3rem 0;
+  border-bottom:1px solid var(--ink-08);
+}
+.process-strip:last-child{border-bottom:none}
+.process-n{
+  font-family:'Sora',sans-serif;font-size:2rem;font-weight:700;
+  color:var(--platinum);letter-spacing:-0.02em;
+  text-align:right;line-height:1;padding-top:0.2rem;
+}
+.process-h{
+  font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--paper);margin-bottom:0.5rem;
+}
+.process-p{
+  font-family:'Spectral',serif;font-size:0.88rem;
+  color:rgba(239,241,244,0.65);line-height:1.85;max-width:52ch;
+}
+
+@media(max-width:1024px){
+  .pillar-grid{grid-template-columns:1fr}
+  .process-strip{grid-template-columns:1fr}
+  .process-n{text-align:left}
+  .process-layout{grid-template-columns:1fr!important;gap:2rem!important}
+  .process-visual{display:none!important}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Services</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">What I Do</div>
+    <div class="page-hero-inner">
+      <h1>Five ways to move your<br>business <em>forward.</em></h1>
+      <p class="page-hero-sub">From a single video to a full brand overhaul — every service is delivered by one person who treats your business like their own. No handoffs. No junior team. Just the work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE PILLARS -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="services-overview" style="background:var(--paper);position:relative">
+  <div id="services-overview" style="position:relative">
+    <div class="with-rail dark-rule" style="position:relative">
+      <div class="rail dark"><span class="rail-label dark">Services</span></div>
+      <div class="rail-content dark" style="padding-bottom:3.5rem">
+        <div class="eyebrow dark">The Work</div>
+        <h2 class="h-sec dark" style="margin-bottom:0.5rem">Everything under one roof.</h2>
+        <p class="body-lg dark" style="max-width:52ch;margin-bottom:2.5rem">Each service pillar is designed to work independently or together. Most clients end up needing more than one.</p>
+        <div class="pillar-grid">
+          <a href="services-video.html" class="pillar-card">
+            <div class="pillar-num">01</div>
+            <div class="pillar-tag">Production</div>
+            <div class="pillar-title">Video &amp; Photo</div>
+            <p class="pillar-desc">Corporate interviews, brand films, product showcases, and photography. Concept through final delivery. 15+ years behind the lens.</p>
+            <span class="pillar-link">Explore Video <span class="pillar-arrow">&rarr;</span></span>
+          </a>
+          <a href="services-web.html" class="pillar-card">
+            <div class="pillar-num">02</div>
+            <div class="pillar-tag">Development</div>
+            <div class="pillar-title">Web Design</div>
+            <p class="pillar-desc">A fully designed site with domain and hosting, or a fresh coat of paint on what you have. WordPress, Squarespace, Wix, GoDaddy — we meet you where you are.</p>
+            <span class="pillar-link">Explore Web <span class="pillar-arrow">&rarr;</span></span>
+          </a>
+          <a href="services-content.html" class="pillar-card">
+            <div class="pillar-num">03</div>
+            <div class="pillar-tag">Content</div>
+            <div class="pillar-title">Copy &amp; Content</div>
+            <p class="pillar-desc">Blogs, email campaigns, social content, and print collateral. Every piece built to work across channels and pull double duty for your brand.</p>
+            <span class="pillar-link">Explore Content <span class="pillar-arrow">&rarr;</span></span>
+          </a>
+          <a href="services-design.html" class="pillar-card">
+            <div class="pillar-num">04</div>
+            <div class="pillar-tag">Design</div>
+            <div class="pillar-title">Design &amp; Print</div>
+            <p class="pillar-desc">Brand collateral, catalogs, brochures, pricing sheets, and print materials that hold up. Design that represents your brand at its best.</p>
+            <span class="pillar-link">Explore Design <span class="pillar-arrow">&rarr;</span></span>
+          </a>
+          <a href="services-strategy.html" class="pillar-card">
+            <div class="pillar-num">05</div>
+            <div class="pillar-tag">Consulting</div>
+            <div class="pillar-title">Strategy &amp; Systems</div>
+            <p class="pillar-desc">CRM setup, email marketing, and the thinking behind it all. HoneyBook, Mailchimp, and operational consulting built around your workflow.</p>
+            <span class="pillar-link">Explore Strategy <span class="pillar-arrow">&rarr;</span></span>
+          </a>
+          <div class="pillar-card" style="background:var(--navy);justify-content:center;align-items:center;text-align:center;gap:0.5rem;border-color:transparent;box-shadow:0 2px 12px rgba(15,20,27,0.18)">
+            <div style="font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin-bottom:0.5rem">The FCS Difference</div>
+            <div style="font-family:'Spectral',serif;font-size:1rem;font-style:italic;color:var(--paper);line-height:1.75;max-width:28ch">&ldquo;One person. Every project. Fully invested.&rdquo;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<span class="ch-rule" style="display:block"></span>
+<section id="process" style="background:var(--ink);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Process</span></div>
+    <div class="rail-content" style="padding-bottom:3.5rem">
+      <div class="process-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+        <div>
+          <div class="eyebrow">How It Works</div>
+          <h2 class="h-sec" style="margin-bottom:2.5rem">Simple by design.</h2>
+          <div class="process-strip">
+            <div class="process-n">01</div>
+            <div>
+              <div class="process-h">Start with a conversation.</div>
+              <p class="process-p">Every project starts with a call. No intake forms, no automated funnels. We talk about what you need, what you've tried, and what success looks like for you.</p>
+            </div>
+          </div>
+          <div class="process-strip">
+            <div class="process-n">02</div>
+            <div>
+              <div class="process-h">Get a clear proposal.</div>
+              <p class="process-p">You'll receive a straightforward scope, timeline, and price. No surprises. If something changes mid-project, we talk about it before it becomes a problem.</p>
+            </div>
+          </div>
+          <div class="process-strip">
+            <div class="process-n">03</div>
+            <div>
+              <div class="process-h">Work together, directly.</div>
+              <p class="process-p">You work with me — not an account manager or a junior hire. Every email, every revision, every decision goes through the same person doing the work.</p>
+            </div>
+          </div>
+          <div class="process-strip">
+            <div class="process-n">04</div>
+            <div>
+              <div class="process-h">Stay in it for the long game.</div>
+              <p class="process-p">Most FCS clients don't come for a single project. They come back because the work holds up — and because having one trusted creative partner is worth more than a vendor list.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Process graphic -->
+        <div class="process-visual" style="position:sticky;top:calc(var(--nav-h) + 3rem);padding-top:4rem;display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 380 600" xmlns="http://www.w3.org/2000/svg" style="height:620px;width:auto;display:block">
+            <!-- Atmospheric rings -->
+            <circle cx="90" cy="300" r="280" fill="none" stroke="rgba(183,194,204,0.025)" stroke-width="1"/>
+            <circle cx="90" cy="300" r="190" fill="none" stroke="rgba(183,194,204,0.018)" stroke-width="1"/>
+            <!-- Vertical spine -->
+            <line x1="90" y1="140" x2="90" y2="460" stroke="rgba(183,194,204,0.08)" stroke-width="1.5" stroke-dasharray="3,10"/>
+            <!-- Node 01 -->
+            <circle cx="90" cy="90" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
+            <text x="90" y="97" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">01</text>
+            <line x1="142" y1="90" x2="162" y2="90" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
+            <text x="170" y="85" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">DISCOVER</text>
+            <text x="170" y="100" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Define the goal</text>
+            <!-- Dots 01→02 -->
+            <circle cx="90" cy="158" r="2.5" fill="rgba(183,194,204,0.2)"/>
+            <circle cx="90" cy="178" r="2.5" fill="rgba(183,194,204,0.13)"/>
+            <circle cx="90" cy="198" r="2.5" fill="rgba(183,194,204,0.2)"/>
+            <!-- Node 02 -->
+            <circle cx="90" cy="230" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
+            <circle cx="90" cy="230" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
+            <text x="90" y="237" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">02</text>
+            <line x1="142" y1="230" x2="162" y2="230" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
+            <text x="170" y="225" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">PROPOSE</text>
+            <text x="170" y="240" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Scope &amp; price</text>
+            <!-- Dots 02→03 -->
+            <circle cx="90" cy="298" r="2.5" fill="rgba(183,194,204,0.2)"/>
+            <circle cx="90" cy="318" r="2.5" fill="rgba(183,194,204,0.13)"/>
+            <circle cx="90" cy="338" r="2.5" fill="rgba(183,194,204,0.2)"/>
+            <!-- Node 03 -->
+            <circle cx="90" cy="370" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
+            <circle cx="90" cy="370" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
+            <text x="90" y="377" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">03</text>
+            <line x1="142" y1="370" x2="162" y2="370" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
+            <text x="170" y="365" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">BUILD</text>
+            <text x="170" y="380" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Direct collaboration</text>
+            <!-- Dots 03→04 -->
+            <circle cx="90" cy="438" r="2.5" fill="rgba(183,194,204,0.2)"/>
+            <circle cx="90" cy="458" r="2.5" fill="rgba(183,194,204,0.13)"/>
+            <circle cx="90" cy="478" r="2.5" fill="rgba(183,194,204,0.2)"/>
+            <!-- Node 04 -->
+            <circle cx="90" cy="510" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
+            <circle cx="90" cy="510" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
+            <text x="90" y="517" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">04</text>
+            <line x1="142" y1="510" x2="162" y2="510" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
+            <text x="170" y="505" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">DELIVER</text>
+            <text x="170" y="520" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Long-term partner</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule" style="display:block"></span>
+<section id="contact" style="position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Get in Touch</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Ready to get started?</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
+    <a href="contact.html" class="btn-p">Let&rsquo;s talk &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="/main.js?v=9"></script>
+</body>
+</html>

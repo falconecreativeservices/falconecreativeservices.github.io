@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Design — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Web Hero Final.jpg') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+.page-breadcrumb{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.08em;color:var(--steel);margin-bottom:1.5rem;
+}
+.page-breadcrumb a{color:var(--steel);text-decoration:none}
+.page-breadcrumb a:hover{color:var(--platinum)}
+
+/* ── PLATFORM TAGS ── */
+.platform-list{
+  display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem;
+}
+.platform-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+  letter-spacing:0.06em;color:var(--steel);
+  border:1px solid rgba(183,194,204,0.2);
+  padding:0.3rem 0.75rem;border-radius:4px;
+}
+
+/* ── SERVICE TIERS ── */
+.tier-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;
+  margin-top:2rem;
+}
+.tier-card{
+  border:1px solid var(--ink-08);border-radius:12px;
+  padding:2.25rem 2rem;background:var(--paper);
+  position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+.tier-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(15,20,27,0.08)}
+.tier-card.featured{
+  border-color:var(--navy);background:#fff;
+}
+.tier-card.featured::before{
+  content:'Most Popular';
+  position:absolute;top:1.25rem;right:1.25rem;
+  font-family:'Sora',sans-serif;font-size:0.6rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--paper);background:var(--navy);
+  padding:0.25rem 0.6rem;border-radius:3px;
+}
+.tier-name{
+  font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:0.5rem;
+}
+.tier-title{
+  font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.75rem;letter-spacing:-0.01em;
+}
+.tier-desc{
+  font-family:'Spectral',serif;font-size:0.88rem;
+  color:#5A5A62;line-height:1.8;margin-bottom:1.25rem;
+}
+.tier-features{list-style:none;padding:0}
+.tier-features li{
+  font-family:'Spectral',serif;font-size:0.86rem;
+  color:#5A5A62;padding:0.35rem 0;
+  border-bottom:1px solid var(--ink-08);
+  display:flex;align-items:baseline;gap:0.6rem;
+}
+.tier-features li:last-child{border-bottom:none}
+.tier-features li::before{
+  content:'—';color:var(--steel);font-size:0.7rem;flex-shrink:0;
+}
+
+/* ── PROJECT CARDS ── */
+.project-card{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:1px solid var(--ink-08);border-radius:12px;
+  overflow:hidden;margin-bottom:1.5rem;
+  transition:transform .3s,box-shadow .3s;
+  text-decoration:none;
+}
+.project-card:last-child{margin-bottom:0}
+.project-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(15,20,27,0.08)}
+.project-card.flip .project-card-info{order:-1}
+.project-card-img{
+  aspect-ratio:16/9;overflow:hidden;background:var(--ink);
+}
+.project-card-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(20%);transition:filter .4s,transform .4s;
+}
+.project-card:hover .project-card-img img{filter:none;transform:scale(1.03)}
+.project-card-img iframe{width:100%;height:100%;border:none;display:block}
+.project-card-info{
+  padding:2.25rem;background:#fff;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.project-card-type{
+  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:0.5rem;
+}
+.project-card-title{
+  font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;
+  color:var(--ink);letter-spacing:-0.01em;margin-bottom:0.6rem;
+}
+.project-card-desc{
+  font-family:'Spectral',serif;font-size:0.87rem;
+  color:#6A6A72;line-height:1.75;
+}
+
+@media(max-width:1024px){
+  .tier-grid{grid-template-columns:1fr}
+  .project-card{grid-template-columns:1fr}
+  .project-card.flip .project-card-info{order:0}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="services-video.html">Video &amp; Photo</a>
+        <a href="services-web.html">Web Design</a>
+        <a href="services-content.html">Copy &amp; Content</a>
+        <a href="services-design.html">Design &amp; Print</a>
+        <a href="services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="services-video.html">Video &amp; Photo</a>
+    <a href="services-web.html">Web Design</a>
+    <a href="services-content.html">Copy &amp; Content</a>
+    <a href="services-design.html">Design &amp; Print</a>
+    <a href="services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="contact.html" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Web</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-breadcrumb"><a href="services.html">Services</a> / Web Design</div>
+    <div class="page-tag">Development</div>
+    <h1>Sites that work as hard<br>as the people <em>behind them.</em></h1>
+    <p class="page-hero-sub">A fully designed site with domain and hosting, or a fresh coat of paint on what you have. Every project is built to convert — not just to look good.</p>
+    <div class="platform-list">
+      <span class="platform-tag">WordPress</span>
+      <span class="platform-tag">Squarespace</span>
+      <span class="platform-tag">Wix</span>
+      <span class="platform-tag">GoDaddy</span>
+      <span class="platform-tag">Elementor</span>
+      <span class="platform-tag">Custom HTML/CSS</span>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="tiers" style="background:var(--paper);position:relative">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark">Options</span></div>
+    <div class="rail-content dark" style="padding-bottom:3.5rem">
+      <div class="eyebrow dark">How We Work</div>
+      <h2 class="h-sec dark" style="margin-bottom:0.5rem">Two ways to approach it.</h2>
+      <p class="body-lg dark" style="max-width:52ch;margin-bottom:0">Every web engagement is different. Here&rsquo;s how most projects break down.</p>
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-name">Refresh</div>
+          <div class="tier-title">Improve what you have.</div>
+          <p class="tier-desc">Your site exists but it&rsquo;s not working the way it should. New copy, better layout, improved visuals — built on your existing platform.</p>
+          <ul class="tier-features">
+            <li>Platform-native redesign</li>
+            <li>Copywriting &amp; content updates</li>
+            <li>SEO structure improvements</li>
+            <li>Mobile optimization</li>
+            <li>Speed &amp; performance audit</li>
+          </ul>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-name">Full Build</div>
+          <div class="tier-title">Start from scratch, done right.</div>
+          <p class="tier-desc">A new site built from the ground up. Custom design, development, domain setup, hosting, and launch — fully handled.</p>
+          <ul class="tier-features">
+            <li>Custom design &amp; development</li>
+            <li>Domain &amp; hosting setup</li>
+            <li>Full copywriting</li>
+            <li>Contact forms &amp; integrations</li>
+            <li>Ongoing support available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<span class="ch-rule dark" style="display:block"></span>
+<section id="work" style="background:var(--ink);position:relative">
+  <div class="with-rail" style="position:relative">
+    <div class="rail"><span class="rail-label">Work</span></div>
+    <div class="rail-content">
+      <div class="eyebrow">Selected Projects</div>
+      <h2 class="h-sec" style="margin-bottom:2.5rem">Recent web work.</h2>
+      <div class="project-card">
+        <div class="project-card-img">
+          <iframe src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=1&rel=0" allowfullscreen title="Don Ruperto Cigars website scroll"></iframe>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-type">WordPress &middot; Elementor Pro &middot; Full Build</div>
+          <div class="project-card-title">Don Ruperto Cigars</div>
+          <p class="project-card-desc">Custom landing page for a trade-exclusive Honduran cigar brand. Animated reveals, custom cursor, gated catalog download flow, and custom CSS throughout.</p>
+        </div>
+      </div>
+      <div class="project-card flip">
+        <div class="project-card-img">
+          <iframe src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=1&rel=0" allowfullscreen title="HBZ Media website scroll"></iframe>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-type">Wix &middot; Full Build</div>
+          <div class="project-card-title">HBZ Media</div>
+          <p class="project-card-desc">Complete site redesign and rebuild for a Cincinnati-based cinematic production company. Custom WordPress theme, portfolio integration, and HoneyBook CRM connection.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-card-img">
+          <iframe src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=1&rel=0" allowfullscreen title="Jennings Canine Consulting website scroll"></iframe>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-type">WordPress &middot; Elementor &middot; Full Build</div>
+          <div class="project-card-title">Jennings Canine Consulting</div>
+          <p class="project-card-desc">Full site build for a professional canine consulting practice. Clean, service-focused layout designed to convert visitors into clients.</p>
+        </div>
+      </div>
+      <div class="project-card flip">
+        <div class="project-card-img">
+          <iframe src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=1&rel=0" allowfullscreen title="Chris McLernon website scroll"></iframe>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-type">Squarespace &middot; Full Build</div>
+          <div class="project-card-title">Chris McLernon</div>
+          <p class="project-card-desc">35+ years of work organized into one site — including a hidden 90s-style secondary site. Rock and metal legacy meets modern web design.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-card-img">
+          <iframe src="https://www.youtube-nocookie.com/embed/fTTW5r078hU?controls=1&rel=0" allowfullscreen title="Olympic Wine and Liquors website scroll"></iframe>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-type">GoDaddy &middot; Full Build</div>
+          <div class="project-card-title">Olympic Wine &amp; Liquors</div>
+          <p class="project-card-desc">New site for a Worcester-area wine and spirits retailer. Clean layout, event calendar integration, and product showcase built on Squarespace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-btn-wrap"><a href="work.html" class="section-btn">View All Work &rarr;</a></div>
+</section>
+
+<!-- CTA -->
+<span class="ch-rule" style="display:block"></span>
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
+  <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Ready for a site that<br>actually works?</h2>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
+    <a href="contact.html" class="btn-p">Get in touch &rarr;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="/main.js?v=9"></script>
+</body>
+</html>
