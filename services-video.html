@@ -441,15 +441,23 @@
 <script>
 // Video hover for reel panels on this page
 (function(){
+  var noHover = window.matchMedia('(hover:none)').matches;
   [{'p':'vid-int-page'},{'p':'vid-pro-page'}].forEach(function(o){
     var vid = document.getElementById(o.p);
     if(!vid) return;
     var panel = vid.closest('.reel-panel');
     new IntersectionObserver(function(en){
-      if(en[0].isIntersecting) vid.preload='auto';
+      if(en[0].isIntersecting){
+        vid.preload='auto';
+        if(noHover) vid.play().catch(function(){});
+      } else {
+        if(noHover) vid.pause();
+      }
     },{threshold:0.3}).observe(panel);
-    panel.addEventListener('mouseenter',function(){vid.play().catch(function(){});});
-    panel.addEventListener('mouseleave',function(){vid.pause();});
+    if(!noHover){
+      panel.addEventListener('mouseenter',function(){vid.play().catch(function(){});});
+      panel.addEventListener('mouseleave',function(){vid.pause();});
+    }
   });
 })();
 </script>
