@@ -3,112 +3,112 @@
 
   <url>
     <loc>https://falconecreativeservices.com/</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/services.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/services/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/services-video.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/services/video/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/services-web.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/services/web/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/services-content.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/services/content/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/services-design.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/services/design/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/services-strategy.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/services/strategy/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/work.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/work/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/about.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/about/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/blog/building-fcs-site.html</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://falconecreativeservices.com/blog.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/blog/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/blog/dear-hope.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/blog/dear-hope/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/blog/don-ruperto.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/blog/don-ruperto/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/blog/hbz-media-relaunch.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/blog/hbz-media-relaunch/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/blog/matec.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/blog/matec/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://falconecreativeservices.com/contact.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://falconecreativeservices.com/blog/building-fcs-site/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://falconecreativeservices.com/contact/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
