@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+/* Page hero */
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/On Set.JPG') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:0.67rem;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1.05rem;
+  line-height:1.72;color:rgba(239,241,244,0.78);max-width:46ch;
+}
+.rail{position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center}
+.rail::before{content:'';position:absolute;right:0;top:0;bottom:0;width:1px;background:rgba(183,194,204,0.18)}
+.rail-label{font-family:'IBM Plex Mono',monospace;font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(183,194,204,0.5);writing-mode:vertical-rl;transform:rotate(180deg)}
+
+/* Form section */
+.nl-wrap{background:var(--paper)}
+.nl-section{
+  padding:6rem var(--g);
+  max-width:560px;
+  margin:0 auto;
+}
+.nl-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--steel);
+  margin-bottom:1rem;
+}
+.nl-heading{
+  font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-0.01em;
+  margin-bottom:1rem;
+}
+.nl-desc{
+  font-family:'Spectral',serif;font-size:1rem;line-height:1.75;
+  color:#5A5A62;margin-bottom:2.5rem;max-width:44ch;
+}
+
+/* Form styles */
+.nl-form{display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-label{
+  font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);
+}
+.form-input{
+  font-family:'Spectral',serif;font-size:0.95rem;
+  color:var(--ink);background:#fff;
+  border:1px solid var(--ink-08);border-radius:8px;
+  padding:0.75rem 1rem;
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.form-input:focus{
+  border-color:var(--navy);
+  box-shadow:0 0 0 3px rgba(32,50,76,0.08);
+}
+.form-submit{
+  align-self:flex-start;
+  font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:600;
+  letter-spacing:0.04em;
+  background:var(--navy);color:var(--paper);
+  padding:0.75rem 2rem;border-radius:7px;
+  border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.form-submit:hover{background:var(--ink);transform:translateY(-1px)}
+
+/* Mailchimp response messages */
+#mce-error-response{
+  font-family:'Spectral',serif;font-size:0.95rem;
+  color:#b91c1c;background:#fef2f2;border:1px solid #fecaca;
+  border-radius:8px;padding:1rem 1.25rem;margin-top:0.5rem;
+}
+#mce-success-response{
+  font-family:'Spectral',serif;font-size:0.95rem;
+  color:#166534;background:#f0fdf4;border:1px solid #bbf7d0;
+  border-radius:8px;padding:1rem 1.25rem;margin-top:0.5rem;
+}
+
+@media(max-width:640px){
+  .page-hero .rail{display:none}
+  .page-hero>div[style*="padding-left"]{padding-left:var(--g)!important;padding-right:var(--g);text-align:center}
+  .page-hero h1{text-align:center}
+  .page-tag{display:none!important}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/services/">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services/">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/services/video/">Video &amp; Photo</a>
+        <a href="/services/web/">Web Design</a>
+        <a href="/services/content/">Copy &amp; Content</a>
+        <a href="/services/design/">Design &amp; Print</a>
+        <a href="/services/strategy/">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/newsletter/">Newsletter</a></li>
+  </ul>
+  <a href="/contact/" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/services/">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="/services/video/">Video &amp; Photo</a>
+    <a href="/services/web/">Web Design</a>
+    <a href="/services/content/">Copy &amp; Content</a>
+    <a href="/services/design/">Design &amp; Print</a>
+    <a href="/services/strategy/">Strategy &amp; Systems</a>
+  </div>
+  <a href="/work/">Work</a>
+  <a href="/about/">About</a>
+  <a href="/blog/">Blog</a>
+  <a href="/newsletter/">Newsletter</a>
+  <a href="/contact/" class="mobile-menu-cta">Contact</a>
+</div>
+
+<!-- HERO -->
+<div id="main-content" tabindex="-1" style="position:absolute;top:0"></div>
+<section class="page-hero" style="position:relative">
+  <div class="rail"><span class="rail-label">Newsletter</span></div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">— Newsletter</div>
+    <h1>Stories worth<br>showing up for.</h1>
+    <p class="page-hero-sub">Real work, real clients, real results. A newsletter about the creative process — not a pitch in your inbox.</p>
+  </div>
+</section>
+
+<!-- FORM -->
+<main id="nl-main">
+  <div class="nl-wrap">
+  <div class="nl-section">
+    <div class="nl-eyebrow">Join the list</div>
+    <h2 class="nl-heading">No noise. Just the work.</h2>
+    <p class="nl-desc">New issues go out when there's something worth saying — client stories, behind-the-scenes process, and occasional resources for small business owners.</p>
+
+    <form class="nl-form" action="https://falconecreativeservices.us18.list-manage.com/subscribe/post?u=cc8b0dce3117b6766914e7507&id=42f68b8d8f&f_id=00f3aae6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="mce-FNAME">First Name</label>
+          <input class="form-input" type="text" name="FNAME" id="mce-FNAME" placeholder="Jane" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mce-LNAME">Last Name</label>
+          <input class="form-input" type="text" name="LNAME" id="mce-LNAME" placeholder="Smith" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="mce-EMAIL">Email Address</label>
+        <input class="form-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="jane@example.com" required>
+      </div>
+
+      <!-- Mailchimp bot protection — do not remove -->
+      <div aria-hidden="true" style="position:absolute;left:-5000px">
+        <input type="text" name="b_cc8b0dce3117b6766914e7507_42f68b8d8f" tabindex="-1" value="">
+      </div>
+
+      <div id="mce-responses">
+        <div id="mce-error-response" style="display:none"></div>
+        <div id="mce-success-response" style="display:none"></div>
+      </div>
+
+      <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="form-submit">Subscribe &rarr;</button>
+    </form>
+  </div>
+  </div>
+</main>
+
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services/">Services</a>
+    <a href="/work/">Work</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</footer>
+
+<script src="/main.js?v=9"></script>
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script type="text/javascript">
+(function($){
+  window.fnames=new Array();window.ftypes=new Array();
+  fnames[0]='EMAIL';ftypes[0]='email';
+  fnames[1]='FNAME';ftypes[1]='text';
+  fnames[2]='LNAME';ftypes[2]='text';
+}(jQuery));
+var $mcj=jQuery.noConflict(true);
+</script>
+</body>
+</html>
