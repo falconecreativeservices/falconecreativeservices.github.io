@@ -221,19 +221,19 @@
 
 // Active nav link
 (function(){
-  var path=window.location.pathname.split('/').pop()||'';
+  var path=window.location.pathname;
   function mark(sel){document.querySelectorAll(sel).forEach(function(a){a.classList.add('is-active');});}
-  if(path.indexOf('services')===0){
-    mark('.nav-links>.nav-item>a[href="services.html"]');
-    mark('.mobile-menu>a[href="services.html"]');
-  } else if(path==='about.html'){
-    mark('.nav-links a[href="about.html"]');
-    mark('.mobile-menu>a[href="about.html"]');
-  } else if(path==='work.html'){
-    mark('.nav-links a[href="work.html"]');
-    mark('.mobile-menu>a[href="work.html"]');
-  } else if(path==='blog.html'){
-    mark('.nav-links a[href="blog.html"]');
-    mark('.mobile-menu>a[href="blog.html"]');
+  if(path.indexOf('/services')===0){
+    mark('.nav-links>.nav-item>a[href="/services/"]');
+    mark('.mobile-menu>a[href="/services/"]');
+  } else if(path.indexOf('/about')===0){
+    mark('.nav-links a[href="/about/"]');
+    mark('.mobile-menu>a[href="/about/"]');
+  } else if(path.indexOf('/work')===0){
+    mark('.nav-links a[href="/work/"]');
+    mark('.mobile-menu>a[href="/work/"]');
+  } else if(path.indexOf('/blog')===0){
+    mark('.nav-links a[href="/blog/"]');
+    mark('.mobile-menu>a[href="/blog/"]');
   }
 })();
