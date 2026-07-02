@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Falcone Creative Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=10">
+<style>
+.not-found{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:calc(var(--nav-h) + 4rem) var(--g) 6rem;
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.92) 0%,rgba(32,50,76,0.88) 100%),
+    url('/Images/On Set.JPG') center/cover no-repeat;
+  position:relative;overflow:hidden;
+}
+.not-found::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.not-found>*{position:relative;}
+.nf-code{
+  font-family:'IBM Plex Mono',monospace;font-size:clamp(5rem,14vw,9rem);
+  font-weight:500;line-height:1;letter-spacing:-0.03em;
+  color:var(--paper);opacity:0.15;
+  margin-bottom:0;user-select:none;
+}
+.nf-heading{
+  font-family:'Sora',sans-serif;font-size:clamp(1.6rem,3.5vw,2.6rem);
+  font-weight:700;line-height:1.1;letter-spacing:-0.01em;
+  color:var(--paper);margin-top:-1rem;margin-bottom:1.25rem;
+}
+.nf-body{
+  font-family:'Spectral',serif;font-size:1.05rem;line-height:1.75;
+  color:rgba(239,241,244,0.72);max-width:38ch;margin-bottom:2.5rem;
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/index.html" class="nav-logo">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/services.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services.html">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/services-video.html">Video &amp; Photo</a>
+        <a href="/services-web.html">Web Design</a>
+        <a href="/services-content.html">Copy &amp; Content</a>
+        <a href="/services-design.html">Design &amp; Print</a>
+        <a href="/services-strategy.html">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="/work.html">Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/services.html">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="/services-video.html">Video &amp; Photo</a>
+    <a href="/services-web.html">Web Design</a>
+    <a href="/services-content.html">Copy &amp; Content</a>
+    <a href="/services-design.html">Design &amp; Print</a>
+    <a href="/services-strategy.html">Strategy &amp; Systems</a>
+  </div>
+  <a href="/work.html">Work</a>
+  <a href="/about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="https://mailchi.mp/44dda0f83053/email-signup" target="_blank" rel="noopener noreferrer">Newsletter</a>
+  <a href="/contact.html" class="mobile-menu-cta">Contact</a>
+</div>
+
+<main id="main-content">
+  <div class="not-found">
+    <div class="nf-code" aria-hidden="true">404</div>
+    <h1 class="nf-heading">Wrong turn.</h1>
+    <p class="nf-body">This page doesn't exist. Let's get you back somewhere that does.</p>
+    <a href="/index.html" class="btn-p">Back to Home</a>
+  </div>
+</main>
+
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.png" alt="FCS">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services.html">Services</a>
+    <a href="/work.html">Work</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=9"></script>
+</body>
+</html>
