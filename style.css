@@ -477,6 +477,7 @@ footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-colum
   #services::before,#services::after,#web::before,#web::after,#video::before,#video::after,#design::before,#design::after,#newsworthy::before,#newsworthy::after,#contact::after,#testimonials::after,#about-story::before,#about-story::after{display:none}
   #about-story .as-rail{display:none}
   #hero .hero-left{padding-left:0!important;text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto;text-align:center}
   .hero-ctas{justify-content:center}
   .hero-tag{justify-content:center}
   .hero-tag::before{display:none}
