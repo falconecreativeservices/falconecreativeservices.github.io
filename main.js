@@ -91,7 +91,8 @@
   }
   if(document.fonts){document.fonts.ready.then(equalizeTestimonials);}
   else{window.addEventListener('load',equalizeTestimonials);}
-  window.addEventListener('resize',equalizeTestimonials,{passive:true});
+  var eqTimer;
+  window.addEventListener('resize',function(){clearTimeout(eqTimer);eqTimer=setTimeout(equalizeTestimonials,150);},{passive:true});
 
   // Scroll reveal — add class names here to animate new elements on any page.
   // rev(selector, staggerMs) — stagger staggers children by index.
