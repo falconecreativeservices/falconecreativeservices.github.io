@@ -10,7 +10,7 @@ html,body{height:100%}
   --g:3.5rem;--nav-h:64px;
 }
 body{font-family:'Spectral',serif;background:var(--ink);color:var(--paper);overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-tag,#hero h1,.hero-sub,.hero-ctas,.hero-right{opacity:1!important;transform:none!important}}
 
 /* ═══ ACCESSIBILITY ═══ */
 .skip-nav{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000;background:var(--paper);color:var(--ink);font-family:'Sora',sans-serif;font-size:0.875rem;font-weight:600;padding:0.75rem 1.5rem;text-decoration:none;border-radius:0 0 6px 6px;transition:none}

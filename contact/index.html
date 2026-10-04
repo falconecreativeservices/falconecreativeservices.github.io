@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=10">
+<link rel="stylesheet" href="/style.css?v=11">
 <style>
 .page-hero{
   background:
@@ -112,6 +112,7 @@
   transition:background .2s,transform .15s;
 }
 .form-submit:hover{background:var(--ink);transform:translateY(-1px)}
+.form-error{margin:1rem 0 0;font-family:'Spectral',serif;font-size:0.98rem;line-height:1.6;color:#9B2C2C}
 
 @media(max-width:1024px){
   .contact-layout{grid-template-columns:1fr}
@@ -251,6 +252,7 @@
             <input class="form-input" type="text" id="referral" name="referral" placeholder="Name of the person who referred you">
           </div>
           <button class="form-submit" type="submit" id="form-btn">Send Message &rarr;</button>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
         </form>
         <div id="form-success" style="display:none;padding:3rem 0;text-align:left">
           <div style="font-family:'Sora',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--steel);margin-bottom:1rem">Message Received</div>
@@ -278,15 +280,23 @@
     <a href="/contact/">Contact</a>
   </div>
 </footer>
-<script src="/main.js?v=9"></script>
+<script src="/main.js?v=10"></script>
 <script>
 (function(){
   var form = document.querySelector('.contact-form');
   var btn = document.getElementById('form-btn');
   var success = document.getElementById('form-success');
+  var errorEl = document.getElementById('form-error');
   if(!form) return;
+  var showError = function(){
+    btn.textContent = 'Send Message \u2192';
+    btn.disabled = false;
+    errorEl.textContent = 'That didn\u2019t send. Your message is still here, so give it another try in a moment.';
+    errorEl.hidden = false;
+  };
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    errorEl.hidden = true;
     btn.textContent = 'Sending…';
     btn.disabled = true;
     fetch(form.action, {
@@ -298,15 +308,9 @@
         form.style.display = 'none';
         success.style.display = 'block';
       } else {
-        btn.textContent = 'Send Message →';
-        btn.disabled = false;
-        alert('Something went wrong. Please try again or email directly.');
+        showError();
       }
-    }).catch(function(){
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-      alert('Something went wrong. Please try again or email directly.');
-    });
+    }).catch(showError);
   });
 })();
 </script>

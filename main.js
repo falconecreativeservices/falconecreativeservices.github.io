@@ -5,7 +5,8 @@
   var cur = document.getElementById('cur');
   if(cur){
     document.addEventListener('mousemove', function(e){
-      cur.style.transform = 'translate(' + (e.clientX-4) + 'px,' + (e.clientY-4) + 'px)';
+      // -50% keeps the dot centered on the pointer at any size (8px default, 18px over links)
+      cur.style.transform = 'translate(calc(' + e.clientX + 'px - 50%),calc(' + e.clientY + 'px - 50%))';
     }, {passive:true});
     var chDepth=0;
     function enterCh(){chDepth++;document.body.classList.add('ch');}
