@@ -20,134 +20,189 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=11">
+<link rel="stylesheet" href="/style.css?v=12">
+<script>if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)document.documentElement.classList.add('js-motion');</script>
 <style>
-/* ── PAGE HERO — services overview ── */
-.page-hero{
-  background:
-    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
-    url('/Images/On Set.webp') center/cover no-repeat;
-  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
-  position:relative;overflow:hidden;
+/*
+  Page system
+  - Every section: header (title + one sentence) -> one framed panel -> panel footer row
+    (credits on the left, the section's button on the right, after the content).
+  - Inside a panel, hairlines divide things. Nothing inside a panel gets its own box.
+  - Backgrounds alternate like the homepage: paper for light sections; ink, navy and the
+    navy-to-ink gradient for dark ones. Components read colors from the theme variables below,
+    so any section can be light or dark.
+  - One spacing scale: --sec-y (section), --head-gap (header to panel), --pad (panel), --foot-y.
+*/
+:root{
+  --e:cubic-bezier(.22,1,.36,1);
+  --sec-y:6rem; --head-gap:2.25rem; --pad:clamp(1.5rem,2.6vw,2.5rem); --foot-y:1.25rem; --row-y:0.9rem;
+  --radius:10px;
 }
-.page-hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
-  background-size:60px 60px;pointer-events:none;z-index:1;
+@media(max-width:900px){:root{--sec-y:4.25rem;--head-gap:1.75rem;--foot-y:1.1rem}}
+
+/* theme variables: light by default, dark under .on-dark */
+.sect,.v5-hero{
+  --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.55);
+  --hair:rgba(15,20,27,0.1); --panel:#fff; --panel-b:rgba(15,20,27,0.08);
+  --accent:var(--navy); --mono:#5F6C79; --media-bg:var(--ink);
 }
-.page-hero>*{position:relative;z-index:2}
-.page-hero-inner{
-  max-width:680px;
+.on-dark{
+  --fg:var(--paper); --fg2:rgba(239,241,244,0.86); --fg3:rgba(239,241,244,0.66); --dim:rgba(239,241,244,0.52);
+  --hair:rgba(183,194,204,0.14); --panel:rgba(255,255,255,0.035); --panel-b:rgba(183,194,204,0.14);
+  --accent:var(--platinum); --mono:var(--steel); --media-bg:#0b0f15;
 }
-.page-tag{
-  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
-  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
-}
+.bg-paper{background:var(--paper)}
+.bg-ink{background:var(--ink)}
+.bg-navy{background:var(--navy)}
+.bg-grad{background:linear-gradient(160deg,#20324C 0%,#0F141B 100%)}
+
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--g);padding-right:var(--g)}
+
+/* section skeleton */
+.sect{padding:var(--sec-y) 0}
+.ch-head{margin-bottom:var(--head-gap)}
+.ch-head .eyebrow{margin-bottom:1rem;text-align:left;justify-content:flex-start}
+.ch-title{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(2.1rem,3.6vw,3.2rem);line-height:1.02;letter-spacing:-0.03em;color:var(--fg);margin:0 0 0.85rem}
+.ch-lede{font-family:'Spectral',serif;font-size:1.1rem;line-height:1.65;color:var(--fg2);max-width:70ch;margin:0}
+.stage{background:var(--panel);border:1px solid var(--panel-b);border-radius:var(--radius)}
+.stage-body{padding:var(--pad)}
+.stage-body.flush{padding:0}
+.stage-body.flush>figure{margin:0;border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;overflow:hidden}
+.stage-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem 2.5rem;padding:var(--foot-y) var(--pad);border-top:1px solid var(--hair)}
+.stage-note{margin:0;flex:1;font-family:'Spectral',serif;font-size:0.98rem;line-height:1.6;color:var(--fg3)}
+.stage-note b{font-weight:500;color:var(--fg)}
+.stage-foot .section-btn{white-space:nowrap;flex-shrink:0}
+
+/* reveals (motion allowed only) */
+
+/* ── HERO ── */
+.v5-hero{background:linear-gradient(157deg,#0F141B 0%,#20324C 78%);padding:calc(var(--nav-h) + 4.5rem) 0 var(--sec-y)}
+.v5-hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.page-tag{font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem}
 .page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
-.page-hero h1{
-  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
-  color:var(--paper);margin-bottom:1.25rem;
-}
-.page-hero h1 em{font-style:normal;color:var(--platinum)}
-.page-hero-sub{
-  font-family:'Spectral',serif;font-size:1rem;font-weight:400;
-  line-height:1.72;color:var(--paper-86);max-width:480px;
-}
+.v5-hero h1{font-family:'Sora',sans-serif;font-size:clamp(2.4rem,4.6vw,3.9rem);font-weight:700;line-height:1.04;letter-spacing:-0.03em;color:var(--paper);margin:0 0 1.35rem;max-width:17ch}
+.v5-hero h1 em{font-style:normal;color:var(--platinum);display:block}
+.v5-hero-sub{font-family:'Spectral',serif;font-size:1.12rem;line-height:1.7;color:var(--paper-86);max-width:42ch;margin:0 0 2rem}
+.v5-hero-ctas{display:flex;gap:0.85rem;flex-wrap:wrap}
+.v5-hero-photo{margin:0;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;max-height:calc(100vh - var(--nav-h) - 9rem);width:100%;border:1px solid var(--panel-b)}
+.v5-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 40%;display:block}
 
-/* ── SERVICE PILLAR CARDS ── */
-.pillar-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1.25rem;
-}
-.pillar-card{
-  background:#fff;
-  padding:2.75rem 2.5rem;
-  border-radius:12px;
-  display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
-  border:1px solid rgba(15,20,27,0.07);
-  box-shadow:0 2px 12px rgba(15,20,27,0.05);
-  transition:background .25s, box-shadow .25s, transform .25s;
-  text-decoration:none;
-}
-.pillar-card:hover{
-  background:#fff;
-  box-shadow:0 6px 28px rgba(15,20,27,0.1);
-  transform:translateY(-2px);
-}
-.pillar-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--navy);
-  border-radius:12px 12px 0 0;
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s ease;
-}
-.pillar-card:hover::before{transform:scaleX(1)}
-.pillar-num{
-  font-family:'Sora',sans-serif;font-size:4rem;font-weight:700;
-  letter-spacing:-0.04em;color:rgba(15,20,27,0.05);
-  line-height:1;margin-bottom:1.5rem;
-  transition:color .3s;
-}
-.pillar-card:hover .pillar-num{color:rgba(32,50,76,0.08)}
-.pillar-tag{
-  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
-  letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);
-  margin-bottom:0.5rem;
-}
-.pillar-title{
-  font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:700;
-  letter-spacing:-0.01em;color:var(--ink);
-  margin-bottom:0.85rem;
-}
-.pillar-desc{
-  font-family:'Spectral',serif;font-size:0.9rem;
-  line-height:1.8;color:#5A5A62;
-  flex:1;margin-bottom:1.5rem;
-}
-.pillar-link{
-  font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--navy);
-  display:inline-flex;align-items:center;gap:0.4rem;
-  transition:gap .2s,color .2s;
-}
-.pillar-card:hover .pillar-link{gap:0.5rem;color:var(--navy)}
-.pillar-arrow{display:inline-block;transition:transform .2s}
-.pillar-card:hover .pillar-arrow{transform:translateX(4px)}
+/* ── VIDEO ── */
+.cv-film{position:relative;aspect-ratio:21/9;background:var(--media-bg)}
+.cv-film video{width:100%;height:100%;object-fit:cover;display:block}
+.cv-toggle{position:absolute;right:var(--pad);bottom:1rem;font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.02em;color:var(--paper);background:rgba(15,20,27,0.62);border:1px solid rgba(183,194,204,0.3);border-radius:7px;padding:0.55rem 1rem;min-height:40px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:none}
+.cv-toggle:hover{background:rgba(15,20,27,0.85)}
 
-/* ── PROCESS SECTION ── */
-.process-strip{
-  display:grid;grid-template-columns:80px 1fr;
-  gap:2.5rem;align-items:start;
-  padding:3rem 0;
-  border-bottom:1px solid var(--ink-08);
-}
-.process-strip:last-child{border-bottom:none}
-.process-n{
-  font-family:'Sora',sans-serif;font-size:2rem;font-weight:700;
-  color:var(--platinum);letter-spacing:-0.02em;
-  text-align:right;line-height:1;padding-top:0.2rem;
-}
-.process-h{
-  font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;
-  color:var(--paper);margin-bottom:0.5rem;
-}
-.process-p{
-  font-family:'Spectral',serif;font-size:0.88rem;
-  color:rgba(239,241,244,0.65);line-height:1.85;max-width:52ch;
-}
+/* ── WEB ── */
+.cw{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.5rem,3vw,3rem);align-items:center}
+.cw-list{list-style:none;margin:0;padding:0}
+.cw-list li + li{border-top:1px solid var(--hair)}
+.cw-row{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0.25rem 1rem;width:100%;padding:var(--row-y) 0;cursor:none;border-radius:4px}
+.cw-row:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cw-name{font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(1.15rem,1.6vw,1.35rem);letter-spacing:-0.015em;line-height:1.25;color:var(--dim);transition:color .25s}
+.cw-plat{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mono);align-self:center}
+.cw-what{grid-column:1/-1;font-family:'Spectral',serif;font-size:0.95rem;line-height:1.5;color:var(--fg3);transition:color .25s}
+.cw-row:hover .cw-name,.cw-row.is-active .cw-name{color:var(--fg)}
+.cw-row.is-active .cw-what{color:var(--fg2)}
+.cw-thumb{display:none}
+.cw-preview{position:relative;margin:0;border-radius:6px;overflow:hidden;aspect-ratio:16/10;background:var(--media-bg)}
+.cw-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transform:scale(1.02);transition:opacity .5s var(--e),transform 1s var(--e)}
+.cw-preview img.on{opacity:1;transform:none}
 
-@media(max-width:1024px){
-  .pillar-grid{grid-template-columns:1fr}
-  .process-strip{grid-template-columns:1fr}
-  .process-n{text-align:left}
-  .process-layout{grid-template-columns:1fr!important;gap:2rem!important}
-  .process-visual{display:none!important}
+/* ── DESIGN (tabletop) ── */
+.cd-table{position:relative;aspect-ratio:2.25/1}
+.cd-obj{position:absolute;margin:0;transform:rotate(var(--r));transition:transform .9s var(--e) var(--d,0s),opacity .7s var(--e) var(--d,0s)}
+/* the figure is the hover target and never moves on hover; only the inner layer lifts,
+   so the piece can't slide out from under the cursor and flicker */
+.cd-lift{display:block;border-radius:2px;overflow:hidden;background:#fff;box-shadow:0 20px 40px -20px rgba(15,20,27,0.45),0 2px 6px rgba(15,20,27,0.1);transition:transform .35s var(--e),box-shadow .35s var(--e)}
+.cd-lift img{display:block;width:100%;height:auto}
+.js-motion .cd-table:not(.laid) .cd-obj{opacity:0;transform:translateY(40px) rotate(0deg)}
+.cd-table.laid .cd-obj:hover{z-index:9!important}
+.cd-table.laid .cd-obj:hover .cd-lift{transform:translateY(-6px);box-shadow:0 30px 56px -24px rgba(15,20,27,0.5),0 2px 6px rgba(15,20,27,0.1)}
+
+/* ── COPY ── */
+.cc{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.cc-item{display:block;text-decoration:none;color:inherit}
+.cc-item.cc-feature{display:flex;flex-direction:column;padding-right:var(--pad);border-right:1px solid var(--hair)}
+.cc-feature .cc-big{flex:1}
+.cc-side{padding-left:var(--pad);display:grid;align-content:space-between}
+.cc-side .cc-item + .cc-item{border-top:1px solid var(--hair);padding-top:var(--pad);margin-top:var(--pad)}
+.cc-meta{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mono);margin:0 0 0.9rem}
+.cc-big{font-family:'Spectral',serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.28;color:var(--fg);margin:0 0 1.5rem;max-width:26ch}
+.cc-title{font-family:'Sora',sans-serif;font-weight:600;font-size:1.06rem;line-height:1.35;color:var(--fg);margin:0;transition:color .2s}
+.cc-feature .cc-title{font-size:1.2rem}
+.cc-excerpt{font-family:'Spectral',serif;font-size:0.98rem;line-height:1.6;color:var(--fg3);margin:0.55rem 0 0}
+.cc-read{display:inline-block;font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:600;letter-spacing:0.03em;color:var(--accent);margin-top:0.9rem;transition:transform .2s}
+.cc-item:hover .cc-title{color:var(--accent)}
+.cc-item:hover .cc-read{transform:translateX(3px)}
+.cc-item:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:4px}
+
+/* ── STRATEGY ── */
+.cs{display:grid;grid-template-columns:1fr 1fr}
+.cs-group:first-child{padding-right:var(--pad);border-right:1px solid var(--hair)}
+.cs-group:last-child{padding-left:var(--pad)}
+.cs-group h3{font-family:'Sora',sans-serif;font-size:1.02rem;font-weight:600;color:var(--fg);margin:0 0 0.4rem}
+.cs-group ul{list-style:none;margin:0;padding:0}
+.cs-group li{font-family:'Spectral',serif;font-size:1.02rem;line-height:1.5;color:var(--fg2);padding:var(--row-y) 0;border-top:1px solid var(--hair)}
+.cs-group li:last-child{padding-bottom:0}
+
+/* ── HBZ ── */
+.hz-story{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--pad) clamp(1.5rem,4vw,4rem);align-items:start}
+.hz-nav{position:sticky;top:calc(var(--nav-h) + 2rem)}
+.hz-steps{list-style:none;margin:0;padding:0}
+.hz-steps li + li{border-top:1px solid var(--hair)}
+.hz-steps a{display:block;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.3;color:var(--dim);text-decoration:none;padding:var(--row-y) 0;transition:color .3s,padding-left .4s var(--e)}
+.hz-steps li:first-child a{padding-top:0}
+.hz-steps a:hover{color:var(--fg2)}
+.hz-steps a.on{color:var(--fg);padding-left:0.6rem}
+.hz-frame{margin:0;padding:var(--pad) 0;scroll-margin-top:calc(var(--nav-h) + 2rem)}
+.hz-frame:first-child{padding-top:0}
+.hz-frame + .hz-frame{border-top:1px solid var(--hair)}
+.hz-pics{display:grid;gap:10px}
+.hz-pics.cards{grid-template-columns:1fr 1fr}
+.hz-pics.guide{grid-template-columns:0.77fr 1.53fr}
+.hz-pic{border-radius:6px;overflow:hidden;background:var(--media-bg)}
+.hz-pic img{display:block;width:100%;height:auto}
+.hz-frame figcaption,.hz-cap{font-family:'Spectral',serif;font-size:0.98rem;line-height:1.6;color:var(--fg3);margin-top:0.9rem;max-width:58ch}
+.hz-sys-line{font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(1.2rem,1.9vw,1.55rem);line-height:1.38;letter-spacing:-0.015em;color:var(--fg);margin:0;max-width:32ch}
+.hz-quote{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--pad) clamp(1.5rem,4vw,4rem);align-items:center;padding-top:var(--pad);border-top:1px solid var(--hair)}
+.hz-quote figure{margin:0}
+.hz-quote .hz-pic{aspect-ratio:4/5;max-width:300px}
+.hz-quote .hz-pic img{height:100%;object-fit:cover}
+.hz-quote blockquote{margin:0}
+.hz-quote blockquote p{font-family:'Spectral',serif;font-style:italic;font-size:clamp(1.45rem,2.6vw,2.2rem);line-height:1.32;color:var(--fg);margin:0 0 1.4rem;max-width:34ch}
+.hz-quote cite{font-style:normal;display:block;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:600;color:var(--accent)}
+.hz-quote cite span{display:block;font-family:'Spectral',serif;font-weight:400;font-size:0.95rem;color:var(--fg3);margin-top:0.2rem}
+
+/* ── Q&A ── */
+.qa-item{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0.5rem clamp(1.5rem,4vw,4rem);padding:var(--pad) 0;border-top:1px solid var(--hair)}
+.qa-item:first-child{border-top:none;padding-top:0}
+.qa-item:last-child{padding-bottom:0}
+.qa-q{font-family:'Sora',sans-serif;font-size:1.06rem;font-weight:600;line-height:1.4;color:var(--fg);margin:0}
+.qa-a{font-family:'Spectral',serif;font-size:1.02rem;line-height:1.65;color:var(--fg3);margin:0;max-width:56ch}
+
+@media(max-width:900px){
+  .stage-foot{flex-direction:column;align-items:flex-start}
+  .v5-hero{padding-top:calc(var(--nav-h) + 2.75rem)}
+  .v5-hero .wrap{grid-template-columns:1fr}
+  .v5-hero-photo{aspect-ratio:4/3;max-height:none}
+  .cv-film{aspect-ratio:16/9}
+  .cw{grid-template-columns:1fr}
+  .cw-preview{display:none}
+  .cw-name{color:var(--fg)}
+  .cw-thumb{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:6px;margin-top:0.75rem}
+  .cd-table{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  .cd-obj{position:relative;left:auto!important;top:auto!important;width:auto!important;transform:rotate(calc(var(--r) * 0.35))}
+  .cd-obj.big{grid-column:1/-1}
+  .cc{grid-template-columns:1fr}
+  .cc-item.cc-feature{padding-right:0;border-right:none;padding-bottom:var(--pad);border-bottom:1px solid var(--hair)}
+  .cc-side{padding-left:0;padding-top:var(--pad)}
+  .cs{grid-template-columns:1fr}
+  .cs-group:first-child{padding-right:0;border-right:none;padding-bottom:var(--pad)}
+  .cs-group:last-child{padding-left:0}
+  .hz-story,.hz-quote{grid-template-columns:1fr}
+  .hz-nav{display:none}
+  .qa-item{grid-template-columns:1fr}
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -164,10 +219,9 @@
 <div class="grain" aria-hidden="true"></div>
 <div id="cur" aria-hidden="true"></div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="/" class="nav-logo">
-    <img src="/Images/nav-logo.webp" alt="FCS">
+    <img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024">
     <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
   </a>
   <ul class="nav-links">
@@ -189,9 +243,7 @@
     <li><a href="/newsletter/">Newsletter</a></li>
   </ul>
   <a href="/contact/" class="nav-cta">Contact</a>
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
   <a href="/services/">Services</a>
@@ -209,201 +261,329 @@
   <a href="/contact/" class="mobile-menu-cta">Get in Touch</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero" id="main-content">
-  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Services</span>
+<!-- HERO (homepage gradient) -->
+<header class="v5-hero on-dark" id="main-content">
+  <div class="wrap">
+    <div>
+      <div class="page-tag">Services</div>
+      <h1>Most clients hire me for one thing. <em>Then they stay.</em></h1>
+      <p class="v5-hero-sub">I shoot video, build websites, write copy, design print, and set up the systems a small business runs on.</p>
+      <div class="v5-hero-ctas">
+        <a href="/contact/" class="btn-p">Let&rsquo;s talk &rarr;</a>
+        <a href="#hbz" class="btn-s">See one client&rsquo;s whole story</a>
+      </div>
+    </div>
+    <figure class="v5-hero-photo"><img src="/Images/Paul Smiling.webp" alt="Paul Falcone on set, smiling" fetchpriority="high" width="2048" height="1365"></figure>
   </div>
-  <div style="padding-left:calc(56px + var(--g))">
-    <div class="page-tag">What I Do</div>
-    <div class="page-hero-inner">
-      <h1>Five ways to move your<br>business <em>forward.</em></h1>
-      <p class="page-hero-sub">From a single video to a full brand overhaul. Every service is delivered by one person who treats your business like their own. No handoffs. No junior team. Just the work.</p>
+</header>
+
+<!-- VIDEO (paper) -->
+<section class="sect bg-paper">
+  <div class="wrap">
+    <div class="ch-head">
+      <h2 class="ch-title">Video &amp; Photo</h2>
+      <p class="ch-lede">Interviews, brand films, product videos and photography. I&rsquo;ve been behind a camera for more than fifteen years, and I edit what I shoot.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-body flush">
+        <figure class="cv-film">
+          <video muted loop playsinline preload="none" poster="/Images/Tata and Howard Still.webp" aria-label="FCS interview reel" src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4"></video>
+          <button class="cv-toggle" type="button" aria-label="Play video">Play</button>
+        </figure>
+      </div>
+      <div class="stage-foot">
+        <p class="stage-note">Lately: thirteen executive interviews across two locations for <b>Tata &amp; Howard</b>, a three-part equipment series for <b>Matec Instrument Companies</b> made with Parthena Design and HBZ Media, and a commercial plus a product walkthrough for <b>DIENES</b>.</p>
+        <a class="section-btn" href="/services/video/">More on video &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICE PILLARS -->
-<span class="ch-rule dark" style="display:block"></span>
-<section id="services-overview" style="background:var(--paper);position:relative">
-  <div id="services-overview" style="position:relative">
-    <div class="with-rail dark-rule" style="position:relative">
-      <div class="rail dark"><span class="rail-label dark">Services</span></div>
-      <div class="rail-content dark" style="padding-bottom:3.5rem">
-        <div class="eyebrow dark">The Work</div>
-        <h2 class="h-sec dark" style="margin-bottom:0.5rem">Everything under one roof.</h2>
-        <p class="body-lg dark" style="max-width:52ch;margin-bottom:2.5rem">Each service pillar is designed to work independently or together. Most clients end up needing more than one.</p>
-        <div class="pillar-grid">
-          <a href="/services/video/" class="pillar-card">
-            <div class="pillar-num">01</div>
-            <div class="pillar-tag">Production</div>
-            <div class="pillar-title">Video &amp; Photo</div>
-            <p class="pillar-desc">Corporate interviews, brand films, product showcases, and photography. Concept through final delivery. 15+ years behind the lens.</p>
-            <span class="pillar-link">Explore Video <span class="pillar-arrow">&rarr;</span></span>
+<!-- WEB (navy) -->
+<section class="sect bg-navy on-dark">
+  <div class="wrap">
+    <div class="ch-head">
+      <h2 class="ch-title">Web Design</h2>
+      <p class="ch-lede">New sites from scratch, or fixing the one you already have. Wherever you already are is usually fine.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-body">
+        <div class="cw">
+          <ul class="cw-list">
+            <li><button type="button" class="cw-row is-active" aria-pressed="true"><span class="cw-name">Don Ruperto Cigars</span><span class="cw-plat">WordPress</span><span class="cw-what">A luxury landing page with a custom cursor and a gated catalog download.</span><img class="cw-thumb" src="/Images/Don Ruperto Homepage.webp" alt="Don Ruperto Cigars website" loading="lazy" width="4164" height="2206"></button></li>
+            <li><button type="button" class="cw-row" aria-pressed="false"><span class="cw-name">HBZ Media</span><span class="cw-plat">Wix</span><span class="cw-what">A full rebuild for a Boston film company, with HoneyBook connected.</span><img class="cw-thumb" src="/Images/HBZ Media Website.webp" alt="HBZ Media website" loading="lazy" width="1280" height="720"></button></li>
+            <li><button type="button" class="cw-row" aria-pressed="false"><span class="cw-name">Chris McLernon</span><span class="cw-plat">Squarespace</span><span class="cw-what">35+ years of music in one site, with a hidden 90s-style site inside it.</span><img class="cw-thumb" src="/Images/Chris McLernon Website.webp" alt="Chris McLernon website" loading="lazy" width="1280" height="720"></button></li>
+            <li><button type="button" class="cw-row" aria-pressed="false"><span class="cw-name">Jennings Canine Consulting</span><span class="cw-plat">WordPress</span><span class="cw-what">A full build for a canine consulting practice.</span><img class="cw-thumb" src="/Images/Jennings Hero.webp" alt="Jennings Canine Consulting website" loading="lazy" width="4080" height="2432"></button></li>
+            <li><button type="button" class="cw-row" aria-pressed="false"><span class="cw-name">Olympic Wine &amp; Liquors</span><span class="cw-plat">GoDaddy</span><span class="cw-what">A new site for a Worcester-area wine and spirits shop.</span><img class="cw-thumb" src="/Images/Olympic Wine Website.webp" alt="Olympic Wine &amp; Liquors website" loading="lazy" width="1280" height="720"></button></li>
+          </ul>
+          <figure class="cw-preview" aria-hidden="true">
+            <img class="on" src="/Images/Don Ruperto Homepage.webp" alt="" width="4164" height="2206">
+            <img src="/Images/HBZ Media Website.webp" alt="" loading="lazy" width="1280" height="720">
+            <img src="/Images/Chris McLernon Website.webp" alt="" loading="lazy" width="1280" height="720">
+            <img src="/Images/Jennings Hero.webp" alt="" loading="lazy" width="4080" height="2432">
+            <img src="/Images/Olympic Wine Website.webp" alt="" loading="lazy" width="1280" height="720">
+          </figure>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <p class="stage-note">Every site here was designed and built by me, from the first layout to launch day.</p>
+        <a class="section-btn" href="/services/web/">More on web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN (paper) -->
+<section class="sect bg-paper">
+  <div class="wrap">
+    <div class="ch-head">
+      <h2 class="ch-title">Design &amp; Print</h2>
+      <p class="ch-lede">Business cards, brochures, pricing guides and catalogs, set up so the printer doesn&rsquo;t call you with problems.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-body">
+        <div class="cd-table">
+          <figure class="cd-obj big" style="--r:-2deg;--d:0s;left:2%;top:30%;width:44%;z-index:1"><span class="cd-lift"><img src="/Images/Don Ruperto Catalog Example.webp" alt="Don Ruperto catalog, Connecticut line spread with SKU table" loading="lazy" width="2562" height="1654"></span></figure>
+          <figure class="cd-obj" style="--r:-6deg;--d:.1s;left:6%;top:2%;width:17%;z-index:2"><span class="cd-lift"><img src="/Images/Don Ruperto Catalog Cover.webp" alt="Don Ruperto Reserva product catalog cover" loading="lazy" width="900" height="1165"></span></figure>
+          <figure class="cd-obj" style="--r:3deg;--d:.2s;left:46%;top:8%;width:17%;z-index:2"><span class="cd-lift"><img src="/Images/Don Ruperto Catalog History Page.webp" alt="Don Ruperto catalog page on the history of Honduran cigars" loading="lazy" width="900" height="1165"></span></figure>
+          <figure class="cd-obj" style="--r:-3deg;--d:.3s;left:58%;top:40%;width:17%;z-index:3"><span class="cd-lift"><img src="/Images/Don Ruperto Catalog Maduro Page.webp" alt="Don Ruperto catalog page for the Maduro line with SKU table" loading="lazy" width="900" height="1165"></span></figure>
+          <figure class="cd-obj" style="--r:4deg;--d:.4s;left:79%;top:12%;width:17%;z-index:4"><span class="cd-lift"><img src="/Images/nsn-poster.webp" alt="Data security trade poster" loading="lazy" width="1035" height="1600"></span></figure>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <p class="stage-note">Recently: an 11-page catalog for <b>Don Ruperto Cigars</b>, from the cover and the brand&rsquo;s history to a two-page spread and SKU table for each of its four wrapper lines. Catalog photography by Gabriela Berinstein.</p>
+        <a class="section-btn" href="/services/design/">More on design &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COPY (ink) -->
+<section class="sect bg-ink on-dark">
+  <div class="wrap">
+    <div class="ch-head">
+      <h2 class="ch-title">Copy &amp; Content</h2>
+      <p class="ch-lede">Blogs, emails, LinkedIn posts and website copy, written in your voice. Which means I&rsquo;ll ask a lot of questions first.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-body">
+        <div class="cc">
+          <a class="cc-item cc-feature" href="https://www.hbzmedia.video/post/why-global-brands-live-and-die-by-video-and-why-local-brands-should-follow" target="_blank" rel="noopener noreferrer">
+            <p class="cc-meta">HBZ Media blog, March 2026</p>
+            <p class="cc-big">&ldquo;Local businesses don&rsquo;t need an $8 million commercial. They need visibility, consistency, and story.&rdquo;</p>
+            <h3 class="cc-title">Why Global Brands Live and Die by Video, and Why Local Brands Should Follow</h3>
+            <span class="cc-read">Read the post &rarr;</span>
           </a>
-          <a href="/services/web/" class="pillar-card">
-            <div class="pillar-num">02</div>
-            <div class="pillar-tag">Development</div>
-            <div class="pillar-title">Web Design</div>
-            <p class="pillar-desc">A fully designed site with domain and hosting, or a fresh coat of paint on what you have. WordPress, Squarespace, Wix, GoDaddy. We meet you where you are.</p>
-            <span class="pillar-link">Explore Web <span class="pillar-arrow">&rarr;</span></span>
-          </a>
-          <a href="/services/content/" class="pillar-card">
-            <div class="pillar-num">03</div>
-            <div class="pillar-tag">Content</div>
-            <div class="pillar-title">Copy &amp; Content</div>
-            <p class="pillar-desc">Blogs, email campaigns, social content, and print collateral. Every piece built to work across channels and pull double duty for your brand.</p>
-            <span class="pillar-link">Explore Content <span class="pillar-arrow">&rarr;</span></span>
-          </a>
-          <a href="/services/design/" class="pillar-card">
-            <div class="pillar-num">04</div>
-            <div class="pillar-tag">Design</div>
-            <div class="pillar-title">Design &amp; Print</div>
-            <p class="pillar-desc">Brand collateral, catalogs, brochures, pricing sheets, and print materials that hold up. Design that represents your brand at its best.</p>
-            <span class="pillar-link">Explore Design <span class="pillar-arrow">&rarr;</span></span>
-          </a>
-          <a href="/services/strategy/" class="pillar-card">
-            <div class="pillar-num">05</div>
-            <div class="pillar-tag">Consulting</div>
-            <div class="pillar-title">Strategy &amp; Systems</div>
-            <p class="pillar-desc">CRM setup, email marketing, and the thinking behind it all. HoneyBook, Mailchimp, and operational consulting built around your workflow.</p>
-            <span class="pillar-link">Explore Strategy <span class="pillar-arrow">&rarr;</span></span>
-          </a>
-          <div class="pillar-card" style="background:var(--navy);justify-content:center;align-items:center;text-align:center;gap:0.5rem;border-color:transparent;box-shadow:0 2px 12px rgba(15,20,27,0.18)">
-            <div style="font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin-bottom:0.5rem">The FCS Difference</div>
-            <div style="font-family:'Spectral',serif;font-size:1rem;font-style:italic;color:var(--paper);line-height:1.75;max-width:28ch">&ldquo;One person. Every project. Fully invested.&rdquo;</div>
+          <div class="cc-side">
+            <a class="cc-item" href="https://www.hbzmedia.video/post/5-essentials-for-a-successful-brand-video-shoot" target="_blank" rel="noopener noreferrer">
+              <p class="cc-meta">HBZ Media blog, April 2026</p>
+              <h3 class="cc-title">5 Essentials for a Successful Brand Video Shoot</h3>
+              <p class="cc-excerpt">Video is one of the most powerful investments a brand can make. And like any worthwhile investment, the return depends on the work you put in before the big day.</p>
+              <span class="cc-read">Read the post &rarr;</span>
+            </a>
+            <a class="cc-item" href="https://www.hbzmedia.video/post/how-to-communicate-your-wedding-vision-to-vendors" target="_blank" rel="noopener noreferrer">
+              <p class="cc-meta">HBZ Media blog, January 2026</p>
+              <h3 class="cc-title">How to Communicate Your Wedding Vision to Vendors</h3>
+              <p class="cc-excerpt">When it comes to your wedding footage, clearly communicating your vision is what will leave you feeling confident putting full trust in your vendors to capture those special moments forever.</p>
+              <span class="cc-read">Read the post &rarr;</span>
+            </a>
           </div>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <p class="stage-note">All three were written for HBZ Media and published on their blog.</p>
+        <a class="section-btn" href="/services/content/">More on content &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY (paper) -->
+<section class="sect bg-paper">
+  <div class="wrap">
+    <div class="ch-head">
+      <h2 class="ch-title">Strategy &amp; Systems</h2>
+      <p class="ch-lede">The unglamorous part. Email, domains, CRMs and invoicing, set up properly so you can stop thinking about them.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-body">
+        <div class="cs">
+          <div class="cs-group">
+            <h3>Getting set up</h3>
+            <ul>
+              <li>Domain transfers and DNS</li>
+              <li>Business email and platform migrations</li>
+              <li>Website moves to a new platform</li>
+            </ul>
+          </div>
+          <div class="cs-group">
+            <h3>Keeping it running</h3>
+            <ul>
+              <li>HoneyBook pipelines with proposals, contracts and automations</li>
+              <li>Mailchimp audiences, templates and launch sequences</li>
+              <li>Invoicing and project management software</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <p class="stage-note">The tools I work in most: HoneyBook, Mailchimp, WordPress, Wix, Squarespace and GoDaddy.</p>
+        <a class="section-btn" href="/services/strategy/">More on systems &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HBZ (navy-to-ink gradient, like homepage testimonials) -->
+<section class="sect bg-grad on-dark" id="hbz">
+  <div class="wrap">
+    <div class="ch-head">
+      <div class="eyebrow">One client, all five</div>
+      <h2 class="ch-title">HBZ Media</h2>
+      <p class="ch-lede">Zach Johnson runs HBZ Media, a wedding and brand film company in Boston. When he relaunched in 2024, I worked on nearly every piece of it, and we&rsquo;ve kept working together since.</p>
+    </div>
+    <div class="stage">
+      <div class="stage-body">
+        <div class="hz-story">
+          <div class="hz-nav" role="navigation" aria-label="HBZ Media project pieces">
+            <ol class="hz-steps">
+              <li><a href="#hz-site" class="on">The website</a></li>
+              <li><a href="#hz-film">The relaunch film</a></li>
+              <li><a href="#hz-cards">Identity and business cards</a></li>
+              <li><a href="#hz-guide">A pricing guide</a></li>
+              <li><a href="#hz-sys">Everything behind the scenes</a></li>
+            </ol>
+          </div>
+          <div class="hz-frames">
+            <figure class="hz-frame" id="hz-site">
+              <div class="hz-pic"><img src="/Images/HBZ Media Website.webp" alt="HBZ Media website homepage" loading="lazy" width="1280" height="720"></div>
+              <figcaption>The website, rebuilt on Wix with his portfolio and HoneyBook connected.</figcaption>
+            </figure>
+            <figure class="hz-frame" id="hz-film">
+              <div class="hz-pic"><img src="/Images/HBZ Relaunch Film Still.webp" alt="Still from the HBZ Media relaunch video" loading="lazy" width="1280" height="720"></div>
+              <figcaption>A relaunch video introducing the new HBZ to the people who already knew the old one.</figcaption>
+            </figure>
+            <figure class="hz-frame" id="hz-cards">
+              <div class="hz-pics cards">
+                <div class="hz-pic"><img src="/Images/hbz-business-card-front.webp" alt="HBZ Media business card, front" loading="lazy" width="1912" height="1130"></div>
+                <div class="hz-pic"><img src="/Images/HBZ Media Business Card Back.webp" alt="HBZ Media business card, back" loading="lazy" width="1928" height="1132"></div>
+              </div>
+              <figcaption>A new identity, carried onto the business cards.</figcaption>
+            </figure>
+            <figure class="hz-frame" id="hz-guide">
+              <div class="hz-pics guide">
+                <div class="hz-pic"><img src="/Images/hbz-collections-spread.webp" alt="HBZ Media services and pricing guide, cover" loading="lazy" width="1236" height="1600"></div>
+                <div class="hz-pic"><img src="/Images/hbz-catalog-example.webp" alt="HBZ Media pricing guide, inside spread" loading="lazy" width="2358" height="1540"></div>
+              </div>
+              <figcaption>A services and pricing guide. I wrote the copy and designed the layout.</figcaption>
+            </figure>
+            <figure class="hz-frame" id="hz-sys">
+              <p class="hz-sys-line">Domains secured, business email set up, and new software for project management and invoicing.</p>
+              <figcaption>The part nobody sees, and the part that made the rest easier to run.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="hz-quote">
+          <figure>
+            <div class="hz-pic"><img src="/Images/Helping Zach.webp" alt="Paul adjusting Zach's collar on set" loading="lazy" width="1365" height="2048"></div>
+            <figcaption class="hz-cap">On set with Zach.</figcaption>
+          </figure>
+          <blockquote>
+            <p>&ldquo;He has brought a high level of professionalism to our systems, processes, and our overall presentation.&rdquo;</p>
+            <cite>Zach Johnson<span>CEO, HBZ Media</span></cite>
+          </blockquote>
+        </div>
+      </div>
+      <div class="stage-foot">
+        <p class="stage-note">Five services, one client, and one person to call about all of it.</p>
+        <a class="section-btn" href="/blog/hbz-media-relaunch/">Read the HBZ story &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Q&A (paper) -->
+<section class="sect bg-paper">
+  <div class="wrap">
+    <div class="ch-head">
+      <h2 class="ch-title">Things people usually ask.</h2>
+    </div>
+    <div class="stage">
+      <div class="stage-body">
+        <div class="qa">
+          <div class="qa-item"><h3 class="qa-q">Do I have to hire you for everything?</h3><p class="qa-a">No. Most people start with one thing. If you need more later, you won&rsquo;t have to bring someone new up to speed.</p></div>
+          <div class="qa-item"><h3 class="qa-q">Can you work with the site I already have?</h3><p class="qa-a">Usually, yes. WordPress, Squarespace, Wix, GoDaddy. A lot of web work is fixing what&rsquo;s there rather than starting over.</p></div>
+          <div class="qa-item"><h3 class="qa-q">How does pricing work?</h3><p class="qa-a">We talk first. Then you get a written scope, timeline and price before anything starts. If something changes partway through, we talk about it before it turns into a surprise.</p></div>
+          <div class="qa-item"><h3 class="qa-q">Who will I actually be working with?</h3><p class="qa-a">Me. No account manager, no junior designer. The person on the call is the person doing the work.</p></div>
+          <div class="qa-item"><h3 class="qa-q">Are you taking on new work?</h3><p class="qa-a">FCS is a part-time studio and most of my work comes through referrals, so I keep a small client list. If someone sent you, mention their name when you reach out.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<span class="ch-rule" style="display:block"></span>
-<section id="process" style="background:var(--ink);position:relative">
-  <div class="with-rail" style="position:relative">
-    <div class="rail"><span class="rail-label">Process</span></div>
-    <div class="rail-content" style="padding-bottom:3.5rem">
-      <div class="process-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
-        <div>
-          <div class="eyebrow">How It Works</div>
-          <h2 class="h-sec" style="margin-bottom:2.5rem">Simple by design.</h2>
-          <div class="process-strip">
-            <div class="process-n">01</div>
-            <div>
-              <div class="process-h">Start with a conversation.</div>
-              <p class="process-p">Every project starts with a call. No intake forms, no automated funnels. We talk about what you need, what you've tried, and what success looks like for you.</p>
-            </div>
-          </div>
-          <div class="process-strip">
-            <div class="process-n">02</div>
-            <div>
-              <div class="process-h">Get a clear proposal.</div>
-              <p class="process-p">You'll receive a straightforward scope, timeline, and price. No surprises. If something changes mid-project, we talk about it before it becomes a problem.</p>
-            </div>
-          </div>
-          <div class="process-strip">
-            <div class="process-n">03</div>
-            <div>
-              <div class="process-h">Work together, directly.</div>
-              <p class="process-p">You work with me, not an account manager or a junior hire. Every email, every revision, every decision goes through the same person doing the work.</p>
-            </div>
-          </div>
-          <div class="process-strip">
-            <div class="process-n">04</div>
-            <div>
-              <div class="process-h">Stay in it for the long game.</div>
-              <p class="process-p">Most FCS clients don't come for a single project. They come back because the work holds up, and because having one trusted creative partner is worth more than a vendor list.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Process graphic -->
-        <div class="process-visual" style="position:sticky;top:calc(var(--nav-h) + 3rem);padding-top:4rem;display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 380 600" xmlns="http://www.w3.org/2000/svg" style="height:620px;width:auto;display:block">
-            <!-- Atmospheric rings -->
-            <circle cx="90" cy="300" r="280" fill="none" stroke="rgba(183,194,204,0.025)" stroke-width="1"/>
-            <circle cx="90" cy="300" r="190" fill="none" stroke="rgba(183,194,204,0.018)" stroke-width="1"/>
-            <!-- Vertical spine -->
-            <line x1="90" y1="140" x2="90" y2="460" stroke="rgba(183,194,204,0.08)" stroke-width="1.5" stroke-dasharray="3,10"/>
-            <!-- Node 01 -->
-            <circle cx="90" cy="90" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
-            <circle cx="90" cy="90" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
-            <text x="90" y="97" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">01</text>
-            <line x1="142" y1="90" x2="162" y2="90" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
-            <text x="170" y="85" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">DISCOVER</text>
-            <text x="170" y="100" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Define the goal</text>
-            <!-- Dots 01→02 -->
-            <circle cx="90" cy="158" r="2.5" fill="rgba(183,194,204,0.2)"/>
-            <circle cx="90" cy="178" r="2.5" fill="rgba(183,194,204,0.13)"/>
-            <circle cx="90" cy="198" r="2.5" fill="rgba(183,194,204,0.2)"/>
-            <!-- Node 02 -->
-            <circle cx="90" cy="230" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
-            <circle cx="90" cy="230" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
-            <text x="90" y="237" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">02</text>
-            <line x1="142" y1="230" x2="162" y2="230" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
-            <text x="170" y="225" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">PROPOSE</text>
-            <text x="170" y="240" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Scope &amp; price</text>
-            <!-- Dots 02→03 -->
-            <circle cx="90" cy="298" r="2.5" fill="rgba(183,194,204,0.2)"/>
-            <circle cx="90" cy="318" r="2.5" fill="rgba(183,194,204,0.13)"/>
-            <circle cx="90" cy="338" r="2.5" fill="rgba(183,194,204,0.2)"/>
-            <!-- Node 03 -->
-            <circle cx="90" cy="370" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
-            <circle cx="90" cy="370" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
-            <text x="90" y="377" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">03</text>
-            <line x1="142" y1="370" x2="162" y2="370" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
-            <text x="170" y="365" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">BUILD</text>
-            <text x="170" y="380" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Direct collaboration</text>
-            <!-- Dots 03→04 -->
-            <circle cx="90" cy="438" r="2.5" fill="rgba(183,194,204,0.2)"/>
-            <circle cx="90" cy="458" r="2.5" fill="rgba(183,194,204,0.13)"/>
-            <circle cx="90" cy="478" r="2.5" fill="rgba(183,194,204,0.2)"/>
-            <!-- Node 04 -->
-            <circle cx="90" cy="510" r="50" fill="rgba(32,50,76,0.65)" stroke="rgba(183,194,204,0.28)" stroke-width="1.5"/>
-            <circle cx="90" cy="510" r="36" fill="none" stroke="rgba(183,194,204,0.1)" stroke-width="1"/>
-            <text x="90" y="517" text-anchor="middle" font-family="Sora,sans-serif" font-size="17" font-weight="700" fill="rgba(183,194,204,0.88)">04</text>
-            <line x1="142" y1="510" x2="162" y2="510" stroke="rgba(183,194,204,0.2)" stroke-width="1"/>
-            <text x="170" y="505" font-family="Sora,sans-serif" font-size="10" font-weight="600" fill="rgba(183,194,204,0.55)" letter-spacing="2">DELIVER</text>
-            <text x="170" y="520" font-family="Spectral,serif" font-size="13" font-style="italic" fill="rgba(239,241,244,0.38)">Long-term partner</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<span class="ch-rule" style="display:block"></span>
-<section id="contact" style="position:relative">
-  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Contact</span>
-  </div>
+<!-- CTA (same markup and size as the contact section on the rest of the site) -->
+<section id="contact">
   <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
     <div class="eyebrow" style="margin-bottom:0.75rem">Get in Touch</div>
-    <h2 class="h-disp" style="margin-bottom:0.85rem">Ready to get started?</h2>
-    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
+    <h2 class="h-disp" style="margin-bottom:0.85rem">Tell me what<br>you&rsquo;re working on.</h2>
+    <p class="body-lg" style="max-width:400px;margin:0 auto 2.5rem">Send a few details and we&rsquo;ll find a time to talk. Every project starts with a conversation.</p>
     <a href="/contact/" class="btn-p">Let&rsquo;s talk &rarr;</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="ft-logo" style="justify-self:start">
-    <img src="/Images/nav-logo.webp" alt="FCS">
-    <span class="ft-wm">Falcone Creative Services</span>
-  </div>
+  <div class="ft-logo" style="justify-self:start"><img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024"><span class="ft-wm">Falcone Creative Services</span></div>
   <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
   <div class="ft-links" style="justify-self:end">
     <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="/services/">Services</a>
-    <a href="/work/">Work</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <a href="/contact/">Contact</a>
+    <a href="/services/">Services</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a>
   </div>
 </footer>
 
-<script src="/main.js?v=10"></script>
+<script src="/main.js?v=11"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  if(!reduce){
+    var table = document.querySelector('.cd-table');
+    if(table){var to = new IntersectionObserver(function(es){if(es[0].isIntersecting){table.classList.add('laid');to.disconnect();}},{threshold:0.2});to.observe(table);}
+  }
+
+  // Reel: plays only while visible, never under reduced motion, always pausable
+  var v = document.querySelector('.cv-film video'), btn = document.querySelector('.cv-toggle');
+  if(v && btn){
+    var userPaused = reduce;
+    var setBtn = function(){var p=v.paused; btn.textContent = p ? 'Play' : 'Pause'; btn.setAttribute('aria-label', p ? 'Play video' : 'Pause video');};
+    v.addEventListener('play', setBtn); v.addEventListener('pause', setBtn);
+    btn.addEventListener('click', function(){ if(v.paused){userPaused=false; v.play().catch(function(){});} else {userPaused=true; v.pause();} });
+    new IntersectionObserver(function(es){var e=es[0]; if(e.isIntersecting && !userPaused){v.play().catch(function(){});} else if(!e.isIntersecting){v.pause();}},{threshold:0.35}).observe(v);
+    setBtn();
+  }
+
+  // Web: hover, keyboard focus, or tap switches the preview
+  var rows = [].slice.call(document.querySelectorAll('.cw-row')), shots = [].slice.call(document.querySelectorAll('.cw-preview img'));
+  var act = function(i){rows.forEach(function(r,j){var on=(j===i); r.classList.toggle('is-active',on); r.setAttribute('aria-pressed', on?'true':'false');}); shots.forEach(function(im,j){im.classList.toggle('on', j===i);});};
+  rows.forEach(function(r,i){
+    ['mouseenter','focus','click'].forEach(function(ev){r.addEventListener(ev,function(){act(i);});});
+    r.addEventListener('mouseenter',function(){document.body.classList.remove('cb');document.body.classList.add('ch');});
+    r.addEventListener('mouseleave',function(){document.body.classList.remove('ch');});
+  });
+
+  // HBZ: the frame closest to the middle of the screen is "on"
+  var links = [].slice.call(document.querySelectorAll('.hz-steps a')), frames = [].slice.call(document.querySelectorAll('.hz-frame'));
+  if(links.length){
+    var pick = function(){
+      var mid = window.innerHeight/2, best = null, bd = Infinity;
+      frames.forEach(function(f){var r=f.getBoundingClientRect(); if(r.bottom>0 && r.top<window.innerHeight){var d=Math.abs((r.top+r.bottom)/2-mid); if(d<bd){bd=d; best=f;}}});
+      if(best){var id='#'+best.id; links.forEach(function(a){a.classList.toggle('on', a.getAttribute('href')===id);});}
+    };
+    var th=[]; for(var i=0;i<=20;i++) th.push(i/20);
+    var fo = new IntersectionObserver(pick,{threshold:th});
+    frames.forEach(function(f){fo.observe(f);});
+  }
+})();
+</script>
 </body>
 </html>

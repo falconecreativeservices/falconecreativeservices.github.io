@@ -138,9 +138,9 @@
     // About page
     rev('.chapter-inner',0);
     rev('.value-item',70);
-    // Services overview
-    rev('.pillar-card',80);
-    rev('.process-strip',80);
+    // Services overview (section header, then its framed panel)
+    rev('.ch-head',0);
+    rev('.stage',0);
     // Services: video
     rev('.reel-panel',90);
     rev('.cap-card',80);
@@ -238,4 +238,27 @@
     mark('.nav-links a[href="/blog/"]');
     mark('.mobile-menu>a[href="/blog/"]');
   }
+})();
+
+// Image loading: tone the slot while a photo loads, then fade the photo in.
+// Skips logos/marks (transparent), images already loaded, and images with their own opacity rules.
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  [].forEach.call(document.images,function(img){
+    if(img.complete && img.naturalWidth) return;
+    if(/logo|mark|favicon/i.test(img.getAttribute('src')||'')) return;
+    if(img.closest('nav,footer,.mobile-menu')) return;
+    var p=img.parentElement, solo=!!p && p!==document.body && p.children.length===1;
+    var slot=solo?p:img;
+    var fade=solo && !reduce && getComputedStyle(img).opacity==='1';
+    slot.classList.add('img-wait');
+    if(fade) img.classList.add('img-fade');
+    img.addEventListener('load',function(){
+      slot.classList.remove('img-wait');
+      if(!fade) return;
+      requestAnimationFrame(function(){img.classList.add('img-in');});
+      setTimeout(function(){img.classList.remove('img-fade','img-in');},600);
+    },{once:true});
+    img.addEventListener('error',function(){slot.classList.remove('img-wait');img.classList.remove('img-fade');},{once:true});
+  });
 })();

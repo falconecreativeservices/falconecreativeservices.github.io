@@ -11,6 +11,13 @@ html,body{height:100%}
 }
 body{font-family:'Spectral',serif;background:var(--ink);color:var(--paper);overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-tag,#hero h1,.hero-sub,.hero-ctas,.hero-right{opacity:1!important;transform:none!important}}
+/* Image loading. width/height attributes reserve each image's space (no layout shift);
+   :where() has zero specificity, so any existing image sizing rule still wins.
+   main.js tones the slot while a photo loads, then fades the photo in. */
+:where(img[width][height]){height:auto}
+.img-wait{background-color:rgba(159,177,194,0.16)!important}
+.img-fade{opacity:0!important}
+.img-fade.img-in{opacity:1!important;transition:opacity .45s cubic-bezier(.22,1,.36,1)!important}
 
 /* ═══ ACCESSIBILITY ═══ */
 .skip-nav{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000;background:var(--paper);color:var(--ink);font-family:'Sora',sans-serif;font-size:0.875rem;font-weight:600;padding:0.75rem 1.5rem;text-decoration:none;border-radius:0 0 6px 6px;transition:none}
