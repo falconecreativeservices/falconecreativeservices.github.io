@@ -60,8 +60,8 @@
    right too, so it stays centered on the page instead of drifting right of the rail. */
 .wrap{max-width:calc(1320px + 112px);margin:0 auto;padding-left:calc(56px + var(--g));padding-right:calc(56px + var(--g))}
 .sect{position:relative}
-.sect>.rail{position:absolute;left:0;top:0;bottom:0;width:56px;align-items:flex-start;z-index:2;pointer-events:none}
-.sect>.rail .rail-label{position:sticky;top:calc(var(--nav-h) + 3rem);margin-top:calc(var(--nav-h) + 3rem)}
+/* label starts at the middle of the section, then sticks below the nav as you scroll (same as the homepage) */
+.sect>.rail{position:absolute;left:0;top:0;bottom:0;width:56px;z-index:2;pointer-events:none}
 @media(max-width:1024px){.wrap{padding-left:var(--g);padding-right:var(--g)}}
 
 /* section skeleton */

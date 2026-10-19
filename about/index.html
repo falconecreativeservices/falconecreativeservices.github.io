@@ -208,68 +208,33 @@
   content:'';position:absolute;right:56px;top:0;bottom:0;
   width:1px;background:rgba(183,194,204,0.1);pointer-events:none;
 }
-.logo-evolution{
-  display:flex;align-items:center;justify-content:center;
-  gap:3rem;margin:3rem 0;flex-wrap:wrap;
-}
-.logo-evo-item{
-  display:flex;flex-direction:column;align-items:center;gap:1rem;
-}
-.logo-evo-mark{
-  width:80px;height:80px;object-fit:contain;
-  opacity:0.5;
-  filter:invert(1) brightness(2);
-}
-.logo-evo-mark.current{opacity:0.85;filter:invert(1) brightness(2)}
-.logo-evo-label{
-  font-family:'IBM Plex Mono',monospace;font-size:0.6rem;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--steel);text-align:center;
-}
-.logo-evo-year{
-  font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;
-  color:var(--platinum);opacity:0.5;
-}
-.logo-evo-arrow{
-  font-size:1.5rem;color:var(--steel);opacity:0.3;
-  margin-top:-1rem;
-}
-.logo-story-title{
-  font-family:'Sora',sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);
-  font-weight:700;letter-spacing:-0.02em;
-  color:var(--paper);margin-bottom:1.25rem;
-}
-.logo-story-body{
-  font-family:'Spectral',serif;font-size:0.97rem;
-  color:rgba(239,241,244,0.75);line-height:1.9;
-  max-width:600px;margin:0 auto 1rem;
-}
-
-/* ── VALUES STRIP ── */
-.values-grid{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:0;
-}
-.value-item{
-  padding:3rem 2.5rem;
-  border-right:1px solid var(--ink-08);
-  border-bottom:1px solid var(--ink-08);
-}
-.value-item:nth-child(3n){border-right:none}
-.value-item:nth-last-child(-n+3){border-bottom:none}
-.value-n{
-  font-family:'Sora',sans-serif;font-size:0.65rem;font-weight:600;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--steel);margin-bottom:0.85rem;
-}
-.value-title{
-  font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;
-  color:var(--ink);margin-bottom:0.6rem;
-}
-.value-body{
-  font-family:'Spectral',serif;font-size:0.87rem;
-  color:#5A5A62;line-height:1.8;
-}
+/* lightbulb + values: header, then one framed panel (same system as the services page) */
+.logo-story .lb-inner{padding:0 56px;text-align:left}
+.sect-title{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(2.1rem,3.6vw,3.2rem);line-height:1.02;letter-spacing:-0.03em;margin:0 0 0.85rem}
+.sect-lede{font-family:'Spectral',serif;font-size:1.1rem;line-height:1.65;margin:0}
+.logo-story .sect-title{color:var(--paper)}
+.logo-story .sect-lede{color:rgba(239,241,244,0.86)}
+.panel{border-radius:10px;margin-top:2.25rem;text-align:left}
+.panel-body{padding:clamp(1.5rem,2.6vw,2.5rem)}
+.logo-story .panel{background:rgba(255,255,255,0.035);border:1px solid rgba(183,194,204,0.14)}
+.evo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.evo figure{margin:0;padding:0 clamp(1.5rem,2.6vw,2.5rem);text-align:center;display:flex;flex-direction:column;align-items:center}
+.evo figure:first-child{padding-left:0}
+.evo figure:last-child{padding-right:0}
+.evo figure + figure{border-left:1px solid rgba(183,194,204,0.14)}
+.evo-pic{height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.evo-pic img{max-height:100%;max-width:100%;width:auto;height:auto;display:block;border-radius:4px}
+.evo-year{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel)}
+.evo b{display:block;font-family:'Sora',sans-serif;font-size:1rem;font-weight:600;color:var(--paper);margin:0.4rem 0 0.3rem}
+.evo figcaption span:last-child{font-family:'Spectral',serif;font-size:0.96rem;line-height:1.55;color:rgba(239,241,244,0.66)}
+.evo-story{display:grid;grid-template-columns:1fr 1fr;gap:1rem clamp(1.5rem,4vw,4rem);padding:clamp(1.5rem,2.6vw,2.5rem);border-top:1px solid rgba(183,194,204,0.14)}
+.evo-story p{font-family:'Spectral',serif;font-size:1rem;line-height:1.75;color:rgba(239,241,244,0.78);margin:0}
+#values .panel{background:#fff;border:1px solid rgba(15,20,27,0.08)}
+.dl-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0.5rem clamp(1.5rem,4vw,4rem);padding:clamp(1.5rem,2.6vw,2.5rem) 0;border-top:1px solid rgba(15,20,27,0.1)}
+.dl-row:first-child{border-top:none;padding-top:0}
+.dl-row:last-child{padding-bottom:0}
+.dl-t{font-family:'Sora',sans-serif;font-size:1.06rem;font-weight:600;line-height:1.4;color:var(--ink);margin:0}
+.dl-d{font-family:'Spectral',serif;font-size:1.02rem;line-height:1.65;color:#565B64;margin:0;max-width:58ch}
 
 @media(max-width:1024px){
   .page-hero>div{padding-left:var(--g)!important}
@@ -279,13 +244,17 @@
   .logo-story::before,.logo-story::after,
   #values::after{display:none}
   .chapter-year{font-size:3rem}
-  .values-grid{grid-template-columns:1fr}
-  .value-item{border-right:none}
-  .value-item:nth-last-child(-n+3){border-bottom:1px solid var(--ink-08)}
-  .value-item:last-child{border-bottom:none}
-  .logo-evolution{gap:1rem;flex-direction:column;align-items:center}
-  .logo-evo-arrow{font-size:0}
-  .logo-evo-arrow::after{content:'↓';font-size:1.5rem;color:var(--steel);opacity:0.3}
+  .logo-story .lb-inner{padding:0}
+  .evo{grid-template-columns:1fr}
+  .evo figure{padding:0}
+  .evo figure + figure{border-left:none;border-top:1px solid rgba(183,194,204,0.14);padding-top:1.75rem;margin-top:1.75rem}
+  .evo-pic{height:130px}
+  .evo-story{grid-template-columns:1fr}
+  .dl-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  /* match the site's phone headers: centered above a left-aligned panel */
+  .logo-story .lb-inner>.eyebrow,.logo-story .sect-title,.logo-story .sect-lede{text-align:center!important}
 }
 @media(max-width:640px){
   .chapter-label-photo{max-width:260px}
@@ -515,29 +484,24 @@
   <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
     <span class="rail-label">Identity</span>
   </div>
-  <div class="eyebrow" style="margin-bottom:1rem">The Symbol</div>
-  <h2 class="logo-story-title">One lightbulb. Three chapters.</h2>
-  <div class="logo-evolution">
-    <div class="logo-evo-item">
-      <img loading="lazy" class="logo-evo-mark" src="/Images/Sleep Season We Must Be Broken Album.webp" alt="Sleep Season — We Must Be Broken album cover" style="object-fit:cover;filter:none;opacity:0.75" width="2048" height="1670">
-      <div class="logo-evo-label">Sleep Season<br>Album Cover</div>
-      <div class="logo-evo-year">2014</div>
-    </div>
-    <div class="logo-evo-arrow">→</div>
-    <div class="logo-evo-item">
-      <img loading="lazy" class="logo-evo-mark" src="/Images/Dear Hope Logo edit.webp" alt="Dear Hope logo" style="filter:none" width="182" height="277">
-      <div class="logo-evo-label">Dear Hope<br>Broken &amp; Inverted</div>
-      <div class="logo-evo-year">2014–2019</div>
-    </div>
-    <div class="logo-evo-arrow">→</div>
-    <div class="logo-evo-item">
-      <img loading="lazy" class="logo-evo-mark current" src="/Images/fcs-mark.webp" alt="FCS" style="filter:none" width="1024" height="1024">
-      <div class="logo-evo-label">Falcone Creative Services<br>Upright. Growing.</div>
-      <div class="logo-evo-year">2023–Present</div>
+  <div class="lb-inner">
+    <div class="eyebrow" style="margin-bottom:1rem;text-align:left">The Symbol</div>
+    <h2 class="sect-title">One lightbulb, three chapters.</h2>
+    <p class="sect-lede">The FCS mark is the same lightbulb from a 2014 album cover.<br>It just kept changing shape.</p>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="evo">
+          <figure><div class="evo-pic"><img loading="lazy" src="/Images/Sleep Season We Must Be Broken Album.webp" alt="Sleep Season, We Must Be Broken album cover" width="2048" height="1670"></div><figcaption><span class="evo-year">2014</span><b>Sleep Season album cover</b><span>The lightbulb first shows up on <i>We Must Be Broken</i>.</span></figcaption></figure>
+          <figure><div class="evo-pic"><img loading="lazy" src="/Images/Dear Hope Logo edit.webp" alt="Dear Hope logo, a broken inverted lightbulb" width="182" height="277"></div><figcaption><span class="evo-year">2014 to 2019</span><b>Dear Hope, broken and inverted</b><span>A light that wasn&rsquo;t working yet, but still had the shape of one.</span></figcaption></figure>
+          <figure><div class="evo-pic"><img loading="lazy" src="/Images/fcs-mark-platinum.webp" alt="FCS lightbulb mark" width="512" height="512"></div><figcaption><span class="evo-year">2023 on</span><b>FCS, upright and growing</b><span>A tree inside, a figure sitting beneath it. An idea taking root.</span></figcaption></figure>
+        </div>
+      </div>
+      <div class="evo-story">
+        <p>The lightbulb first appeared on the cover of the Sleep Season album <em>We Must Be Broken</em> in 2014. When Dear Hope launched that same year, a broken, inverted version of it became the symbol for the platform: a light that wasn&rsquo;t fully working yet, but still had the shape of one.</p>
+        <p>When Falcone Creative Services launched in 2023, the lightbulb came back. But different. Upright now. A tree growing inside it. A figure sitting beneath the branches. It&rsquo;s the same image it always was, but the meaning has evolved: an idea taking root. Growth. Wonder. The intent behind the work never changed. The form just kept getting clearer.</p>
+      </div>
     </div>
   </div>
-  <p class="logo-story-body">The lightbulb first appeared on the cover of the Sleep Season album <em>We Must Be Broken</em> in 2014. When Dear Hope launched that same year, a broken, inverted version of it became the symbol for the platform: a light that wasn&rsquo;t fully working yet, but still had the shape of one.</p>
-  <p class="logo-story-body">When Falcone Creative Services launched in 2023, the lightbulb came back. But different. Upright now. A tree growing inside it. A figure sitting beneath the branches. It&rsquo;s the same image it always was, but the meaning has evolved: an idea taking root. Growth. Wonder. The intent behind the work never changed. The form just kept getting clearer.</p>
 </section>
 
 <!-- VALUES -->
@@ -547,37 +511,13 @@
     <div class="rail dark"><span class="rail-label dark">Values</span></div>
     <div class="rail-content dark" style="padding-bottom:3.5rem">
       <div class="eyebrow dark">How This Works</div>
-      <h2 class="h-sec dark" style="margin-bottom:2.5rem">What every client can count on.</h2>
-      <div class="values-grid">
-        <div class="value-item">
-          <div class="value-n">01</div>
-          <div class="value-title">One person. Your project.</div>
-          <p class="value-body">There is no team behind the curtain. No junior hire doing the work. The person you talk to is the person doing the work. That&rsquo;s the whole model.</p>
-        </div>
-        <div class="value-item">
-          <div class="value-n">02</div>
-          <div class="value-title">Real opinions. Always.</div>
-          <p class="value-body">If something isn&rsquo;t right, you&rsquo;ll hear about it. FCS doesn&rsquo;t take direction and execute blindly. The value is in having a creative partner who actually pushes back.</p>
-        </div>
-        <div class="value-item">
-          <div class="value-n">03</div>
-          <div class="value-title">Referral-only. By design.</div>
-          <p class="value-body">Every client arrived through a referral. That means every relationship starts with a baseline of trust already in place. And a standard to live up to.</p>
-        </div>
-        <div class="value-item">
-          <div class="value-n">04</div>
-          <div class="value-title">Invested long after delivery.</div>
-          <p class="value-body">The work doesn&rsquo;t stop at the deliverable. Most clients at FCS come back, not because they have to, but because having one trusted creative partner is worth more than a vendor list.</p>
-        </div>
-        <div class="value-item">
-          <div class="value-n">05</div>
-          <div class="value-title">Your business like my own.</div>
-          <p class="value-body">The goal in every engagement is to understand the business well enough to make decisions for it. Clients feel like partners because they are treated as one.</p>
-        </div>
-        <div class="value-item">
-          <div class="value-n">06</div>
-          <div class="value-title">Quality over volume.</div>
-          <p class="value-body">The client list is intentionally small. That&rsquo;s not a limitation. It&rsquo;s how the quality stays high. Every project gets the attention it deserves.</p>
+      <h2 class="h-sec dark" style="margin-bottom:0">What you can count on.</h2>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="dl-row"><h3 class="dl-t">One person, your project.</h3><p class="dl-d">No team behind the curtain and no junior hire. The person you talk to is the person doing the work, which is also why the client list stays small.</p></div>
+          <div class="dl-row"><h3 class="dl-t">Real opinions.</h3><p class="dl-d">If something isn&rsquo;t right, you&rsquo;ll hear about it. A creative partner who pushes back is worth more than one who just executes.</p></div>
+          <div class="dl-row"><h3 class="dl-t">Referral-only, by design.</h3><p class="dl-d">Every client arrived through someone they trust. That starts the relationship with trust already in place, and a standard to live up to.</p></div>
+          <div class="dl-row"><h3 class="dl-t">Invested after delivery.</h3><p class="dl-d">The goal is to understand your business well enough to make good calls for it. Most clients come back because having one trusted person beats keeping a vendor list.</p></div>
         </div>
       </div>
     </div>

@@ -22,6 +22,72 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css?v=12">
+<style>
+/* ── Services index (list on the left, live preview on the right) ── */
+#services{
+  --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.55);
+  --hair:rgba(15,20,27,0.1); --mono:#5F6C79; --accent:var(--navy);
+  --pad:clamp(1.5rem,2.6vw,2.5rem); --row-y:0.9rem; --e:cubic-bezier(.22,1,.36,1);
+}
+#services .stage{margin-top:2.25rem;background:#fff;border:1px solid rgba(15,20,27,0.08);border-radius:10px}
+#services .stage-body{padding:var(--pad)}
+#services .stage-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem 2.5rem;padding:1.25rem var(--pad);border-top:1px solid var(--hair)}
+#services .stage-note{margin:0;flex:1;font-family:'Spectral',serif;font-size:0.98rem;line-height:1.6;color:var(--fg3)}
+#services .stage-foot .section-btn{white-space:nowrap;flex-shrink:0}
+.idx{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.5rem,3vw,3rem);align-items:center}
+.idx-list{list-style:none;margin:0;padding:0}
+.idx-list li + li{border-top:1px solid var(--hair)}
+.idx-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0.25rem 1rem;padding:var(--row-y) 0;text-decoration:none;border-radius:4px}
+.idx-row:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.idx-name{font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(1.15rem,1.6vw,1.35rem);letter-spacing:-0.015em;line-height:1.25;color:var(--dim);transition:color .25s}
+.idx-plat{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mono);align-self:center}
+.idx-what{grid-column:1/-1;font-family:'Spectral',serif;font-size:0.95rem;line-height:1.5;color:var(--fg3);transition:color .25s}
+.idx-go{grid-column:1/-1;font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:600;letter-spacing:0.03em;color:var(--accent);height:0;overflow:hidden;opacity:0;transition:opacity .25s}
+.idx-row:hover .idx-name,.idx-row.is-active .idx-name{color:var(--fg)}
+.idx-row.is-active .idx-what{color:var(--fg2)}
+/* desktop: no extra line on hover (it would push the rows below and make the list jump);
+   the active row gets an arrow instead. Phones show the link line on every row. */
+.idx-name::after{content:'\2192';display:inline-block;margin-left:0.45rem;opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
+.idx-row.is-active .idx-name::after{opacity:1;transform:none}
+.idx-thumb{display:none}
+.idx-card.idx-thumb{display:none;position:relative}
+.idx-preview{position:relative;margin:0;border-radius:6px;overflow:hidden;aspect-ratio:16/10;background:var(--ink)}
+.idx-preview>*{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .5s var(--e),transform 1s var(--e)}
+.idx-preview>.on{opacity:1;transform:none}
+/* HTML "pictures" for the two services that aren't a photo */
+.idx-card{display:flex;flex-direction:column;justify-content:center;gap:0.9rem;padding:clamp(1.5rem,4vw,3.5rem);background:linear-gradient(160deg,#20324C 0%,#0F141B 100%);overflow:hidden}
+.idx-card>*{position:relative;z-index:1}
+.idx-card .idx-card-bg{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:0.2;filter:grayscale(0.3)}
+.idx-card .idx-card-bg + .idx-card-shade{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(15,20,27,0.85) 0%,rgba(15,20,27,0.35) 100%)}
+.idx-card p{font-family:'Spectral',serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.9rem);line-height:1.3;color:var(--paper);margin:0;max-width:24ch}
+.idx-card .mono{font-family:'IBM Plex Mono',monospace;font-size:clamp(0.62rem,0.9vw,0.75rem);letter-spacing:0.1em;text-transform:uppercase;color:var(--steel)}
+/* systems: a faint photo under the site's grid-line texture, and two automations that run when you hover */
+.idx-card .idx-card-shade.grid{background:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(15,20,27,0.88) 0%,rgba(15,20,27,0.6) 100%)}
+.pipes{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem clamp(1.25rem,3vw,2.5rem)}
+.pipes .mono{display:block;margin-bottom:0.9rem}
+.pipe{list-style:none;margin:0;padding:0;display:grid;gap:0.85rem}
+.pipe li,.pipe>span{font-family:'IBM Plex Mono',monospace;font-size:clamp(0.68rem,1vw,0.82rem);letter-spacing:0.08em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:0.9rem;transition:color .3s}
+.pipe li::before,.pipe>span::before{content:'';width:8px;height:8px;border-radius:50%;border:1px solid var(--steel);flex-shrink:0;transition:background .3s,border-color .3s}
+.pipe li.done,.pipe>span.done{color:var(--paper)}
+.pipe li.done::before,.pipe>span.done::before{background:var(--platinum);border-color:var(--platinum)}
+@media(max-width:900px){
+  #services .stage-foot{flex-direction:column;align-items:flex-start}
+  .idx{grid-template-columns:1fr}
+  .idx-preview{display:none}
+  .idx-name{color:var(--fg)}
+  .idx-go{height:auto;opacity:1;margin-top:0.35rem}
+  .idx-name::after{display:none}
+  .idx-thumb{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin-top:0.75rem}
+  .idx-card.idx-thumb{display:flex;position:relative;padding:1.5rem}
+  .idx-card.idx-thumb.sys{aspect-ratio:auto;padding:1.25rem}
+  .idx-thumb .pipes{gap:0.75rem 1rem}
+  .idx-thumb .pipes .mono{margin-bottom:0.6rem}
+  .idx-thumb .pipe{gap:0.55rem}
+  .idx-thumb .pipe>span{font-size:0.6rem;letter-spacing:0.04em;gap:0.55rem;align-items:flex-start;line-height:1.35}
+  .idx-thumb .pipe>span::before{margin-top:0.2em;width:6px;height:6px}
+  .idx-row{text-align:left}
+}
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K21Y2BPWPS"></script>
 <script>
@@ -125,61 +191,28 @@
       <div class="eyebrow dark">What I Do</div>
       <h2 class="h-sec dark">A one-stop shop for the work <br>you don&rsquo;t have time for.</h2>
       <p class="body-lg dark" style="max-width:48ch;margin-bottom:0">One person, fully invested. Every client gets fifteen years of creative work, not a handoff.</p>
-      <div class="svc-grid">
-        <div class="svc-card">
-          <div class="svc-card-bg" style="background-image:url('/Images/Tata and Howard Still.webp');background-position:center top"></div>
-          <div class="svc-card-overlay"></div><div class="svc-bg-n">01</div>
-          <div class="svc-card-content">
-            <div class="svc-tag">Production</div><h3>Video &amp; Photo</h3>
-            <p>Corporate interviews, brand films, product showcases. Concept through final delivery.</p>
-            <a href="/services/video/" class="svc-learn">Learn More <span class="svc-learn-arrow">&rarr;</span></a>
+      <div class="stage">
+        <div class="stage-body">
+          <div class="idx">
+            <ul class="idx-list">
+              <li><a class="idx-row is-active" href="/services/video/" data-i="0"><span class="idx-name">Video &amp; Photo</span><span class="idx-plat">Production</span><span class="idx-what">Interviews, brand films, product videos and photography. I shoot it and I edit it.</span><span class="idx-go">Video &amp; Photo &rarr;</span><img class="idx-thumb" src="/Images/Interview Reel Poster.webp" alt="" loading="lazy" width="1280" height="720"></a></li>
+              <li><a class="idx-row" href="/services/web/" data-i="1"><span class="idx-name">Web Design</span><span class="idx-plat">Development</span><span class="idx-what">New sites, or fixing the one you have. WordPress, Squarespace, Wix, GoDaddy.</span><span class="idx-go">Web Design &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top"></a></li>
+              <li><a class="idx-row" href="/services/content/" data-i="2"><span class="idx-name">Copy &amp; Content</span><span class="idx-plat">Writing</span><span class="idx-what">Blogs, emails, LinkedIn and website copy, written in your voice.</span><span class="idx-go">Copy &amp; Content &rarr;</span><span class="idx-card idx-thumb" aria-hidden="true"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog</span><p>&ldquo;They need visibility, consistency, and story.&rdquo;</p></span></a></li>
+              <li><a class="idx-row" href="/services/design/" data-i="3"><span class="idx-name">Design &amp; Print</span><span class="idx-plat">Print</span><span class="idx-what">Catalogs, brochures, pricing guides and business cards, ready for the printer.</span><span class="idx-go">Design &amp; Print &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654"></a></li>
+              <li><a class="idx-row" href="/services/strategy/" data-i="4"><span class="idx-name">Strategy &amp; Systems</span><span class="idx-plat">Consulting</span><span class="idx-what">HoneyBook, Mailchimp, email and domains, set up so they run without you.</span><span class="idx-go">Strategy &amp; Systems &rarr;</span><span class="idx-card idx-thumb sys" aria-hidden="true"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><span class="pipes"><span><span class="mono">HoneyBook</span><span class="pipe"><span class="done">Inquiry received</span><span class="done">Proposal sent</span><span class="done">Contract signed</span><span>Invoice paid</span></span></span><span><span class="mono">Mailchimp</span><span class="pipe"><span class="done">New subscriber</span><span class="done">Welcome email sent</span><span class="done">Day 3 follow-up</span><span>Added to newsletter</span></span></span></span></span></a></li>
+            </ul>
+            <figure class="idx-preview" aria-hidden="true">
+              <video class="on" muted loop playsinline preload="none" poster="/Images/Interview Reel Poster.webp" data-src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4"></video>
+              <img src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top">
+              <div class="idx-card"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog, March 2026</span><p>&ldquo;Local businesses don&rsquo;t need an $8 million commercial. They need visibility, consistency, and story.&rdquo;</p></div>
+              <img src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654">
+              <div class="idx-card"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><div class="pipes"><div><span class="mono">HoneyBook pipeline</span><ul class="pipe"><li class="done">Inquiry received</li><li class="done">Proposal sent</li><li class="done">Contract signed</li><li>Invoice paid</li><li>Follow-up scheduled</li></ul></div><div><span class="mono">Mailchimp sequence</span><ul class="pipe"><li class="done">New subscriber</li><li class="done">Welcome email sent</li><li class="done">Day 3 follow-up</li><li>Added to newsletter</li><li>Opens tracked</li></ul></div></div></div>
+            </figure>
           </div>
         </div>
-        <div class="svc-card">
-          <div class="svc-card-bg" style="background-image:url('/Images/Don Ruperto Homepage.webp');background-position:center top"></div>
-          <div class="svc-card-overlay"></div><div class="svc-bg-n">02</div>
-          <div class="svc-card-content">
-            <div class="svc-tag">Development</div><h3>Web Design</h3>
-            <p>A fully designed site or a fresh coat of paint. WordPress, Squarespace, Wix, GoDaddy.</p>
-            <a href="/services/web/" class="svc-learn">Learn More <span class="svc-learn-arrow">&rarr;</span></a>
-          </div>
-        </div>
-        <div class="svc-card">
-          <div class="svc-card-bg" style="background-image:url('/Images/Don Ruperto Catalog Example.webp');background-position:center center"></div>
-          <div class="svc-card-overlay"></div><div class="svc-bg-n">03</div>
-          <div class="svc-card-content">
-            <div class="svc-tag">Content</div><h3>Copy &amp; Content</h3>
-            <p>Blogs, email campaigns, print collateral. Every piece built to pull double duty.</p>
-            <a href="/services/content/" class="svc-learn">Learn More <span class="svc-learn-arrow">&rarr;</span></a>
-          </div>
-        </div>
-        <div class="svc-card">
-          <div class="svc-card-bg" style="background-image:url('/Images/Systems Graphic.webp');background-position:center center"></div>
-          <div class="svc-card-overlay"></div><div class="svc-bg-n">04</div>
-          <div class="svc-card-content">
-            <div class="svc-tag">Consulting</div><h3>Strategy &amp; Systems</h3>
-            <p>CRM setup, email marketing, and the thinking behind it all. HoneyBook, Mailchimp.</p>
-            <a href="/services/strategy/" class="svc-learn">Learn More <span class="svc-learn-arrow">&rarr;</span></a>
-          </div>
-        </div>
-        <div class="svc-card">
-          <div class="svc-card-bg" style="background-image:url('/Images/hbz-business-card-front.webp');background-position:center center"></div>
-          <div class="svc-card-overlay"></div><div class="svc-bg-n">05</div>
-          <div class="svc-card-content">
-            <div class="svc-tag">Design</div><h3>Design &amp; Print</h3>
-            <p>Brand collateral, print design, catalogs, and brochures that represent your brand at its best.</p>
-            <a href="/services/design/" class="svc-learn">Learn More <span class="svc-learn-arrow">&rarr;</span></a>
-          </div>
-        </div>
-        <div class="svc-card svc-card-cta" style="background:rgba(32,50,76,0.15)">
-          <div class="svc-card-overlay" style="background:linear-gradient(160deg,rgba(32,50,76,0.85) 0%,rgba(15,20,27,0.97) 100%)"></div>
-          <div class="svc-bg-n" style="color:rgba(183,194,204,0.08)">→</div>
-          <div class="svc-card-content" style="align-items:center;justify-content:center;text-align:center">
-            <div class="svc-tag" style="text-align:center">All Services</div>
-            <h3 style="font-size:1.25rem;margin-bottom:0.75rem">Full Offerings</h3>
-            <p style="text-align:center;max-width:22ch;opacity:1">Explore everything FCS offers across all five service verticals.</p>
-            <a href="/services/" class="svc-learn" style="margin-top:1.25rem">View All <span class="svc-learn-arrow">&rarr;</span></a>
-          </div>
+        <div class="stage-foot">
+          <p class="stage-note">Most clients start with one and add the rest later.</p>
+          <a class="section-btn" href="/services/">All services &rarr;</a>
         </div>
       </div>
     </div>
@@ -422,5 +455,45 @@
 </div>
 
 <script src="/main.js?v=11"></script>
+<script>
+// Services index: hover, focus or tap picks a service; the video row plays a muted clip while hovered
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('#services .idx-row'));
+  var shots=[].slice.call(document.querySelectorAll('#services .idx-preview>*'));
+  if(!rows.length) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var vid=document.querySelector('#services .idx-preview video');
+  var lists=[].slice.call(document.querySelectorAll('#services .idx-preview .pipe'));
+  var steps=[];
+  for(var k=0;k<5;k++){ lists.forEach(function(l){ if(l.children[k]) steps.push(l.children[k]); }); }
+  var timers=[];
+  function runPipe(){
+    timers.forEach(clearTimeout); timers=[];
+    if(reduce) return;
+    steps.forEach(function(li){li.classList.remove('done');});
+    steps.forEach(function(li,i){timers.push(setTimeout(function(){li.classList.add('done');},250+i*260));});
+  }
+  function act(i){
+    rows.forEach(function(r,j){r.classList.toggle('is-active',j===i);});
+    shots.forEach(function(el,j){el.classList.toggle('on',j===i);});
+    if(i===4) runPipe();
+  }
+  function play(){
+    if(reduce||!vid) return;
+    if(!vid.src){vid.src=vid.getAttribute('data-src');}
+    vid.play().catch(function(){});
+  }
+  rows.forEach(function(r,i){
+    r.addEventListener('mouseenter',function(){act(i); if(i===0) play();});
+    r.addEventListener('focus',function(){act(i); if(i===0) play();});
+    if(i===0){
+      r.addEventListener('mouseleave',function(){vid.pause();});
+      r.addEventListener('blur',function(){vid.pause();});
+    } else {
+      r.addEventListener('mouseenter',function(){if(vid) vid.pause();});
+    }
+  });
+})();
+</script>
 </body>
 </html>
