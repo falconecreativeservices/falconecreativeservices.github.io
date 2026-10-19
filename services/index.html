@@ -41,7 +41,7 @@
 @media(max-width:900px){:root{--sec-y:4.25rem;--head-gap:1.75rem;--foot-y:1.1rem}}
 
 /* theme variables: light by default, dark under .on-dark */
-.sect,.v5-hero{
+.sect{
   --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.55);
   --hair:rgba(15,20,27,0.1); --panel:#fff; --panel-b:rgba(15,20,27,0.08);
   --accent:var(--navy); --mono:#5F6C79; --media-bg:var(--ink);
@@ -56,7 +56,13 @@
 .bg-navy{background:var(--navy)}
 .bg-grad{background:linear-gradient(160deg,#20324C 0%,#0F141B 100%)}
 
-.wrap{max-width:1320px;margin:0 auto;padding-left:var(--g);padding-right:var(--g)}
+/* Sections carry the site's 56px label rail on the left. The content gets the same 56px on the
+   right too, so it stays centered on the page instead of drifting right of the rail. */
+.wrap{max-width:calc(1320px + 112px);margin:0 auto;padding-left:calc(56px + var(--g));padding-right:calc(56px + var(--g))}
+.sect{position:relative}
+.sect>.rail{position:absolute;left:0;top:0;bottom:0;width:56px;align-items:flex-start;z-index:2;pointer-events:none}
+.sect>.rail .rail-label{position:sticky;top:calc(var(--nav-h) + 3rem);margin-top:calc(var(--nav-h) + 3rem)}
+@media(max-width:1024px){.wrap{padding-left:var(--g);padding-right:var(--g)}}
 
 /* section skeleton */
 .sect{padding:var(--sec-y) 0}
@@ -75,17 +81,26 @@
 
 /* reveals (motion allowed only) */
 
-/* ── HERO ── */
-.v5-hero{background:linear-gradient(157deg,#0F141B 0%,#20324C 78%);padding:calc(var(--nav-h) + 4.5rem) 0 var(--sec-y)}
-.v5-hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+/* ── HERO (same as every other subpage) ── */
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Paul Smiling.webp') center 35%/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
 .page-tag{font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem}
 .page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
-.v5-hero h1{font-family:'Sora',sans-serif;font-size:clamp(2.4rem,4.6vw,3.9rem);font-weight:700;line-height:1.04;letter-spacing:-0.03em;color:var(--paper);margin:0 0 1.35rem;max-width:17ch}
-.v5-hero h1 em{font-style:normal;color:var(--platinum);display:block}
-.v5-hero-sub{font-family:'Spectral',serif;font-size:1.12rem;line-height:1.7;color:var(--paper-86);max-width:42ch;margin:0 0 2rem}
-.v5-hero-ctas{display:flex;gap:0.85rem;flex-wrap:wrap}
-.v5-hero-photo{margin:0;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;max-height:calc(100vh - var(--nav-h) - 9rem);width:100%;border:1px solid var(--panel-b)}
-.v5-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 40%;display:block}
+.page-hero h1{font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-0.01em;color:var(--paper);margin-bottom:1.25rem}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{font-family:'Spectral',serif;font-size:1rem;line-height:1.72;color:var(--paper-86);max-width:480px}
 
 /* ── VIDEO ── */
 .cv-film{position:relative;aspect-ratio:21/9;background:var(--media-bg)}
@@ -183,9 +198,6 @@
 
 @media(max-width:900px){
   .stage-foot{flex-direction:column;align-items:flex-start}
-  .v5-hero{padding-top:calc(var(--nav-h) + 2.75rem)}
-  .v5-hero .wrap{grid-template-columns:1fr}
-  .v5-hero-photo{aspect-ratio:4/3;max-height:none}
   .cv-film{aspect-ratio:16/9}
   .cw{grid-template-columns:1fr}
   .cw-preview{display:none}
@@ -261,24 +273,21 @@
   <a href="/contact/" class="mobile-menu-cta">Get in Touch</a>
 </div>
 
-<!-- HERO (homepage gradient) -->
-<header class="v5-hero on-dark" id="main-content">
-  <div class="wrap">
-    <div>
-      <div class="page-tag">Services</div>
-      <h1>Most clients hire me for one thing. <em>Then they stay.</em></h1>
-      <p class="v5-hero-sub">I shoot video, build websites, write copy, design print, and set up the systems a small business runs on.</p>
-      <div class="v5-hero-ctas">
-        <a href="/contact/" class="btn-p">Let&rsquo;s talk &rarr;</a>
-        <a href="#hbz" class="btn-s">See one client&rsquo;s whole story</a>
-      </div>
-    </div>
-    <figure class="v5-hero-photo"><img src="/Images/Paul Smiling.webp" alt="Paul Falcone on set, smiling" fetchpriority="high" width="2048" height="1365"></figure>
+<!-- HERO -->
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Services</span>
   </div>
-</header>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">What I Do</div>
+    <h1>Most clients hire me for one thing.<br><em>Then they stay.</em></h1>
+    <p class="page-hero-sub">I shoot video, build websites, write copy, design print, and set up the systems a small business runs on.</p>
+  </div>
+</section>
 
 <!-- VIDEO (paper) -->
 <section class="sect bg-paper">
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Video</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Video &amp; Photo</h2>
@@ -301,6 +310,7 @@
 
 <!-- WEB (navy) -->
 <section class="sect bg-navy on-dark">
+  <div class="rail" aria-hidden="true"><span class="rail-label">Web</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Web Design</h2>
@@ -335,6 +345,7 @@
 
 <!-- DESIGN (paper) -->
 <section class="sect bg-paper">
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Design</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Design &amp; Print</h2>
@@ -360,6 +371,7 @@
 
 <!-- COPY (ink) -->
 <section class="sect bg-ink on-dark">
+  <div class="rail" aria-hidden="true"><span class="rail-label">Copy</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Copy &amp; Content</h2>
@@ -400,6 +412,7 @@
 
 <!-- STRATEGY (paper) -->
 <section class="sect bg-paper">
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Strategy</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Strategy &amp; Systems</h2>
@@ -436,6 +449,7 @@
 
 <!-- HBZ (navy-to-ink gradient, like homepage testimonials) -->
 <section class="sect bg-grad on-dark" id="hbz">
+  <div class="rail" aria-hidden="true"><span class="rail-label">HBZ</span></div>
   <div class="wrap">
     <div class="ch-head">
       <div class="eyebrow">One client, all five</div>
@@ -504,6 +518,7 @@
 
 <!-- Q&A (paper) -->
 <section class="sect bg-paper">
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Q&amp;A</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Things people usually ask.</h2>
@@ -522,13 +537,16 @@
   </div>
 </section>
 
-<!-- CTA (same markup and size as the contact section on the rest of the site) -->
-<section id="contact">
+<!-- CONTACT -->
+<section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label">Contact</span>
+  </div>
   <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
-    <div class="eyebrow" style="margin-bottom:0.75rem">Get in Touch</div>
+    <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
     <h2 class="h-disp" style="margin-bottom:0.85rem">Tell me what<br>you&rsquo;re working on.</h2>
-    <p class="body-lg" style="max-width:400px;margin:0 auto 2.5rem">Send a few details and we&rsquo;ll find a time to talk. Every project starts with a conversation.</p>
-    <a href="/contact/" class="btn-p">Let&rsquo;s talk &rarr;</a>
+    <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Every project starts with a conversation. Send a few details and we&rsquo;ll find a time to talk.</p>
+    <a href="/contact/" class="btn-p">Get in touch &rarr;</a>
   </div>
 </section>
 
