@@ -20,8 +20,14 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=12">
-<script>if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)document.documentElement.classList.add('js-motion');</script>
+<link rel="stylesheet" href="/style.css?v=13">
+<script>
+/* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
+   the visitor asked for less motion, either on their device or in Display settings. */
+(function(){try{var p=JSON.parse(localStorage.getItem('fcs-display')||'{}'),c=document.documentElement.classList;if(p.cursor)c.add('a11y-cursor');if(p.calm)c.add('a11y-calm');}catch(e){}})();
+window.fcsCalm=function(){return document.documentElement.classList.contains('a11y-calm')||window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+</script>
+<script>if(!window.fcsCalm())document.documentElement.classList.add('js-motion');</script>
 <style>
 /*
   Page system
@@ -42,12 +48,12 @@
 
 /* theme variables: light by default, dark under .on-dark */
 .sect{
-  --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.55);
+  --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.62);
   --hair:rgba(15,20,27,0.1); --panel:#fff; --panel-b:rgba(15,20,27,0.08);
   --accent:var(--navy); --mono:#5F6C79; --media-bg:var(--ink);
 }
 .on-dark{
-  --fg:var(--paper); --fg2:rgba(239,241,244,0.86); --fg3:rgba(239,241,244,0.66); --dim:rgba(239,241,244,0.52);
+  --fg:var(--paper); --fg2:rgba(239,241,244,0.86); --fg3:rgba(239,241,244,0.66); --dim:rgba(239,241,244,0.62);
   --hair:rgba(183,194,204,0.14); --panel:rgba(255,255,255,0.035); --panel-b:rgba(183,194,204,0.14);
   --accent:var(--platinum); --mono:var(--steel); --media-bg:#0b0f15;
 }
@@ -274,9 +280,10 @@
 </div>
 
 <!-- HERO -->
+<main>
 <section class="page-hero" style="position:relative" id="main-content">
   <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Services</span>
+    <span class="rail-label" aria-hidden="true">Services</span>
   </div>
   <div style="padding-left:calc(56px + var(--g))">
     <div class="page-tag">What I Do</div>
@@ -287,7 +294,7 @@
 
 <!-- VIDEO (paper) -->
 <section class="sect bg-paper">
-  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Video</span></div>
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark" aria-hidden="true">Video</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Video &amp; Photo</h2>
@@ -310,7 +317,7 @@
 
 <!-- WEB (navy) -->
 <section class="sect bg-navy on-dark">
-  <div class="rail" aria-hidden="true"><span class="rail-label">Web</span></div>
+  <div class="rail" aria-hidden="true"><span class="rail-label" aria-hidden="true">Web</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Web Design</h2>
@@ -345,7 +352,7 @@
 
 <!-- DESIGN (paper) -->
 <section class="sect bg-paper">
-  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Design</span></div>
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark" aria-hidden="true">Design</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Design &amp; Print</h2>
@@ -371,7 +378,7 @@
 
 <!-- COPY (ink) -->
 <section class="sect bg-ink on-dark">
-  <div class="rail" aria-hidden="true"><span class="rail-label">Copy</span></div>
+  <div class="rail" aria-hidden="true"><span class="rail-label" aria-hidden="true">Copy</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Copy &amp; Content</h2>
@@ -412,7 +419,7 @@
 
 <!-- STRATEGY (paper) -->
 <section class="sect bg-paper">
-  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Strategy</span></div>
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark" aria-hidden="true">Strategy</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Strategy &amp; Systems</h2>
@@ -449,7 +456,7 @@
 
 <!-- HBZ (navy-to-ink gradient, like homepage testimonials) -->
 <section class="sect bg-grad on-dark" id="hbz">
-  <div class="rail" aria-hidden="true"><span class="rail-label">HBZ</span></div>
+  <div class="rail" aria-hidden="true"><span class="rail-label" aria-hidden="true">HBZ</span></div>
   <div class="wrap">
     <div class="ch-head">
       <div class="eyebrow">One client, all five</div>
@@ -518,7 +525,7 @@
 
 <!-- Q&A (paper) -->
 <section class="sect bg-paper">
-  <div class="rail dark" aria-hidden="true"><span class="rail-label dark">Q&amp;A</span></div>
+  <div class="rail dark" aria-hidden="true"><span class="rail-label dark" aria-hidden="true">Q&amp;A</span></div>
   <div class="wrap">
     <div class="ch-head">
       <h2 class="ch-title">Things people usually ask.</h2>
@@ -540,7 +547,7 @@
 <!-- CONTACT -->
 <section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
   <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Contact</span>
+    <span class="rail-label" aria-hidden="true">Contact</span>
   </div>
   <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
     <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
@@ -550,19 +557,21 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="ft-logo" style="justify-self:start"><img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024"><span class="ft-wm">Falcone Creative Services</span></div>
-  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services<span class="ft-legal"><a href="/privacy/">Privacy</a><a href="/accessibility/">Accessibility</a><button type="button" class="ft-display" data-display-settings>Display settings</button></span></div>
   <div class="ft-links" style="justify-self:end">
     <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="/services/">Services</a><a href="/work/">Work</a><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a>
   </div>
 </footer>
 
-<script src="/main.js?v=11"></script>
+<script src="/main.js?v=12"></script>
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var reduce = window.fcsCalm();
 
   if(!reduce){
     var table = document.querySelector('.cd-table');

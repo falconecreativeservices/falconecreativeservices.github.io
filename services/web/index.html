@@ -20,7 +20,13 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=12">
+<link rel="stylesheet" href="/style.css?v=13">
+<script>
+/* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
+   the visitor asked for less motion, either on their device or in Display settings. */
+(function(){try{var p=JSON.parse(localStorage.getItem('fcs-display')||'{}'),c=document.documentElement.classList;if(p.cursor)c.add('a11y-cursor');if(p.calm)c.add('a11y-calm');}catch(e){}})();
+window.fcsCalm=function(){return document.documentElement.classList.contains('a11y-calm')||window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+</script>
 <style>
 .page-hero{
   background:
@@ -98,6 +104,7 @@
   letter-spacing:0.12em;text-transform:uppercase;
   color:var(--steel);margin-bottom:0.5rem;
 }
+.tier-name{color:#5F6C79}
 .tier-title{
   font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;
   color:var(--ink);margin-bottom:0.75rem;letter-spacing:-0.01em;
@@ -147,6 +154,7 @@
   letter-spacing:0.1em;text-transform:uppercase;
   color:var(--steel);margin-bottom:0.5rem;
 }
+.project-card-type{color:#5F6C79}
 .project-card-title{
   font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:700;
   color:var(--ink);letter-spacing:-0.01em;margin-bottom:0.6rem;
@@ -222,9 +230,10 @@
 </div>
 
 <!-- PAGE HERO -->
+<main>
 <section class="page-hero" style="position:relative" id="main-content">
   <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Web</span>
+    <span class="rail-label" aria-hidden="true">Web</span>
   </div>
   <div style="padding-left:calc(56px + var(--g))">
     <div class="page-breadcrumb"><a href="/services/">Services</a> / Web Design</div>
@@ -246,7 +255,7 @@
 <span class="ch-rule dark" style="display:block"></span>
 <section id="tiers" style="background:var(--paper);position:relative">
   <div class="with-rail dark-rule" style="position:relative">
-    <div class="rail dark"><span class="rail-label dark">Options</span></div>
+    <div class="rail dark"><span class="rail-label dark" aria-hidden="true">Options</span></div>
     <div class="rail-content dark" style="padding-bottom:3.5rem">
       <div class="eyebrow dark">How We Work</div>
       <h2 class="h-sec dark" style="margin-bottom:0.5rem">Two ways to approach it.</h2>
@@ -285,13 +294,13 @@
 <span class="ch-rule dark" style="display:block"></span>
 <section id="work" style="background:var(--ink);position:relative">
   <div class="with-rail" style="position:relative">
-    <div class="rail"><span class="rail-label">Work</span></div>
+    <div class="rail"><span class="rail-label" aria-hidden="true">Work</span></div>
     <div class="rail-content">
       <div class="eyebrow">Selected Projects</div>
       <h2 class="h-sec" style="margin-bottom:2.5rem">Recent web work.</h2>
       <div class="project-card">
         <div class="project-card-img">
-          <iframe src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen title="Don Ruperto Cigars website scroll"></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen title="Don Ruperto Cigars website scroll"></iframe>
         </div>
         <div class="project-card-info">
           <div class="project-card-type">WordPress &middot; Elementor Pro &middot; Full Build</div>
@@ -301,7 +310,7 @@
       </div>
       <div class="project-card flip">
         <div class="project-card-img">
-          <iframe src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen title="HBZ Media website scroll"></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen title="HBZ Media website scroll"></iframe>
         </div>
         <div class="project-card-info">
           <div class="project-card-type">Wix &middot; Full Build</div>
@@ -311,7 +320,7 @@
       </div>
       <div class="project-card">
         <div class="project-card-img">
-          <iframe src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen title="Jennings Canine Consulting website scroll"></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen title="Jennings Canine Consulting website scroll"></iframe>
         </div>
         <div class="project-card-info">
           <div class="project-card-type">WordPress &middot; Elementor &middot; Full Build</div>
@@ -321,7 +330,7 @@
       </div>
       <div class="project-card flip">
         <div class="project-card-img">
-          <iframe src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen title="Chris McLernon website scroll"></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen title="Chris McLernon website scroll"></iframe>
         </div>
         <div class="project-card-info">
           <div class="project-card-type">Squarespace &middot; Full Build</div>
@@ -331,7 +340,7 @@
       </div>
       <div class="project-card">
         <div class="project-card-img">
-          <iframe src="https://www.youtube-nocookie.com/embed/fTTW5r078hU?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=fTTW5r078hU" allow="autoplay; encrypted-media" allowfullscreen title="Olympic Wine and Liquors website scroll"></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/fTTW5r078hU?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=fTTW5r078hU" allow="autoplay; encrypted-media" allowfullscreen title="Olympic Wine and Liquors website scroll"></iframe>
         </div>
         <div class="project-card-info">
           <div class="project-card-type">GoDaddy &middot; Full Build</div>
@@ -348,7 +357,7 @@
 <span class="ch-rule" style="display:block"></span>
 <section id="contact" style="background:linear-gradient(120deg,#20324C,#0F141B);position:relative">
   <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Contact</span>
+    <span class="rail-label" aria-hidden="true">Contact</span>
   </div>
   <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
     <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
@@ -358,13 +367,15 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft-logo" style="justify-self:start">
     <img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024">
     <span class="ft-wm">Falcone Creative Services</span>
   </div>
-  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services<span class="ft-legal"><a href="/privacy/">Privacy</a><a href="/accessibility/">Accessibility</a><button type="button" class="ft-display" data-display-settings>Display settings</button></span></div>
   <div class="ft-links" style="justify-self:end">
     <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="/services/">Services</a>
@@ -375,6 +386,6 @@
   </div>
 </footer>
 
-<script src="/main.js?v=11"></script>
+<script src="/main.js?v=12"></script>
 </body>
 </html>

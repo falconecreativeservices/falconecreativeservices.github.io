@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/Images/favicon.png">
+  <link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility — Falcone Creative Services</title>
+<meta name="description" content="How this site works toward being usable for everyone, and how to report a problem.">
+<meta property="og:title" content="Accessibility — Falcone Creative Services">
+<meta property="og:description" content="How this site works toward being usable for everyone, and how to report a problem.">
+<meta property="og:image" content="https://falconecreativeservices.com/Images/og-image.jpg">
+<meta property="og:url" content="https://falconecreativeservices.com/accessibility/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://falconecreativeservices.com/Images/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/style.css?v=13">
+<script>
+/* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
+   the visitor asked for less motion, either on their device or in Display settings. */
+(function(){try{var p=JSON.parse(localStorage.getItem('fcs-display')||'{}'),c=document.documentElement.classList;if(p.cursor)c.add('a11y-cursor');if(p.calm)c.add('a11y-calm');}catch(e){}})();
+window.fcsCalm=function(){return document.documentElement.classList.contains('a11y-calm')||window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+</script>
+<style>
+.page-hero{
+  background:
+    linear-gradient(157deg,rgba(15,20,27,0.84) 0%,rgba(32,50,76,0.80) 78%),
+    url('/Images/Amanda Studio SEM.webp') center/cover no-repeat;
+  padding:calc(var(--nav-h) + 7rem) var(--g) 8rem;
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:1;
+}
+.page-hero>*{position:relative;z-index:2}
+.page-tag{
+  font-family:'Sora',sans-serif;font-size:0.67rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--platinum);
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:0.85rem;
+}
+.page-tag::before{content:'';display:block;width:1.75rem;height:1px;background:var(--platinum);flex-shrink:0}
+.page-hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;line-height:1.08;letter-spacing:-0.01em;
+  color:var(--paper);margin-bottom:1.25rem;
+}
+.page-hero h1 em{font-style:normal;color:var(--platinum)}
+.page-hero-sub{
+  font-family:'Spectral',serif;font-size:1rem;
+  line-height:1.72;color:var(--paper-86);max-width:480px;
+}
+/* ── Plain-language page body ── */
+#doc{background:var(--paper);position:relative}
+#doc::after{content:'';position:absolute;right:56px;top:0;bottom:0;width:1px;background:rgba(15,20,27,0.1);pointer-events:none}
+.doc{max-width:68ch;color:var(--ink)}
+.doc .updated{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:#5F6C79;margin:0 0 2rem}
+.doc h2{font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin:2.5rem 0 0.75rem;padding-top:2rem;border-top:1px solid rgba(15,20,27,0.1)}
+.doc h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.doc p,.doc li{font-family:'Spectral',serif;font-size:1.05rem;line-height:1.75;color:#3E3E46}
+.doc p{margin:0 0 1rem}
+.doc ul{margin:0 0 1rem;padding-left:1.25rem}
+.doc li{margin-bottom:0.5rem}
+.doc li b,.doc p b{font-weight:600;color:var(--ink)}
+.doc a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.doc a:hover{color:var(--ink)}
+.doc a:focus-visible,.doc button:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:2px}
+.doc .doc-btn{font-family:'Sora',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.04em;background:var(--navy);color:var(--paper);border:none;border-radius:8px;padding:0.75rem 1.4rem;min-height:44px;cursor:none;margin:0.25rem 0 1rem}
+.doc .doc-btn:hover{background:var(--ink)}
+@media(max-width:1024px){#doc::after{display:none}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K21Y2BPWPS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K21Y2BPWPS');
+</script>
+</head>
+<body>
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+<div class="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024">
+    <span class="nav-wordmark">Falcone <span>Creative Services</span></span>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/services/">Services</a>
+      <div class="nav-dropdown">
+        <a href="/services/">All Services</a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="/services/video/">Video &amp; Photo</a>
+        <a href="/services/web/">Web Design</a>
+        <a href="/services/content/">Copy &amp; Content</a>
+        <a href="/services/design/">Design &amp; Print</a>
+        <a href="/services/strategy/">Strategy &amp; Systems</a>
+      </div>
+    </li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/newsletter/">Newsletter</a></li>
+  </ul>
+  <a href="/contact/" class="nav-cta">Contact</a>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="/services/">Services</a>
+  <div class="mobile-menu-sub">
+    <a href="/services/video/">Video &amp; Photo</a>
+    <a href="/services/web/">Web Design</a>
+    <a href="/services/content/">Copy &amp; Content</a>
+    <a href="/services/design/">Design &amp; Print</a>
+    <a href="/services/strategy/">Strategy &amp; Systems</a>
+  </div>
+  <a href="/work/">Work</a>
+  <a href="/about/">About</a>
+  <a href="/blog/">Blog</a>
+  <a href="/newsletter/">Newsletter</a>
+  <a href="/contact/" class="mobile-menu-cta">Get in Touch</a>
+</div>
+
+<!-- PAGE HERO -->
+
+<!-- PAGE HERO -->
+<main>
+<section class="page-hero" style="position:relative" id="main-content">
+  <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
+    <span class="rail-label" aria-hidden="true">Access</span>
+  </div>
+  <div style="padding-left:calc(56px + var(--g))">
+    <div class="page-tag">Accessibility</div>
+    <h1>Built to work <em>for everyone.</em></h1>
+    <p class="page-hero-sub">Where this site stands on accessibility, and how to tell me if something gets in your way.</p>
+  </div>
+</section>
+
+<span class="ch-rule dark" style="display:block"></span>
+<section id="doc">
+  <div class="with-rail dark-rule" style="position:relative">
+    <div class="rail dark"><span class="rail-label dark" aria-hidden="true">Access</span></div>
+    <div class="rail-content dark" style="padding-bottom:5rem">
+      <div class="doc">
+        <p class="updated">Last reviewed October 18, 2026</p>
+
+        <h2>The goal</h2>
+        <p>Everyone should be able to use this site, whatever device, browser or assistive technology they use. I work toward the Web Content Accessibility Guidelines (WCAG) 2.1 at Level AA.</p>
+
+        <h2>What&rsquo;s in place</h2>
+        <ul>
+          <li>Images have text descriptions for screen readers.</li>
+          <li>Everything can be reached with a keyboard, with a visible outline showing where you are, and a link at the top of each page to skip straight to the content.</li>
+          <li>Form fields are labeled, and if something is missing the form tells you which field, right next to it.</li>
+          <li>Text is checked for contrast against its background.</li>
+          <li>Embedded videos have names, so screen readers announce what they are.</li>
+          <li>Videos that play on their own are silent and have a Pause button.</li>
+          <li>If your device is set to reduce motion, the site turns off its animations and autoplaying video.</li>
+        </ul>
+
+        <h2>Display settings</h2>
+        <p>You can change two things about how this site looks and behaves. Your choice is saved in your browser:</p>
+        <ul>
+          <li><b>Standard cursor</b> brings back your normal pointer instead of the site&rsquo;s small dot. Useful if you use a larger system cursor.</li>
+          <li><b>Reduce motion</b> turns off animations and autoplaying video, even if your device isn&rsquo;t set to do that.</li>
+        </ul>
+        <button type="button" class="doc-btn" data-display-settings>Open display settings</button>
+        <p>You can also open these from the link at the bottom of every page.</p>
+
+        <h2>Known issues</h2>
+        <p>Some content comes from other services, like the YouTube video player, and isn&rsquo;t fully in my control.</p>
+
+        <h2>How this was checked</h2>
+        <p>The site was reviewed with automated accessibility testing (axe) and by navigating it with a keyboard. Reviews happen when the site changes.</p>
+
+        <h2>Tell me if something gets in your way</h2>
+        <p>If any part of this site is hard to use, send a message through the <a href="/contact/">contact page</a> and mention the page you were on. I&rsquo;ll get back to you within one business day, and I&rsquo;m happy to send the information you need another way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo" style="justify-self:start">
+    <img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024">
+    <span class="ft-wm">Falcone Creative Services</span>
+  </div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services<span class="ft-legal"><a href="/privacy/">Privacy</a><a href="/accessibility/">Accessibility</a><button type="button" class="ft-display" data-display-settings>Display settings</button></span></div>
+  <div class="ft-links" style="justify-self:end">
+    <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/services/">Services</a>
+    <a href="/work/">Work</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</footer>
+<script src="/main.js?v=12"></script>
+<script>
+(function(){
+  var form = document.querySelector('.contact-form');
+  var btn = document.getElementById('form-btn');
+  var success = document.getElementById('form-success');
+  var errorEl = document.getElementById('form-error');
+  if(!form) return;
+  var showError = function(){
+    btn.textContent = 'Send Message \u2192';
+    btn.disabled = false;
+    errorEl.textContent = 'That didn\u2019t send. Your message is still here, so give it another try in a moment.';
+    errorEl.hidden = false;
+  };
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.hidden = true;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(res.ok){
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        showError();
+      }
+    }).catch(showError);
+  });
+})();
+</script>
+</body>
+</html>

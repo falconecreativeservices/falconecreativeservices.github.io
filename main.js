@@ -1,6 +1,9 @@
+// Pages set window.fcsCalm in <head>; this fallback covers any page that doesn't.
+window.fcsCalm=window.fcsCalm||function(){return window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+
 
 (function(){
-  var rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var rm = window.fcsCalm();
   // Cursor — instant tracking
   var cur = document.getElementById('cur');
   if(cur){
@@ -243,7 +246,7 @@
 // Image loading: tone the slot while a photo loads, then fade the photo in.
 // Skips logos/marks (transparent), images already loaded, and images with their own opacity rules.
 (function(){
-  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var reduce=window.fcsCalm();
   [].forEach.call(document.images,function(img){
     if(img.complete && img.naturalWidth) return;
     if(/logo|mark|favicon/i.test(img.getAttribute('src')||'')) return;
@@ -260,5 +263,77 @@
       setTimeout(function(){img.classList.remove('img-fade','img-in');},600);
     },{once:true});
     img.addEventListener('error',function(){slot.classList.remove('img-wait');img.classList.remove('img-fade');},{once:true});
+  });
+})();
+
+// Autoplaying YouTube walkthroughs: each gets a Pause/Play button (moving video needs a way to stop it).
+// With less motion asked for, they load paused instead, and the button says Play.
+(function(){
+  var calm=window.fcsCalm();
+  [].forEach.call(document.querySelectorAll('iframe[src*="autoplay=1"]'),function(f){
+    if(calm) f.src=f.src.replace('autoplay=1','autoplay=0');
+    if(f.src.indexOf('enablejsapi=1')<0) return;
+    var box=f.parentElement, playing=!calm;
+    box.classList.add('yt-box');
+    var btn=document.createElement('button');
+    btn.type='button'; btn.className='yt-toggle';
+    var name=(f.getAttribute('title')||'video');
+    function label(){ btn.textContent=playing?'Pause':'Play'; btn.setAttribute('aria-label',(playing?'Pause ':'Play ')+name); }
+    btn.addEventListener('click',function(e){
+      e.preventDefault(); e.stopPropagation();
+      playing=!playing;
+      f.contentWindow.postMessage(JSON.stringify({event:'command',func:playing?'playVideo':'pauseVideo',args:[]}),'*');
+      label();
+    });
+    btn.addEventListener('mouseenter',function(){document.body.classList.add('cb');});
+    btn.addEventListener('mouseleave',function(){document.body.classList.remove('cb');});
+    label();
+    box.appendChild(btn);
+  });
+})();
+
+// Display settings (footer): standard cursor and reduce motion, saved on this device.
+(function(){
+  var KEY='fcs-display', root=document.documentElement;
+  function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){return {};}}
+  function save(p){try{localStorage.setItem(KEY,JSON.stringify(p));}catch(e){}}
+  var dlg=null;
+  function build(){
+    var osCalm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    dlg=document.createElement('dialog');
+    dlg.className='ds';
+    dlg.setAttribute('aria-labelledby','ds-title');
+    dlg.innerHTML=
+      '<h2 id="ds-title">Display settings</h2>'+
+      '<p class="ds-intro">Saved on this device.</p>'+
+      '<label class="ds-row"><span><b id="ds-cur-l">Standard cursor</b><span id="ds-cur-d">Use your normal pointer instead of the site\u2019s dot.</span></span>'+
+        '<input type="checkbox" role="switch" data-k="cursor" aria-labelledby="ds-cur-l" aria-describedby="ds-cur-d"></label>'+
+      '<label class="ds-row"><span><b id="ds-mo-l">Reduce motion</b><span id="ds-mo-d">'+(osCalm?'Already on, because your device asks for less motion.':'Stops autoplaying video and animations. The page refreshes to apply it.')+'</span></span>'+
+        '<input type="checkbox" role="switch" data-k="calm" aria-labelledby="ds-mo-l" aria-describedby="ds-mo-d"'+(osCalm?' checked disabled':'')+'></label>'+
+      '<div class="ds-foot"><a href="/accessibility/">Accessibility statement</a><button type="button" class="ds-close">Done</button></div>';
+    document.body.appendChild(dlg);
+    var p=load();
+    [].forEach.call(dlg.querySelectorAll('input[data-k]'),function(box){
+      var k=box.getAttribute('data-k');
+      if(!box.disabled) box.checked=!!p[k];
+      box.addEventListener('change',function(){
+        var q=load(); q[k]=box.checked; save(q);
+        if(k==='cursor'){ root.classList.toggle('a11y-cursor',box.checked); }
+        if(k==='calm'){ root.classList.toggle('a11y-calm',box.checked); setTimeout(function(){location.reload();},350); }
+      });
+    });
+    dlg.querySelector('.ds-close').addEventListener('click',function(){dlg.close();});
+    // click on the backdrop closes it
+    dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+    // the dialog sits above the custom cursor, so show the normal pointer while it's open
+    dlg.addEventListener('close',function(){ root.classList.remove('ds-open'); });
+  }
+  [].forEach.call(document.querySelectorAll('[data-display-settings]'),function(btn){
+    btn.addEventListener('click',function(){
+      if(!dlg) build();
+      root.classList.add('ds-open');
+      document.body.classList.remove('cb','ch');
+      dlg.showModal();
+    });
   });
 })();

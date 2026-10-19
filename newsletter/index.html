@@ -20,7 +20,13 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=12">
+<link rel="stylesheet" href="/style.css?v=13">
+<script>
+/* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
+   the visitor asked for less motion, either on their device or in Display settings. */
+(function(){try{var p=JSON.parse(localStorage.getItem('fcs-display')||'{}'),c=document.documentElement.classList;if(p.cursor)c.add('a11y-cursor');if(p.calm)c.add('a11y-calm');}catch(e){}})();
+window.fcsCalm=function(){return document.documentElement.classList.contains('a11y-calm')||window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+</script>
 <style>
 /* Page hero */
 .page-hero{
@@ -68,6 +74,7 @@
   letter-spacing:0.18em;text-transform:uppercase;color:var(--steel);
   margin-bottom:1rem;
 }
+.nl-eyebrow{color:#5F6C79}
 .nl-heading{
   font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2.2rem);
   font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-0.01em;
@@ -188,9 +195,10 @@
 </div>
 
 <!-- HERO -->
+<main>
 <div id="main-content" tabindex="-1" style="position:absolute;top:0"></div>
 <section class="page-hero" style="position:relative">
-  <div class="rail"><span class="rail-label">Newsletter</span></div>
+  <div class="rail"><span class="rail-label" aria-hidden="true">Newsletter</span></div>
   <div style="padding-left:calc(56px + var(--g))">
     <div class="page-tag">Newsletter</div>
     <h1>Stay in the loop.</h1>
@@ -199,7 +207,7 @@
 </section>
 
 <!-- FORM -->
-<main id="nl-main">
+<div id="nl-main">
   <div class="nl-wrap">
   <div class="nl-section">
     <div class="nl-eyebrow">Join the list</div>
@@ -236,6 +244,8 @@
     </form>
   </div>
   </div>
+</div>
+
 </main>
 
 <footer>
@@ -243,7 +253,7 @@
     <img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024">
     <span class="ft-wm">Falcone Creative Services</span>
   </div>
-  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services<span class="ft-legal"><a href="/privacy/">Privacy</a><a href="/accessibility/">Accessibility</a><button type="button" class="ft-display" data-display-settings>Display settings</button></span></div>
   <div class="ft-links" style="justify-self:end">
     <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="/services/">Services</a>
@@ -254,7 +264,7 @@
   </div>
 </footer>
 
-<script src="/main.js?v=11"></script>
+<script src="/main.js?v=12"></script>
 <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
 <script type="text/javascript">
 (function($){

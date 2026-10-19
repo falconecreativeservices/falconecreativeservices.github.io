@@ -21,11 +21,17 @@
 <link rel="preload" href="/Images/On Set.webp" as="image" fetchpriority="high">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=12">
+<link rel="stylesheet" href="/style.css?v=13">
+<script>
+/* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
+   the visitor asked for less motion, either on their device or in Display settings. */
+(function(){try{var p=JSON.parse(localStorage.getItem('fcs-display')||'{}'),c=document.documentElement.classList;if(p.cursor)c.add('a11y-cursor');if(p.calm)c.add('a11y-calm');}catch(e){}})();
+window.fcsCalm=function(){return document.documentElement.classList.contains('a11y-calm')||window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+</script>
 <style>
 /* ── Services index (list on the left, live preview on the right) ── */
 #services{
-  --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.55);
+  --fg:var(--ink); --fg2:#3E3E46; --fg3:#565B64; --dim:rgba(15,20,27,0.62);
   --hair:rgba(15,20,27,0.1); --mono:#5F6C79; --accent:var(--navy);
   --pad:clamp(1.5rem,2.6vw,2.5rem); --row-y:0.9rem; --e:cubic-bezier(.22,1,.36,1);
 }
@@ -54,6 +60,11 @@
 .idx-preview{position:relative;margin:0;border-radius:6px;overflow:hidden;aspect-ratio:16/10;background:var(--ink)}
 .idx-preview>*{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .5s var(--e),transform 1s var(--e)}
 .idx-preview>.on{opacity:1;transform:none}
+/* pause control for the clip (shown only while the video is the active preview) */
+.idx-preview>.idx-toggle{position:absolute;inset:auto 1rem 1rem auto;width:auto;height:auto;opacity:1;transform:none;z-index:3;font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.02em;color:var(--paper);background:rgba(15,20,27,0.62);border:1px solid rgba(183,194,204,0.3);border-radius:7px;padding:0.55rem 1rem;min-height:40px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:none;transition:background .2s,opacity .3s}
+.idx-preview>.idx-toggle:hover{background:rgba(15,20,27,0.85)}
+.idx-preview>.idx-toggle:focus-visible{outline:2px solid var(--platinum);outline-offset:2px}
+.idx-preview>.idx-toggle[hidden]{display:none}
 /* HTML "pictures" for the two services that aren't a photo */
 .idx-card{display:flex;flex-direction:column;justify-content:center;gap:0.9rem;padding:clamp(1.5rem,4vw,3.5rem);background:linear-gradient(160deg,#20324C 0%,#0F141B 100%);overflow:hidden}
 .idx-card>*{position:relative;z-index:1}
@@ -148,6 +159,7 @@
 </div>
 
 <!-- HERO -->
+<main>
 <div id="main-content" tabindex="-1" style="position:absolute;top:0"></div>
 <section id="hero">
   <img class="hero-mark-bg" src="/Images/fcs-mark.webp" alt="" aria-hidden="true" width="1024" height="1024">
@@ -186,7 +198,7 @@
 <span class="ch-rule dark" style="display:block"></span>
 <section id="services">
   <div class="with-rail dark-rule">
-    <div class="rail dark"><span class="rail-label dark">Services</span></div>
+    <div class="rail dark"><span class="rail-label dark" aria-hidden="true">Services</span></div>
     <div class="rail-content">
       <div class="eyebrow dark">What I Do</div>
       <h2 class="h-sec dark">A one-stop shop for the work <br>you don&rsquo;t have time for.</h2>
@@ -201,12 +213,13 @@
               <li><a class="idx-row" href="/services/design/" data-i="3"><span class="idx-name">Design &amp; Print</span><span class="idx-plat">Print</span><span class="idx-what">Catalogs, brochures, pricing guides and business cards, ready for the printer.</span><span class="idx-go">Design &amp; Print &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654"></a></li>
               <li><a class="idx-row" href="/services/strategy/" data-i="4"><span class="idx-name">Strategy &amp; Systems</span><span class="idx-plat">Consulting</span><span class="idx-what">HoneyBook, Mailchimp, email and domains, set up so they run without you.</span><span class="idx-go">Strategy &amp; Systems &rarr;</span><span class="idx-card idx-thumb sys" aria-hidden="true"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><span class="pipes"><span><span class="mono">HoneyBook</span><span class="pipe"><span class="done">Inquiry received</span><span class="done">Proposal sent</span><span class="done">Contract signed</span><span>Invoice paid</span></span></span><span><span class="mono">Mailchimp</span><span class="pipe"><span class="done">New subscriber</span><span class="done">Welcome email sent</span><span class="done">Day 3 follow-up</span><span>Added to newsletter</span></span></span></span></span></a></li>
             </ul>
-            <figure class="idx-preview" aria-hidden="true">
-              <video class="on" muted loop playsinline preload="none" poster="/Images/Interview Reel Poster.webp" data-src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4"></video>
-              <img src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top">
-              <div class="idx-card"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog, March 2026</span><p>&ldquo;Local businesses don&rsquo;t need an $8 million commercial. They need visibility, consistency, and story.&rdquo;</p></div>
-              <img src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654">
-              <div class="idx-card"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><div class="pipes"><div><span class="mono">HoneyBook pipeline</span><ul class="pipe"><li class="done">Inquiry received</li><li class="done">Proposal sent</li><li class="done">Contract signed</li><li>Invoice paid</li><li>Follow-up scheduled</li></ul></div><div><span class="mono">Mailchimp sequence</span><ul class="pipe"><li class="done">New subscriber</li><li class="done">Welcome email sent</li><li class="done">Day 3 follow-up</li><li>Added to newsletter</li><li>Opens tracked</li></ul></div></div></div>
+            <figure class="idx-preview">
+              <video class="on" aria-hidden="true" muted loop playsinline preload="none" poster="/Images/Interview Reel Poster.webp" data-src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4"></video>
+              <img aria-hidden="true" src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top">
+              <div class="idx-card" aria-hidden="true"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog, March 2026</span><p>&ldquo;Local businesses don&rsquo;t need an $8 million commercial. They need visibility, consistency, and story.&rdquo;</p></div>
+              <img aria-hidden="true" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654">
+              <div class="idx-card" aria-hidden="true"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><div class="pipes"><div><span class="mono">HoneyBook pipeline</span><ul class="pipe"><li class="done">Inquiry received</li><li class="done">Proposal sent</li><li class="done">Contract signed</li><li>Invoice paid</li><li>Follow-up scheduled</li></ul></div><div><span class="mono">Mailchimp sequence</span><ul class="pipe"><li class="done">New subscriber</li><li class="done">Welcome email sent</li><li class="done">Day 3 follow-up</li><li>Added to newsletter</li><li>Opens tracked</li></ul></div></div></div>
+              <button class="idx-toggle" type="button" aria-label="Pause the video">Pause</button>
             </figure>
           </div>
         </div>
@@ -222,7 +235,7 @@
 <!-- VIDEO -->
 <section id="video">
   <div class="with-rail" style="flex:1">
-    <div class="rail"><span class="rail-label">Video</span></div>
+    <div class="rail"><span class="rail-label" aria-hidden="true">Video</span></div>
     <div style="flex:1;display:flex;flex-direction:column;min-width:0">
       <div class="video-intro">
         <div class="eyebrow">Video Work</div>
@@ -268,25 +281,25 @@
 <span class="ch-rule dark" style="display:block"></span>
 <section id="web">
   <div class="with-rail dark-rule">
-    <div class="rail dark"><span class="rail-label dark">Web</span></div>
+    <div class="rail dark"><span class="rail-label dark" aria-hidden="true">Web</span></div>
     <div class="rail-content">
       <div class="eyebrow dark">Web Design</div>
       <h2 class="h-sec dark" style="margin-bottom:0.5rem">Sites that work as hard as <br>the people behind them.</h2>
       <p class="body-lg dark" style="max-width:48ch;margin-bottom:2rem">WordPress, Squarespace, Wix, GoDaddy: the right platform for your goals, built to reflect who you are and convert the people who find you.</p>
       <div class="project">
-        <div class="project-video"><iframe src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="Don Ruperto Cigars website walkthrough" src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Don Ruperto Cigars</div><p class="project-desc">Luxury landing page for a premium cigar brand. Custom cursor, subtle animations, high-end photography. Built to feel as refined as the product.</p><a href="/blog/don-ruperto/" class="project-learn">Read the Post <span class="project-arrow">&rarr;</span></a></div>
       </div>
       <div class="project flip">
-        <div class="project-video"><iframe src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="HBZ Media website walkthrough" src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">Wix &middot; Branding</div><div class="project-client">HBZ Media</div><p class="project-desc">Full rebrand and site build. Defined target markets and verticals first, then built the entire site around those findings. Ongoing retainer since 2023.</p><a href="/blog/hbz-media-relaunch/" class="project-learn">Read the Post <span class="project-arrow">&rarr;</span></a></div>
       </div>
       <div class="project">
-        <div class="project-video"><iframe src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="Jennings Canine Consulting website walkthrough" src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Jennings Canine Consulting</div><p class="project-desc">Full rebrand for a canine consulting practice: new logo, new color palette, and a clean site build. Migrated 150+ existing blog posts to the new platform and format.</p><a href="/services/web/" class="project-learn">Learn More <span class="project-arrow">&rarr;</span></a></div>
       </div>
       <div class="project flip">
-        <div class="project-video"><iframe src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="Chris McLernon website walkthrough" src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">Squarespace &middot; Branding</div><div class="project-client">Chris McLernon</div><p class="project-desc">35+ years of work organized into one site for the bassist of gold-selling artist Saigon Kick. Includes a fully rebuilt oldschool HTML site, hidden inside Squarespace as a secret second site.</p><a href="/services/web/" class="project-learn">Learn More <span class="project-arrow">&rarr;</span></a></div>
       </div>
     </div>
@@ -298,7 +311,7 @@
 <span class="ch-rule" style="display:block"></span>
 <section id="design">
   <div class="with-rail">
-    <div class="rail"><span class="rail-label">Design</span></div>
+    <div class="rail"><span class="rail-label" aria-hidden="true">Design</span></div>
     <div class="rail-content">
       <div class="eyebrow">Design &amp; Photography</div>
       <h2 class="h-sec" style="margin-bottom:0.5rem">Print and brand work <br>that holds up.</h2>
@@ -322,7 +335,7 @@
 <!-- ABOUT + STORY — light break before testimonials -->
 <span class="ch-rule dark" style="display:block"></span>
 <section id="about-story" style="position:relative">
-  <div class="as-rail"><span class="as-rail-label">About</span></div>
+  <div class="as-rail"><span class="as-rail-label" aria-hidden="true">About</span></div>
   <div class="as-hero">
     <img class="as-logo" src="/Images/fcs-mark-platinum.webp" alt="Falcone Creative Services" width="512" height="512">
     <h2 class="as-headline">Creator. Collaborator. Partner.</h2>
@@ -350,7 +363,7 @@
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
-  <div class="t-rail"><span class="t-rail-label">Testimonials</span></div>
+  <div class="t-rail"><span class="t-rail-label" aria-hidden="true">Testimonials</span></div>
   <div class="t-inner">
     <div class="t-head">
       <div class="eyebrow">What Clients Say</div>
@@ -399,7 +412,7 @@
 <span class="ch-rule" style="display:block"></span>
 <section id="newsworthy">
   <div class="with-rail dark-rule">
-    <div class="rail"><span class="rail-label">News</span></div>
+    <div class="rail"><span class="rail-label" aria-hidden="true">News</span></div>
     <div class="rail-content">
       <div class="eyebrow">Newsworthy</div>
       <h2 class="h-sec" style="margin-bottom:0.5rem">Latest from FCS.</h2>
@@ -418,7 +431,7 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="rail" style="position:absolute;left:0;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:2">
-    <span class="rail-label">Contact</span>
+    <span class="rail-label" aria-hidden="true">Contact</span>
   </div>
   <div style="width:100%;padding:7rem var(--g);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
 <div class="eyebrow" style="margin-bottom:0.75rem">Get in Touch</div>
@@ -428,13 +441,15 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft-logo" style="justify-self:start">
     <img src="/Images/nav-logo.webp" alt="FCS" width="1024" height="1024">
     <span class="ft-wm">Falcone Creative Services</span>
   </div>
-  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services</div>
+  <div class="ft-copy" style="justify-self:center;text-align:center">&copy; 2026 Falcone Creative Services<span class="ft-legal"><a href="/privacy/">Privacy</a><a href="/accessibility/">Accessibility</a><button type="button" class="ft-display" data-display-settings>Display settings</button></span></div>
   <div class="ft-links" style="justify-self:end">
     <a href="https://linkedin.com/in/paulmfalcone" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="/services/">Services</a>
@@ -446,7 +461,7 @@
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-title">
   <div class="lb-head">
     <span class="lb-title" id="lb-title">Reel</span>
     <button class="lb-close" id="lb-close">Close &#x2715;</button>
@@ -454,16 +469,20 @@
   <div class="lb-body"><video id="lb-video" controls></video></div>
 </div>
 
-<script src="/main.js?v=11"></script>
+<script src="/main.js?v=12"></script>
 <script>
-// Services index: hover, focus or tap picks a service; the video row plays a muted clip while hovered
+// Services index: hover, focus or tap picks a service. The video preview plays on its own while
+// it's the active row and on screen, pauses when another service is picked or it scrolls away,
+// never autoplays under reduced motion, and always has a pause button.
 (function(){
   var rows=[].slice.call(document.querySelectorAll('#services .idx-row'));
-  var shots=[].slice.call(document.querySelectorAll('#services .idx-preview>*'));
-  if(!rows.length) return;
-  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var vid=document.querySelector('#services .idx-preview video');
-  var lists=[].slice.call(document.querySelectorAll('#services .idx-preview .pipe'));
+  var fig=document.querySelector('#services .idx-preview');
+  if(!rows.length||!fig) return;
+  var shots=[].slice.call(fig.querySelectorAll(':scope>:not(.idx-toggle)'));
+  var reduce=window.fcsCalm();
+  var vid=fig.querySelector('video'), btn=fig.querySelector('.idx-toggle');
+  var active=0, inView=false, userPaused=reduce;
+  var lists=[].slice.call(fig.querySelectorAll('.pipe'));
   var steps=[];
   for(var k=0;k<5;k++){ lists.forEach(function(l){ if(l.children[k]) steps.push(l.children[k]); }); }
   var timers=[];
@@ -473,26 +492,37 @@
     steps.forEach(function(li){li.classList.remove('done');});
     steps.forEach(function(li,i){timers.push(setTimeout(function(){li.classList.add('done');},250+i*260));});
   }
+  function setBtn(){
+    btn.hidden = active!==0;
+    var p=vid.paused; btn.textContent=p?'Play':'Pause'; btn.setAttribute('aria-label',p?'Play the video':'Pause the video');
+  }
+  function sync(){
+    // only load and play when the preview is actually showing (it's hidden on phones)
+    var shown = fig.offsetParent!==null;
+    if(active===0 && inView && shown && !userPaused){
+      if(!vid.src){ vid.src=vid.getAttribute('data-src'); }
+      vid.play().catch(function(){});
+    } else if(!vid.paused){ vid.pause(); }
+    setBtn();
+  }
   function act(i){
+    active=i;
     rows.forEach(function(r,j){r.classList.toggle('is-active',j===i);});
     shots.forEach(function(el,j){el.classList.toggle('on',j===i);});
     if(i===4) runPipe();
-  }
-  function play(){
-    if(reduce||!vid) return;
-    if(!vid.src){vid.src=vid.getAttribute('data-src');}
-    vid.play().catch(function(){});
+    sync();
   }
   rows.forEach(function(r,i){
-    r.addEventListener('mouseenter',function(){act(i); if(i===0) play();});
-    r.addEventListener('focus',function(){act(i); if(i===0) play();});
-    if(i===0){
-      r.addEventListener('mouseleave',function(){vid.pause();});
-      r.addEventListener('blur',function(){vid.pause();});
-    } else {
-      r.addEventListener('mouseenter',function(){if(vid) vid.pause();});
-    }
+    r.addEventListener('mouseenter',function(){ if(active!==i) act(i); });
+    r.addEventListener('focus',function(){ if(active!==i) act(i); });
   });
+  btn.addEventListener('click',function(){
+    if(vid.paused){ userPaused=false; if(!vid.src){vid.src=vid.getAttribute('data-src');} vid.play().catch(function(){}); }
+    else { userPaused=true; vid.pause(); }
+  });
+  vid.addEventListener('play',setBtn); vid.addEventListener('pause',setBtn);
+  new IntersectionObserver(function(es){ inView=es[0].isIntersecting; sync(); },{threshold:0.35}).observe(fig);
+  setBtn();
 })();
 </script>
 </body>
