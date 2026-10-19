@@ -21,7 +21,7 @@
 <link rel="preload" href="/Images/On Set.webp" as="image" fetchpriority="high">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=13">
+<link rel="stylesheet" href="/style.css?v=14">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -74,8 +74,10 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 .idx-card .mono{font-family:'IBM Plex Mono',monospace;font-size:clamp(0.62rem,0.9vw,0.75rem);letter-spacing:0.1em;text-transform:uppercase;color:var(--steel)}
 /* systems: a faint photo under the site's grid-line texture, and two automations that run when you hover */
 .idx-card .idx-card-shade.grid{background:linear-gradient(rgba(183,194,204,0.07) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(183,194,204,0.07) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(15,20,27,0.88) 0%,rgba(15,20,27,0.6) 100%)}
-.pipes{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem clamp(1.25rem,3vw,2.5rem)}
+.pipes{display:grid;grid-template-columns:auto auto;justify-content:center;align-self:center;gap:1.25rem clamp(2rem,5vw,4.5rem)}
 .pipes .mono{display:block;margin-bottom:0.9rem}
+.pipes>div{transition:opacity .4s}
+.pipes>div.waiting{opacity:0.4}
 .pipe{list-style:none;margin:0;padding:0;display:grid;gap:0.85rem}
 .pipe li,.pipe>span{font-family:'IBM Plex Mono',monospace;font-size:clamp(0.68rem,1vw,0.82rem);letter-spacing:0.08em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:0.9rem;transition:color .3s}
 .pipe li::before,.pipe>span::before{content:'';width:8px;height:8px;border-radius:50%;border:1px solid var(--steel);flex-shrink:0;transition:background .3s,border-color .3s}
@@ -90,11 +92,13 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   .idx-name::after{display:none}
   .idx-thumb{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin-top:0.75rem}
   .idx-card.idx-thumb{display:flex;position:relative;padding:1.5rem}
-  .idx-card.idx-thumb.sys{aspect-ratio:auto;padding:1.25rem}
-  .idx-thumb .pipes{gap:0.75rem 1rem}
-  .idx-thumb .pipes .mono{margin-bottom:0.6rem}
-  .idx-thumb .pipe{gap:0.55rem}
-  .idx-thumb .pipe>span{font-size:0.6rem;letter-spacing:0.04em;gap:0.55rem;align-items:flex-start;line-height:1.35}
+  /* same 16:10 shape as the other thumbnails; overflow stays visible so the box can grow on very narrow phones instead of cutting the lists off */
+  .idx-card.idx-thumb.sys{aspect-ratio:16/10;padding:1.25rem;overflow:visible}
+  .idx-card.idx-thumb.sys>.idx-card-bg,.idx-card.idx-thumb.sys>.idx-card-shade{border-radius:inherit}
+  .idx-thumb .pipes{gap:0.75rem clamp(1rem,4vw,3rem)}
+  .idx-thumb .pipes .mono{margin-bottom:0.6rem;font-size:clamp(0.58rem,1.5vw,0.75rem)}
+  .idx-thumb .pipe{gap:clamp(0.55rem,1.6vw,0.85rem)}
+  .idx-thumb .pipe>span{font-size:clamp(0.6rem,1.7vw,0.82rem);letter-spacing:0.04em;gap:0.55rem;align-items:flex-start;line-height:1.35}
   .idx-thumb .pipe>span::before{margin-top:0.2em;width:6px;height:6px}
   .idx-row{text-align:left}
 }
@@ -207,14 +211,14 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
         <div class="stage-body">
           <div class="idx">
             <ul class="idx-list">
-              <li><a class="idx-row is-active" href="/services/video/" data-i="0"><span class="idx-name">Video &amp; Photo</span><span class="idx-plat">Production</span><span class="idx-what">Interviews, brand films, product videos and photography. I shoot it and I edit it.</span><span class="idx-go">Video &amp; Photo &rarr;</span><img class="idx-thumb" src="/Images/Interview Reel Poster.webp" alt="" loading="lazy" width="1280" height="720"></a></li>
+              <li><a class="idx-row is-active" href="/services/video/" data-i="0"><span class="idx-name">Video &amp; Photo</span><span class="idx-plat">Production</span><span class="idx-what">Interviews, brand films, product videos and photography. I shoot it and I edit it.</span><span class="idx-go">Video &amp; Photo &rarr;</span><img class="idx-thumb" src="/Images/Interview Reel Poster.webp?v=2" alt="" loading="lazy" width="1280" height="720"></a></li>
               <li><a class="idx-row" href="/services/web/" data-i="1"><span class="idx-name">Web Design</span><span class="idx-plat">Development</span><span class="idx-what">New sites, or fixing the one you have. WordPress, Squarespace, Wix, GoDaddy.</span><span class="idx-go">Web Design &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top"></a></li>
               <li><a class="idx-row" href="/services/content/" data-i="2"><span class="idx-name">Copy &amp; Content</span><span class="idx-plat">Writing</span><span class="idx-what">Blogs, emails, LinkedIn and website copy, written in your voice.</span><span class="idx-go">Copy &amp; Content &rarr;</span><span class="idx-card idx-thumb" aria-hidden="true"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog</span><p>&ldquo;They need visibility, consistency, and story.&rdquo;</p></span></a></li>
               <li><a class="idx-row" href="/services/design/" data-i="3"><span class="idx-name">Design &amp; Print</span><span class="idx-plat">Print</span><span class="idx-what">Catalogs, brochures, pricing guides and business cards, ready for the printer.</span><span class="idx-go">Design &amp; Print &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654"></a></li>
               <li><a class="idx-row" href="/services/strategy/" data-i="4"><span class="idx-name">Strategy &amp; Systems</span><span class="idx-plat">Consulting</span><span class="idx-what">HoneyBook, Mailchimp, email and domains, set up so they run without you.</span><span class="idx-go">Strategy &amp; Systems &rarr;</span><span class="idx-card idx-thumb sys" aria-hidden="true"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><span class="pipes"><span><span class="mono">HoneyBook</span><span class="pipe"><span class="done">Inquiry received</span><span class="done">Proposal sent</span><span class="done">Contract signed</span><span>Invoice paid</span></span></span><span><span class="mono">Mailchimp</span><span class="pipe"><span class="done">New subscriber</span><span class="done">Welcome email sent</span><span class="done">Day 3 follow-up</span><span>Added to newsletter</span></span></span></span></span></a></li>
             </ul>
             <figure class="idx-preview">
-              <video class="on" aria-hidden="true" muted loop playsinline preload="none" poster="/Images/Interview Reel Poster.webp" data-src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4"></video>
+              <video class="on" aria-hidden="true" muted loop playsinline preload="none" poster="/Images/Interview Reel Poster.webp?v=2" data-src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4#t=0.5"></video>
               <img aria-hidden="true" src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top">
               <div class="idx-card" aria-hidden="true"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog, March 2026</span><p>&ldquo;Local businesses don&rsquo;t need an $8 million commercial. They need visibility, consistency, and story.&rdquo;</p></div>
               <img aria-hidden="true" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654">
@@ -244,7 +248,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       </div>
       <div class="video-paths">
     <div class="vpath" id="vp-int" tabindex="0">
-      <div class="vpath-video"><video id="vid-int" src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4" poster="/Images/Interview Reel Poster.webp" muted loop playsinline preload="none"></video></div>
+      <div class="vpath-video"><video id="vid-int" src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4" poster="/Images/Interview Reel Poster.webp?v=2" muted loop playsinline preload="none"></video></div>
       <div class="vpath-tint"></div>
       <div class="vpath-idx">01 &mdash; Interviews</div>
       <div class="vpath-content">
@@ -482,15 +486,24 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   var reduce=window.fcsCalm();
   var vid=fig.querySelector('video'), btn=fig.querySelector('.idx-toggle');
   var active=0, inView=false, userPaused=reduce;
+  // Systems card: the HoneyBook list ticks off top to bottom, then the Mailchimp list does.
+  // The second column stays dimmed until its turn so the hand-off reads clearly.
   var lists=[].slice.call(fig.querySelectorAll('.pipe'));
-  var steps=[];
-  for(var k=0;k<5;k++){ lists.forEach(function(l){ if(l.children[k]) steps.push(l.children[k]); }); }
+  var cols=lists.map(function(l){return l.parentElement;});
   var timers=[];
   function runPipe(){
     timers.forEach(clearTimeout); timers=[];
     if(reduce) return;
-    steps.forEach(function(li){li.classList.remove('done');});
-    steps.forEach(function(li,i){timers.push(setTimeout(function(){li.classList.add('done');},250+i*260));});
+    lists.forEach(function(l){ [].forEach.call(l.children,function(step){step.classList.remove('done');}); });
+    cols.forEach(function(c,i){ c.classList.toggle('waiting',i>0); });
+    var at=300;
+    lists.forEach(function(l,li){
+      if(li>0){ at+=250; (function(c,t){ timers.push(setTimeout(function(){c.classList.remove('waiting');},t-200)); })(cols[li],at); }
+      [].forEach.call(l.children,function(step){
+        (function(st,t){ timers.push(setTimeout(function(){st.classList.add('done');},t)); })(step,at);
+        at+=280;
+      });
+    });
   }
   function setBtn(){
     btn.hidden = active!==0;
