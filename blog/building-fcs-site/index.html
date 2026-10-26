@@ -18,9 +18,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.youtube-nocookie.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=14">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/style.css?v=15">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -57,10 +57,9 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   color:var(--paper);margin-bottom:1.5rem;max-width:760px;
 }
 .post-meta{
-  font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+  font-family:'Sora',sans-serif;font-size:0.65rem;
   letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);
-  display:flex;gap:2rem;align-items:center;flex-wrap:wrap;
-}
+  display:flex;gap:2rem;align-items:center;flex-wrap:wrap;font-weight:500}
 
 /* ── ARTICLE BODY ── */
 .post-article{
@@ -113,14 +112,13 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 }
 .color-palette{display:flex;margin:2.5rem 0;border-radius:6px;overflow:hidden}
 .color-swatch{flex:1;height:120px;display:flex;align-items:flex-end;padding:0.75rem}
-.swatch-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase}
+.swatch-label{font-family:'Sora',sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
 
 .post-img-caption{
-  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
-  letter-spacing:0.08em;color:var(--steel);
+  font-family:'Sora',sans-serif;font-size:0.62rem;
+  letter-spacing:0.1em;color:var(--steel);
   text-transform:uppercase;margin-top:0.6rem;
-  margin-bottom:2.5rem;
-}
+  margin-bottom:2.5rem;font-weight:500}
 
 /* ── POST FOOTER / BACK LINK ── */
 .post-foot{
@@ -141,20 +139,18 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   gap:2rem;flex-wrap:wrap;
 }
 .post-back{
-  font-family:'IBM Plex Mono',monospace;font-size:0.67rem;
-  letter-spacing:0.12em;text-transform:uppercase;
+  font-family:'Sora',sans-serif;font-size:0.67rem;
+  letter-spacing:0.1em;text-transform:uppercase;
   color:var(--steel);text-decoration:none;
   display:flex;align-items:center;gap:0.65rem;
-  transition:color .2s;
-}
+  transition:color .2s;font-weight:500}
 .post-back::before{content:'←';font-style:normal;}
 .post-back:hover{color:var(--paper);}
 .post-cta-wrap{text-align:right;}
 .post-cta-label{
-  font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  font-family:'Sora',sans-serif;font-size:0.62rem;
   letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--steel);margin-bottom:1rem;
-}
+  color:var(--steel);margin-bottom:1rem;font-weight:500}
 .post-cta-wrap .btn-p{margin-top:0.5rem;display:inline-block;}
 
 /* ── RESPONSIVE ── */
@@ -164,7 +160,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 @media(max-width:600px){.post-inner{padding:3rem var(--g);}.post-article::before,.post-article::after{display:none;}.post-foot::before,.post-foot::after{display:none;}.post-foot-inner{padding:3rem var(--g);flex-direction:column;align-items:center;}.post-cta-wrap{text-align:center;}.post-more{padding:3rem var(--g);}}
 
 .post-more{background:var(--ink);padding:4rem calc(56px + var(--g));border-top:1px solid rgba(183,194,204,0.08)}
-.post-more-label{font-family:'IBM Plex Mono',monospace;font-size:0.67rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--steel);margin-bottom:2rem}
+.post-more-label{font-family:'Sora',sans-serif;font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin-bottom:2rem;font-weight:500}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .blog-card{background:rgba(255,255,255,0.03);overflow:hidden;border-radius:10px;border:1px solid rgba(183,194,204,0.07);text-decoration:none;transition:background .2s,transform .2s;display:flex;flex-direction:column}
 .blog-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px)}
@@ -172,7 +168,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 .blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.85);transition:filter .4s,transform .4s}
 .blog-card:hover .blog-card-img img{filter:brightness(1);transform:scale(1.03)}
 .blog-card-body{padding:1.5rem 1.5rem 2rem;flex:1;display:flex;flex-direction:column}
-.blog-card-date{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:var(--steel);margin-bottom:0.5rem}
+.blog-card-date{font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.02em;color:var(--steel);margin-bottom:0.5rem;font-weight:400}
 .blog-card-title{font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;color:var(--paper);line-height:1.35;letter-spacing:-0.01em;flex:1}
 @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
@@ -325,9 +321,9 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       </div>
 
       <p>
-        Three typefaces, each with a specific job: a modern geometric for headings, a readable
-        serif for body copy, and a monospaced font for the small labels and metadata that frame
-        the content. Nothing decorative. Everything functional.
+        Two typefaces, each with a specific job: a modern geometric for headings and the small
+        labels that frame the content, and a readable serif for body copy. Nothing decorative.
+        Everything functional.
       </p>
       <p>
         The custom cursor, a small dot that shifts in size and color based on what
