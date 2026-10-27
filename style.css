@@ -384,7 +384,7 @@ nav.elevated{background:rgba(32,50,76,0.97);border-bottom-color:rgba(183,194,204
 
 
 /* ═══ FOOTER ═══ */
-footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2rem;border-top:1px solid rgba(183,194,204,0.1)}
+footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:2rem;border-top:1px solid rgba(183,194,204,0.1)}
 .ft-logo{display:flex;align-items:center;gap:0.65rem}
 .ft-logo img{width:20px;height:20px;object-fit:contain;opacity:0.55}
 .ft-wm{font-family:'Sora',sans-serif;font-size:0.8rem;font-weight:500;color:rgba(183,194,204,0.7);letter-spacing:0.02em}
@@ -396,6 +396,11 @@ footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-colum
 .ft-links .ft-icon{display:inline-flex;align-items:center}
 .ft-links .ft-icon svg{width:15px;height:15px;fill:currentColor;display:block}
 .ft-links .ft-icon[aria-label=Instagram] svg{width:17px;height:17px}
+@media(min-width:1025px) and (max-width:1399px){
+  footer{grid-template-columns:auto 1fr;row-gap:1.5rem}
+  .ft-links{grid-column:2;grid-row:1}
+  .ft-copy{grid-column:1/-1;grid-row:2;border-top:1px solid rgba(183,194,204,0.1);padding-top:1.5rem}
+}
 
 /* ═══ LIGHTBOX ═══ */
 .lightbox{position:fixed;inset:0;z-index:1000;background:rgba(10,14,20,0.96);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s}
