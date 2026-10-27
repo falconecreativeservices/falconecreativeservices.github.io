@@ -7,6 +7,19 @@
 <meta name="description" content="Everything Paul Falcone makes, in one place: Falcone Creative Services, Dear Hope, Scan the Sky and Sleep Season.">
 <!-- Bio link page: kept out of search and out of the site menu -->
 <meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://falconecreativeservices.com/links/">
+<!-- Share preview (texts, iMessage, Facebook, LinkedIn) -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Falcone Creative Services">
+<meta property="og:title" content="Paul Falcone">
+<meta property="og:description" content="Marketer, creative and freelancer. Falcone Creative Services, Dear Hope, music and more, all in one place.">
+<meta property="og:url" content="https://falconecreativeservices.com/links/">
+<meta property="og:image" content="https://falconecreativeservices.com/Images/og-links.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Paul Falcone, with the FCS and Dear Hope lightbulbs and two album covers">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://falconecreativeservices.com/Images/og-links.jpg">
 <link rel="icon" type="image/png" href="/Images/favicon.png">
 <link rel="apple-touch-icon" href="/Images/favicon.png">
 <meta name="theme-color" content="#0F141B">
@@ -45,6 +58,60 @@ a{color:inherit;text-decoration:none}
 .me h1{font-family:'Sora',sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:-0.01em;line-height:1.2}
 .me p{font-style:italic;color:var(--steel);font-size:1.02rem;line-height:1.55;margin-top:0.45rem}
 
+/* ── Lightbulb story: closed by default so the links stay first ── */
+.story{margin:1.4rem auto 0;max-width:440px;border:1px solid var(--line);border-radius:12px;background:rgba(32,50,76,0.25)}
+.story summary{list-style:none;display:flex;align-items:center;justify-content:center;gap:0.55rem;padding:0.8rem 1rem;font-family:'Sora',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.02em;color:var(--platinum);cursor:pointer;border-radius:12px;-webkit-tap-highlight-color:transparent}
+.story summary::-webkit-details-marker{display:none}
+.story summary .pm{position:relative;width:10px;height:10px}
+.story summary .pm::before,.story summary .pm::after{content:'';position:absolute;left:0;top:4.5px;width:10px;height:1.5px;background:currentColor;border-radius:1px;transition:transform .35s var(--ease)}
+.story summary .pm::after{transform:rotate(90deg)}
+.story[open] summary .pm::after{transform:rotate(0)}
+@media (hover:hover){.story summary:hover{color:var(--paper)}}
+.story-body{padding:0.4rem 1.1rem 1.25rem;text-align:left}
+.story[open] .story-body{animation:open .5s var(--ease)}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.bulbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.6rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.bulbs figure{text-align:center}
+.bulbs .pic{position:relative;aspect-ratio:1;border-radius:8px;background:var(--navy);overflow:hidden;margin-bottom:0.5rem}
+.bulbs .pic img{position:absolute;inset:0;margin:auto;display:block;width:62%;height:62%;object-fit:contain}
+.bulbs .pic.cover img{width:100%;height:100%;object-fit:cover}
+.bulbs b{display:block;font-family:'Sora',sans-serif;font-size:0.66rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel)}
+.bulbs figcaption{font-size:0.86rem;line-height:1.35;color:var(--paper);margin-top:0.15rem}
+.story-body p{font-size:0.98rem;line-height:1.6;color:var(--steel)}
+.story-body p+p{margin-top:0.7rem}
+.story-body p:first-child{color:var(--paper)}
+.story-body p.bulb-note{margin-top:0.8rem;text-align:center;font-style:italic;font-size:0.9rem}
+.story-body .more{display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.9rem;font-family:'Sora',sans-serif;font-size:0.76rem;font-weight:500;color:var(--platinum)}
+.story-body .more svg{width:11px;height:11px}
+@media (hover:hover){.story-body .more:hover{color:var(--paper)}}
+html.a11y-calm .story[open] .story-body{animation:none}
+@media (prefers-reduced-motion:reduce){.story[open] .story-body{animation:none}}
+
+/* ── Social icons ── */
+.social{display:flex;justify-content:center;gap:0.7rem;margin-top:1.1rem}
+.social a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(32,50,76,0.35);display:grid;place-items:center;color:var(--platinum);transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.social svg{width:18px;height:18px;fill:currentColor}
+@media (hover:hover){.social a:hover{background:var(--platinum);color:var(--ink);border-color:var(--platinum)}}
+
+/* ── Newsletter ── */
+.nl{border:1px solid var(--line);border-radius:12px;background:linear-gradient(135deg,rgba(32,50,76,0.7),rgba(32,50,76,0.3));padding:1.25rem 1.15rem 1.2rem}
+.nl h3{font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;line-height:1.3}
+.nl p{color:var(--steel);font-size:0.95rem;line-height:1.5;margin-top:0.25rem}
+.nl form{display:grid;gap:0.55rem;margin-top:1rem}
+.nl .names{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem}
+.nl label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nl input[type=text],.nl input[type=email]{width:100%;font:inherit;font-size:16px;color:var(--paper);background:rgba(15,20,27,0.55);border:1px solid rgba(183,194,204,0.2);border-radius:8px;padding:0.7rem 0.85rem;transition:border-color .2s}
+.nl input::placeholder{color:rgba(159,177,194,0.7)}
+.nl input:focus{outline:none;border-color:var(--platinum)}
+.nl button{font-family:'Sora',sans-serif;font-weight:600;font-size:0.82rem;letter-spacing:0.03em;color:var(--ink);background:var(--platinum);border:0;border-radius:8px;padding:0.8rem 1rem;cursor:pointer;transition:background .2s}
+@media (hover:hover){.nl button:hover{background:var(--paper)}}
+.nl button[disabled]{opacity:0.6;cursor:default}
+.nl .msg{font-size:0.92rem;line-height:1.45;min-height:0}
+.nl .msg:empty{display:none}
+.nl .msg.ok{color:var(--paper)}
+.nl .msg.err{color:#F3B7B7}
+.nl.done form{display:none}
+
 /* ── Group labels ── */
 .group{margin-top:1.75rem}
 .label{font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin:0 0 0.75rem 0.25rem}
@@ -59,7 +126,7 @@ a{color:inherit;text-decoration:none}
 .row .thumb.dh img{width:44px;height:44px}
 .row .txt{flex:1;min-width:0}
 .row strong{display:block;font-family:'Sora',sans-serif;font-weight:600;font-size:0.98rem;line-height:1.3}
-.row span{display:block;color:var(--steel);font-size:0.92rem;line-height:1.4;margin-top:0.1rem}
+.row span{text-wrap:pretty;display:block;color:var(--steel);font-size:0.92rem;line-height:1.4;margin-top:0.1rem}
 .row .go{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--platinum);transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease)}
 .row .go svg{width:12px;height:12px}
 @media (hover:hover){
@@ -121,29 +188,51 @@ html.a11y-calm *{transition:none!important}
     <h1 class="in" style="--i:1">Paul Falcone</h1>
     <p class="in" style="--i:2">Full-time marketer &amp; creative,<br>part-time freelancer.<br>Everything I make, in one place.</p>
   </header>
+    <div class="social in" style="--i:3">
+      <a href="https://www.instagram.com/paulfalcone_/" aria-label="Instagram" data-link="social-instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2zm5.1-8.2a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3z"/></svg></a>
+      <a href="https://www.facebook.com/paul.falcone.31" aria-label="Facebook" data-link="social-facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21.9v-7.7h2.6l.4-3h-3V9.3c0-.9.2-1.5 1.5-1.5h1.6V5.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6v7.7C5.6 21.2 2 17 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10c0 5-3.7 9.2-8.5 9.9z"/></svg></a>
+      <a href="https://linkedin.com/in/paulmfalcone" aria-label="LinkedIn" data-link="social-linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.1zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+      <a href="/contact/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" aria-label="Contact me" data-link="social-contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-7.4 5.2a1 1 0 0 1-1.2 0L4 7.4zM5.7 7l6.3 4.4L18.3 7H5.7z"/></svg></a>
+    </div>
+    <details class="story in" style="--i:3" id="story">
+      <summary><span class="pm" aria-hidden="true"></span>About me</summary>
+      <div class="story-body">
+        <p>Hi, I&rsquo;m Paul. I live in Central Massachusetts, and I&rsquo;ve spent the last 15 years making things.</p>
+        <p>It started on a stage. I played in Scan the Sky and Sleep Season, and our two albums, <em>Dear Hope</em> and <em>We Must Be Broken</em>, ended up naming something bigger. In 2014 they became Dear Hope, a mental health platform where people shared what they were going through in essays, photos and poems. It reached 140,000 readers and took us to Mental Health America&rsquo;s national conference in 2016.</p>
+        <p>These days I work full time in marketing, and I run Falcone Creative Services on the side: a small, referral-only studio for video, web and design.</p>
+        <p>The thread through all of it is the same. Show up fully, care how it turns out, and make something worth being proud of.</p>
+        <div class="bulbs">
+          <figure><div class="pic cover"><img src="/Images/Sleep Season Bulb.webp" alt="" width="320" height="320" loading="lazy"></div><b>2014</b><figcaption>Sleep Season</figcaption></figure>
+          <figure><div class="pic"><img src="/Images/Dear Hope Logo edit.webp" alt="" width="182" height="277" loading="lazy"></div><b>2014</b><figcaption>Dear Hope</figcaption></figure>
+          <figure><div class="pic"><img src="/Images/fcs-mark-platinum.webp" alt="" width="512" height="512" loading="lazy"></div><b>2023</b><figcaption>FCS</figcaption></figure>
+        </div>
+        <p class="bulb-note">Same lightbulb, three chapters.</p>
+        <a class="more" href="/about/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="about">Read the full story <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></a>
+      </div>
+    </details>
 
   <section class="group" aria-labelledby="g-work">
-    <h2 class="label in" id="g-work" style="--i:3">Work with me</h2>
-    <a class="row feature in" style="--i:4" href="/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="fcs">
+    <h2 class="label in" id="g-work" style="--i:4">Work with me</h2>
+    <a class="row feature in" style="--i:5" href="/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="fcs">
       <div class="thumb mark"><img src="/Images/fcs-mark-platinum.webp" alt="" width="512" height="512"></div>
-      <div class="txt"><strong>Falcone Creative Services</strong><span>Video, web, print and the systems behind them.</span></div>
+      <div class="txt"><strong>Falcone Creative Services</strong><span>A <span style="display:inline;white-space:nowrap;margin:0">part-time</span>, <span style="display:inline;white-space:nowrap;margin:0">referral-based</span> studio for video, web, print and the systems behind them.</span></div>
       <div class="go" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></div>
     </a>
   </section>
 
   <section class="group" aria-labelledby="g-hope">
-    <h2 class="label in" id="g-hope" style="--i:5">Dear Hope</h2>
-    <a class="row in" style="--i:6" href="https://wemustbebroken.com" data-link="dear-hope">
+    <h2 class="label in" id="g-hope" style="--i:6">Mental health advocacy</h2>
+    <a class="row in" style="--i:7" href="https://wemustbebroken.com" data-link="dear-hope">
       <div class="thumb mark dh"><img src="/Images/Dear Hope Logo edit.webp" alt="" width="182" height="277"></div>
-      <div class="txt"><strong>Dear Hope</strong><span>A decade of stories, music and mental health advocacy.</span></div>
+      <div class="txt"><strong>Dear Hope</strong><span>A decade of advocacy through storytelling and art from around the world.</span></div>
       <div class="go" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></div>
     </a>
   </section>
 
   <section class="group" aria-labelledby="g-music">
-    <h2 class="label in" id="g-music" style="--i:7">The records</h2>
+    <h2 class="label in" id="g-music" style="--i:8">The records</h2>
     <div class="albums">
-      <div class="album in" style="--i:8">
+      <div class="album in" style="--i:9">
         <div class="cover"><img src="/Images/Scan The Sky Dear Hope Album.webp" alt="" width="700" height="700"></div>
         <div class="meta"><strong>Scan the Sky</strong><span>Dear Hope</span>
           <div class="svc">
@@ -151,7 +240,7 @@ html.a11y-calm *{transition:none!important}
             <a href="https://music.apple.com/us/album/dear-hope/1382786346" data-link="scan-the-sky-apple" aria-label="Dear Hope by Scan the Sky on Apple Music">Apple Music</a>
           </div></div>
       </div>
-      <div class="album in" style="--i:9">
+      <div class="album in" style="--i:10">
         <div class="cover"><img src="/Images/Sleep Season We Must Be Broken Album.webp" alt="" width="2048" height="1670" style="object-position:100% 50%"></div>
         <div class="meta"><strong>Sleep Season</strong><span>We Must Be Broken</span>
           <div class="svc">
@@ -161,17 +250,71 @@ html.a11y-calm *{transition:none!important}
       </div>
   </section>
 
-  <footer class="in" style="--i:10">
+
+  <section class="group" aria-labelledby="g-nl">
+    <h2 class="label in" id="g-nl" style="--i:12">Stay in touch</h2>
+    <div class="nl in" style="--i:13" id="nl">
+      <h3>Join my newsletter</h3>
+      <p>New projects, work in progress, and the occasional thing worth your time. No schedule, no spam.</p>
+      <!-- Same Mailchimp audience as /newsletter/. Without JS this posts to Mailchimp's own page. -->
+      <form action="https://falconecreativeservices.us18.list-manage.com/subscribe/post?u=cc8b0dce3117b6766914e7507&amp;id=42f68b8d8f&amp;f_id=00f3aae6f0" method="post" novalidate>
+        <div class="names">
+          <div><label for="nl-fname">First name</label><input type="text" id="nl-fname" name="FNAME" placeholder="First name" autocomplete="given-name" required></div>
+          <div><label for="nl-lname">Last name</label><input type="text" id="nl-lname" name="LNAME" placeholder="Last name" autocomplete="family-name" required></div>
+        </div>
+        <label for="nl-email">Email address</label>
+        <input type="email" id="nl-email" name="EMAIL" placeholder="Email address" autocomplete="email" required>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_cc8b0dce3117b6766914e7507_42f68b8d8f" tabindex="-1" value=""></div>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="msg" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <footer class="in" style="--i:14">
     <a href="/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="fcs-footer"><img src="/Images/fcs-mark-platinum.webp" alt="" width="512" height="512">falconecreativeservices.com</a>
   </footer>
 </main>
 <script>
 /* Count taps per link in Google Analytics */
+var st=document.getElementById('story');
+st.addEventListener('toggle',function(){if(st.open&&typeof gtag==='function')gtag('event','bio_about_open');});
 document.querySelectorAll('[data-link]').forEach(function(a){
   a.addEventListener('click',function(){
     if(typeof gtag==='function')gtag('event','bio_link_click',{link_name:a.dataset.link,transport_type:'beacon'});
   });
 });
+
+/* Newsletter: submit to Mailchimp's JSONP endpoint so the visitor stays on this page */
+(function(){
+  var box=document.getElementById('nl'),f=box.querySelector('form'),msg=box.querySelector('.msg'),btn=f.querySelector('button');
+  function say(t,ok){msg.className='msg '+(ok?'ok':'err');msg.textContent=t;}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=f.FNAME.value.trim(),email=f.EMAIL.value.trim();
+    if(!name){say('Please add your first name.');f.FNAME.focus();return;}
+    if(!f.LNAME.value.trim()){say('Please add your last name.');f.LNAME.focus();return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){say('Please check your email address.');f.EMAIL.focus();return;}
+    btn.disabled=true;btn.textContent='Sending…';say('',true);
+    var cb='mc'+Date.now(),sc=document.createElement('script');
+    var done=function(){btn.disabled=false;btn.textContent='Subscribe';delete window[cb];sc.remove();};
+    var timer=setTimeout(function(){done();say('Something went wrong. Please try again in a moment.');},12000);
+    window[cb]=function(r){
+      clearTimeout(timer);done();
+      if(r&&r.result==='success'){
+        box.classList.add('done');say('Thanks, '+name+'! Check your inbox to confirm.',true);
+        if(typeof gtag==='function')gtag('event','newsletter_signup',{method:'bio_links'});
+      }else{
+        var t=(r&&r.msg?String(r.msg):'').replace(/<[^>]*>/g,'').replace(/^\d+\s*-\s*/,'');
+        say(/already subscribed/i.test(t)?'You\u2019re already on the list. Thanks!':(t||'Something went wrong. Please try again.'),/already subscribed/i.test(t));
+      }
+    };
+    var q=new URLSearchParams(new FormData(f));q.set('c',cb);
+    sc.src=f.action.replace('/post?','/post-json?')+'&'+q.toString();
+    sc.onerror=function(){clearTimeout(timer);done();say('Something went wrong. Please try again in a moment.');};
+    document.body.appendChild(sc);
+  });
+})();
 </script>
 </body>
 </html>
