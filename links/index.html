@@ -22,7 +22,8 @@
 <meta name="twitter:image" content="https://falconecreativeservices.com/Images/og-links.jpg">
 <link rel="icon" type="image/png" href="/Images/favicon.png">
 <link rel="apple-touch-icon" href="/Images/favicon.png">
-<meta name="theme-color" content="#0F141B">
+<!-- Matches the flat color at the top of the page so the phone's address bar blends in -->
+<meta name="theme-color" content="#17212E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -38,9 +39,10 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   --line:rgba(183,194,204,0.12);--card:rgba(32,50,76,0.42);--card-hi:rgba(32,50,76,0.72);
   --ease:cubic-bezier(.22,1,.36,1);
 }
-html{background:var(--ink)}
+html{background:#17212E}
 body{min-height:100vh;min-height:100dvh;font-family:'Spectral',serif;color:var(--paper);-webkit-font-smoothing:antialiased;
   background:
+    linear-gradient(#17212E,rgba(23,33,46,0) 140px),
     radial-gradient(120% 60% at 50% -10%,rgba(32,50,76,0.95) 0%,rgba(32,50,76,0) 70%),
     var(--ink);
   display:flex;justify-content:center;padding:clamp(2.5rem,8vh,4.5rem) 16px 2.5rem}
