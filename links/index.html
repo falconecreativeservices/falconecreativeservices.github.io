@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul Falcone · Links</title>
+<meta name="description" content="Everything Paul Falcone makes, in one place: Falcone Creative Services, Dear Hope, Scan the Sky and Sleep Season.">
+<!-- Bio link page: kept out of search and out of the site menu -->
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="/Images/favicon.png">
+<link rel="apple-touch-icon" href="/Images/favicon.png">
+<meta name="theme-color" content="#0F141B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script>
+/* Same Display settings as the rest of the site: honor a saved "reduce motion" choice */
+(function(){try{var p=JSON.parse(localStorage.getItem('fcs-display')||'{}');if(p.calm)document.documentElement.classList.add('a11y-calm');}catch(e){}})();
+window.fcsCalm=function(){return document.documentElement.classList.contains('a11y-calm')||window.matchMedia('(prefers-reduced-motion:reduce)').matches;};
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0F141B;--navy:#20324C;--steel:#9FB1C2;--platinum:#B7C2CC;--paper:#EFF1F4;
+  --line:rgba(183,194,204,0.12);--card:rgba(32,50,76,0.42);--card-hi:rgba(32,50,76,0.72);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+html{background:var(--ink)}
+body{min-height:100vh;min-height:100dvh;font-family:'Spectral',serif;color:var(--paper);-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(120% 60% at 50% -10%,rgba(32,50,76,0.95) 0%,rgba(32,50,76,0) 70%),
+    var(--ink);
+  display:flex;justify-content:center;padding:clamp(2.5rem,8vh,4.5rem) 16px 2.5rem}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:0.03;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+main{position:relative;z-index:2;width:100%;max-width:440px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--platinum);outline-offset:3px;border-radius:6px}
+
+/* ── Header ── */
+.me{text-align:center;margin-bottom:2.25rem}
+.avatar{position:relative;width:104px;height:104px;margin:0 auto 1.25rem}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:1px solid rgba(183,194,204,0.35)}
+/* soft light behind the photo, the one nod to the bulb */
+.avatar::before{content:'';position:absolute;inset:-28px;border-radius:50%;background:radial-gradient(circle,rgba(183,194,204,0.22) 0%,rgba(183,194,204,0) 65%);z-index:-1}
+.me h1{font-family:'Sora',sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:-0.01em;line-height:1.2}
+.me p{font-style:italic;color:var(--steel);font-size:1.02rem;line-height:1.55;margin-top:0.45rem}
+
+/* ── Group labels ── */
+.group{margin-top:1.75rem}
+.label{font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin:0 0 0.75rem 0.25rem}
+
+/* ── Link rows ── */
+.row{display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem 0.75rem 0.75rem;border:1px solid var(--line);border-radius:12px;background:var(--card);
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+.row+.row{margin-top:0.65rem}
+.row .thumb{flex:0 0 56px;height:56px;border-radius:8px;overflow:hidden;background:var(--navy);display:grid;place-items:center}
+.row .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.row .thumb.mark img{width:70%;height:70%;object-fit:contain}
+.row .thumb.dh img{width:44px;height:44px}
+.row .txt{flex:1;min-width:0}
+.row strong{display:block;font-family:'Sora',sans-serif;font-weight:600;font-size:0.98rem;line-height:1.3}
+.row span{display:block;color:var(--steel);font-size:0.92rem;line-height:1.4;margin-top:0.1rem}
+.row .go{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--platinum);transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.row .go svg{width:12px;height:12px}
+@media (hover:hover){
+  .row:hover{background:var(--card-hi);border-color:rgba(183,194,204,0.28);transform:translateY(-2px)}
+  .row:hover .go{background:var(--platinum);color:var(--ink);transform:translateX(2px)}
+}
+.row:active{transform:scale(0.985)}
+
+/* Featured studio row */
+.row.feature{padding:1rem 1.15rem 1rem 1rem;background:linear-gradient(135deg,rgba(32,50,76,0.85),rgba(32,50,76,0.45))}
+.row.feature .thumb{flex-basis:64px;height:64px}
+
+/* ── Album tiles ── */
+.albums{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem}
+.album{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.album .cover{aspect-ratio:1;overflow:hidden;background:var(--navy)}
+.album .cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.album .meta{padding:0.7rem 0.85rem 0.8rem}
+.album strong{display:block;font-family:'Sora',sans-serif;font-weight:600;font-size:0.9rem;line-height:1.3}
+.album span{display:block;color:var(--steel);font-size:0.88rem;font-style:italic;margin-top:0.1rem}
+.album .svc{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.7rem}
+.album .svc a{display:block;text-align:center;padding:0.55rem 0.5rem;border:1px solid var(--line);border-radius:8px;font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:500;letter-spacing:0.02em;color:var(--platinum);transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.album .svc a:active{transform:scale(0.97)}
+@media (hover:hover){
+  .album:hover{border-color:rgba(183,194,204,0.28)}
+  .album:hover .cover img{transform:scale(1.04)}
+  .album .svc a:hover{background:var(--platinum);color:var(--ink);border-color:var(--platinum)}
+}
+
+/* ── Footer ── */
+footer{margin-top:2.75rem;text-align:center}
+footer a{display:inline-flex;align-items:center;gap:0.55rem;font-family:'Sora',sans-serif;font-size:0.75rem;letter-spacing:0.02em;color:var(--steel);transition:color .2s}
+footer a:hover{color:var(--paper)}
+footer img{width:20px;height:20px;opacity:0.8}
+
+/* ── Entrance: staggered rise, skipped for reduced motion ── */
+.in{opacity:0;transform:translateY(14px);animation:rise .8s var(--ease) forwards;animation-delay:calc(var(--i,0) * 80ms + 80ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+html.a11y-calm .in{opacity:1;transform:none;animation:none}
+html.a11y-calm *{transition:none!important}
+@media (prefers-reduced-motion:reduce){.in{opacity:1;transform:none;animation:none}*{transition:none!important}}
+
+@media (max-width:360px){.albums{grid-template-columns:1fr}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K21Y2BPWPS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-K21Y2BPWPS');
+</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<main>
+  <header class="me">
+    <div class="avatar in" style="--i:0"><img src="/Images/Paul Avatar.webp" alt="Paul Falcone" width="320" height="320"></div>
+    <h1 class="in" style="--i:1">Paul Falcone</h1>
+    <p class="in" style="--i:2">Full-time marketer &amp; creative,<br>part-time freelancer.<br>Everything I make, in one place.</p>
+  </header>
+
+  <section class="group" aria-labelledby="g-work">
+    <h2 class="label in" id="g-work" style="--i:3">Work with me</h2>
+    <a class="row feature in" style="--i:4" href="/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="fcs">
+      <div class="thumb mark"><img src="/Images/fcs-mark-platinum.webp" alt="" width="512" height="512"></div>
+      <div class="txt"><strong>Falcone Creative Services</strong><span>Video, web, print and the systems behind them.</span></div>
+      <div class="go" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></div>
+    </a>
+  </section>
+
+  <section class="group" aria-labelledby="g-hope">
+    <h2 class="label in" id="g-hope" style="--i:5">Dear Hope</h2>
+    <a class="row in" style="--i:6" href="https://wemustbebroken.com" data-link="dear-hope">
+      <div class="thumb mark dh"><img src="/Images/Dear Hope Logo edit.webp" alt="" width="182" height="277"></div>
+      <div class="txt"><strong>Dear Hope</strong><span>A decade of stories, music and mental health advocacy.</span></div>
+      <div class="go" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></div>
+    </a>
+  </section>
+
+  <section class="group" aria-labelledby="g-music">
+    <h2 class="label in" id="g-music" style="--i:7">The records</h2>
+    <div class="albums">
+      <div class="album in" style="--i:8">
+        <div class="cover"><img src="/Images/Scan The Sky Dear Hope Album.webp" alt="" width="700" height="700"></div>
+        <div class="meta"><strong>Scan the Sky</strong><span>Dear Hope</span>
+          <div class="svc">
+            <a href="https://open.spotify.com/artist/5xC4vdOofBpWJpMlrpJWd7" data-link="scan-the-sky-spotify" aria-label="Scan the Sky on Spotify">Spotify</a>
+            <a href="https://music.apple.com/us/album/dear-hope/1382786346" data-link="scan-the-sky-apple" aria-label="Dear Hope by Scan the Sky on Apple Music">Apple Music</a>
+          </div></div>
+      </div>
+      <div class="album in" style="--i:9">
+        <div class="cover"><img src="/Images/Sleep Season We Must Be Broken Album.webp" alt="" width="2048" height="1670" style="object-position:100% 50%"></div>
+        <div class="meta"><strong>Sleep Season</strong><span>We Must Be Broken</span>
+          <div class="svc">
+            <a href="https://open.spotify.com/artist/0QtBAoI5aHhssncJhBlNK5" data-link="sleep-season-spotify" aria-label="Sleep Season on Spotify">Spotify</a>
+            <a href="https://music.apple.com/us/album/we-must-be-broken-ep/908816960" data-link="sleep-season-apple" aria-label="We Must Be Broken by Sleep Season on Apple Music">Apple Music</a>
+          </div></div>
+      </div>
+  </section>
+
+  <footer class="in" style="--i:10">
+    <a href="/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="fcs-footer"><img src="/Images/fcs-mark-platinum.webp" alt="" width="512" height="512">falconecreativeservices.com</a>
+  </footer>
+</main>
+<script>
+/* Count taps per link in Google Analytics */
+document.querySelectorAll('[data-link]').forEach(function(a){
+  a.addEventListener('click',function(){
+    if(typeof gtag==='function')gtag('event','bio_link_click',{link_name:a.dataset.link,transport_type:'beacon'});
+  });
+});
+</script>
+</body>
+</html>
