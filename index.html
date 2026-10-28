@@ -88,13 +88,15 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 .pipe li.done,.pipe>span.done{color:var(--paper)}
 .pipe li.done::before,.pipe>span.done::before{background:var(--platinum);border-color:var(--platinum)}
 @media(max-width:900px){
-  #services .stage-foot{flex-direction:column;align-items:flex-start}
+  #services .stage-foot{flex-direction:column;align-items:center;text-align:center}
   .idx{grid-template-columns:1fr}
   .idx-preview{display:none}
   .idx-name{color:var(--fg)}
-  .idx-go{height:auto;opacity:1;margin-top:0.35rem}
+  .idx-row{row-gap:0.6rem}
+  .idx-go{order:2;justify-self:center;height:auto;opacity:1;margin-top:0.6rem;padding:0.72rem 1.5rem;border:1px solid var(--accent);border-radius:8px;font-size:0.8rem;letter-spacing:0.04em;transition:background .2s,color .2s}
+  .idx-row:hover .idx-go,.idx-row:active .idx-go{background:var(--accent);color:var(--paper)}
   .idx-name::after{display:none}
-  .idx-thumb{display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin-top:0.75rem}
+  .idx-thumb{order:1;display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin-top:0.6rem}
   .idx-card.idx-thumb{display:flex;position:relative;padding:1.5rem}
   /* same 16:10 shape as the other thumbnails; overflow stays visible so the box can grow on very narrow phones instead of cutting the lists off */
   .idx-card.idx-thumb.sys{aspect-ratio:16/10;padding:1.25rem;overflow:visible}
