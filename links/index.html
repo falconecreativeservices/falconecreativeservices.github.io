@@ -142,6 +142,26 @@ html.a11y-calm .story[open] .story-body{animation:none}
 .row.feature{padding:1rem 1.15rem 1rem 1rem;background:linear-gradient(135deg,rgba(32,50,76,0.85),rgba(32,50,76,0.45))}
 .row.feature .thumb{flex-basis:64px;height:64px}
 
+/* ── Latest post: one big card, swap it out when a new post goes up ── */
+.post{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+.post .cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--navy)}
+.post .cover img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;transition:transform .6s var(--ease)}
+.post .cover::after{content:'';position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(rgba(15,20,27,0),rgba(15,20,27,0.55))}
+.post .tag{position:absolute;right:0.75rem;top:0.75rem;z-index:1;font-family:'Sora',sans-serif;font-size:0.62rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:rgba(15,20,27,0.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(183,194,204,0.22);border-radius:999px;padding:0.35rem 0.65rem}
+.post .meta{display:flex;align-items:center;gap:1rem;padding:0.95rem 1rem 1rem 1.05rem}
+.post .txt{flex:1;min-width:0}
+.post strong{display:block;font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;line-height:1.3;text-wrap:balance}
+.post .txt span{display:block;color:var(--steel);font-size:0.92rem;line-height:1.45;margin-top:0.3rem;text-wrap:pretty}
+.post .go{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--platinum);transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.post .go svg{width:12px;height:12px}
+@media (hover:hover){
+  .post:hover{background:var(--card-hi);border-color:rgba(183,194,204,0.28);transform:translateY(-2px)}
+  .post:hover .cover img{transform:scale(1.04)}
+  .post:hover .go{background:var(--platinum);color:var(--ink);transform:translateX(2px)}
+}
+.post:active{transform:scale(0.985)}
+
 /* ── Album tiles ── */
 .albums{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem}
 .album{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);transition:border-color .3s var(--ease),transform .3s var(--ease)}
@@ -213,6 +233,17 @@ html.a11y-calm *{transition:none!important}
         <a class="more" href="/about/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="about">Read the full story <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></a>
       </div>
     </details>
+
+  <section class="group" aria-labelledby="g-latest">
+    <h2 class="label in" id="g-latest" style="--i:4">Latest</h2>
+    <a class="post in" style="--i:4" href="/blog/chris-mclernon/?utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=bio" data-link="latest-chris-mclernon">
+      <div class="cover"><img src="/Images/CM Pic.webp" alt="" width="1000" height="667"><span class="tag">From the blog</span></div>
+      <div class="meta">
+        <div class="txt"><strong>From Gold Records to a Book Launch: Chris McLernon</strong><span>He came to me for a website. Then came DNS, a hidden archive of his old site, Mailchimp, a book launch, and a press kit.</span></div>
+        <div class="go" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></div>
+      </div>
+    </a>
+  </section>
 
   <section class="group" aria-labelledby="g-work">
     <h2 class="label in" id="g-work" style="--i:4">Work with me</h2>
