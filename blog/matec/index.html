@@ -80,6 +80,8 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 .blog-card-title{font-family:'Sora',sans-serif;font-size:0.97rem;font-weight:600;color:var(--paper);line-height:1.35;letter-spacing:-0.01em;flex:1}
 @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+/* phones: related posts use the full width, back link and CTA centered, side rails hidden */
+@media(max-width:600px){.post-more{padding:3rem var(--g)}.post-foot::before,.post-foot::after{display:none}.post-foot-inner{padding:3rem var(--g);flex-direction:column;align-items:center;text-align:center;gap:2.5rem}.post-cta-wrap{text-align:center}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K21Y2BPWPS"></script>
