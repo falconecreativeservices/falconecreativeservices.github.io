@@ -394,6 +394,19 @@ footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-colum
 .ft-links .ft-icon{display:inline-flex;align-items:center}
 .ft-links .ft-icon svg{width:15px;height:15px;fill:currentColor;display:block}
 .ft-links .ft-icon[aria-label=Instagram] svg{width:17px;height:17px}
+/* desktop: name, legal links and nav share one baseline; at 1400px+ the copyright gets its own centered row underneath */
+@media(min-width:1025px){
+  footer{align-items:baseline}
+  .ft-wm{align-self:baseline}
+}
+@media(min-width:1400px){
+  footer{row-gap:1rem}
+  .ft-logo{grid-column:1;grid-row:1}
+  .ft-copy{display:contents}
+  .ft-legal{grid-column:2;grid-row:1}
+  .ft-links{grid-column:3;grid-row:1}
+  .ft-c{grid-column:1/-1;grid-row:2;justify-self:center}
+}
 @media(min-width:1025px) and (max-width:1399px){
   footer{grid-template-columns:auto 1fr;row-gap:1.5rem}
   .ft-links{grid-column:2;grid-row:1}
