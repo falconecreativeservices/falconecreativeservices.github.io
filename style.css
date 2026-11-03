@@ -397,10 +397,11 @@ footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-colum
 /* desktop: name, legal links and nav share one baseline; at 1400px+ the copyright gets its own centered row underneath */
 @media(min-width:1025px){
   footer{align-items:baseline}
-  .ft-wm{align-self:baseline}
+  /* line box matches the 20px logo so the name stays centered on it while still setting the baseline */
+  .ft-wm{align-self:baseline;line-height:20px}
 }
 @media(min-width:1400px){
-  footer{row-gap:1rem}
+  footer{row-gap:1.75rem}
   .ft-logo{grid-column:1;grid-row:1}
   .ft-copy{display:contents}
   .ft-legal{grid-column:2;grid-row:1}
