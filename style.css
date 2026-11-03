@@ -230,10 +230,8 @@ nav.elevated{background:rgba(32,50,76,0.97);border-bottom-color:rgba(183,194,204
 .project-client{font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.3rem}
 .project-plat{font-family:'Sora',sans-serif;font-size:0.62rem;letter-spacing:0.1em;color:var(--steel);margin-bottom:0.85rem;text-transform:uppercase;font-weight:500}
 .project-desc{font-family:'Spectral',serif;font-size:0.87rem;line-height:1.75;color:#6A6A72;margin-bottom:1.25rem}
-.project-learn{display:inline-flex;align-items:center;gap:0.4rem;font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);text-decoration:none;transition:color .2s}
-.project-learn:hover{color:var(--navy)}
-.project-learn .project-arrow{display:inline-block;transition:transform .2s}
-.project-learn:hover .project-arrow{transform:translateX(4px)}
+.project-learn{display:inline-flex;align-items:center;gap:0.4rem;font-family:'Sora',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:3px;transition:color .2s,background-size .35s cubic-bezier(.22,1,.36,1)}
+.project-learn:hover{color:var(--navy);background-size:100% 1px}
 
 /* ═══ DESIGN / PHOTO ═══ */
 #design{background:var(--navy)}

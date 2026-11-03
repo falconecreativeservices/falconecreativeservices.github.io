@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=21">
+<link rel="stylesheet" href="/style.css?v=23">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -146,8 +146,8 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   color:var(--steel);text-decoration:none;
   display:flex;align-items:center;gap:0.65rem;
   transition:color .2s;font-weight:500}
-.post-back::before{content:'←';font-style:normal;}
-.post-back:hover{color:var(--paper);}
+.post-back{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:3px;transition:color .2s,background-size .35s cubic-bezier(.22,1,.36,1)}
+.post-back:hover{color:var(--paper);background-size:100% 1px}
 .post-cta-wrap{text-align:right;}
 .post-cta-label{
   font-family:'Sora',sans-serif;font-size:0.62rem;
@@ -463,7 +463,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
     <a href="/blog/" class="post-back">Back to all posts</a>
     <div class="post-cta-wrap">
       <div class="post-cta-label">Have a project in mind?</div>
-      <a href="/contact/" class="btn-p">Let&rsquo;s talk &rarr;</a>
+      <a href="/contact/" class="btn-p">Let&rsquo;s talk</a>
     </div>
   </div>
 </section>

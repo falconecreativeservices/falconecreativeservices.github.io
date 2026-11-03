@@ -25,7 +25,7 @@
 <link rel="preload" href="/Images/On Set.webp" as="image" fetchpriority="high">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=21">
+<link rel="stylesheet" href="/style.css?v=23">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -57,8 +57,6 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 .idx-row.is-active .idx-what{color:var(--fg2)}
 /* desktop: no extra line on hover (it would push the rows below and make the list jump);
    the active row gets an arrow instead. Phones show the link line on every row. */
-.idx-name::after{content:'\2192';display:inline-block;margin-left:0.45rem;opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
-.idx-row.is-active .idx-name::after{opacity:1;transform:none}
 .idx-thumb{display:none}
 .idx-card.idx-thumb{display:none;position:relative}
 .idx-preview{position:relative;margin:0;border-radius:6px;overflow:hidden;aspect-ratio:16/10;background:var(--ink)}
@@ -95,7 +93,6 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   .idx-row{row-gap:0.6rem}
   .idx-go{order:2;justify-self:center;height:auto;opacity:1;margin-top:0.6rem;padding:0.72rem 1.5rem;border:1px solid var(--accent);border-radius:8px;font-size:0.8rem;letter-spacing:0.04em;transition:background .2s,color .2s}
   .idx-row:hover .idx-go,.idx-row:active .idx-go{background:var(--accent);color:var(--paper)}
-  .idx-name::after{display:none}
   .idx-thumb{order:1;display:block;grid-column:1/-1;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;margin-top:0.6rem}
   .idx-card.idx-thumb{display:flex;position:relative;padding:1.5rem}
   /* same 16:10 shape as the other thumbnails; overflow stays visible so the box can grow on very narrow phones instead of cutting the lists off */
@@ -217,11 +214,11 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
         <div class="stage-body">
           <div class="idx">
             <ul class="idx-list">
-              <li><a class="idx-row is-active" href="/services/video/" data-i="0"><span class="idx-name">Video &amp; Photo</span><span class="idx-plat">Production</span><span class="idx-what">Interviews, brand films, product videos and photography. I shoot it and I edit it.</span><span class="idx-go">Video &amp; Photo &rarr;</span><img class="idx-thumb" src="/Images/Interview Reel Poster.webp?v=2" alt="" loading="lazy" width="1280" height="720"></a></li>
-              <li><a class="idx-row" href="/services/web/" data-i="1"><span class="idx-name">Web Design</span><span class="idx-plat">Development</span><span class="idx-what">New sites, or fixing the one you have. WordPress, Squarespace, Wix, GoDaddy.</span><span class="idx-go">Web Design &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top"></a></li>
-              <li><a class="idx-row" href="/services/content/" data-i="2"><span class="idx-name">Copy &amp; Content</span><span class="idx-plat">Writing</span><span class="idx-what">Blogs, emails, LinkedIn and website copy, written in your voice.</span><span class="idx-go">Copy &amp; Content &rarr;</span><span class="idx-card idx-thumb" aria-hidden="true"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog</span><p>&ldquo;They need visibility, consistency, and story.&rdquo;</p></span></a></li>
-              <li><a class="idx-row" href="/services/design/" data-i="3"><span class="idx-name">Design &amp; Print</span><span class="idx-plat">Print</span><span class="idx-what">Catalogs, brochures, pricing guides and business cards, ready for the printer.</span><span class="idx-go">Design &amp; Print &rarr;</span><img class="idx-thumb" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654"></a></li>
-              <li><a class="idx-row" href="/services/strategy/" data-i="4"><span class="idx-name">Strategy &amp; Systems</span><span class="idx-plat">Consulting</span><span class="idx-what">HoneyBook, Mailchimp, email and domains, set up so they run without you.</span><span class="idx-go">Strategy &amp; Systems &rarr;</span><span class="idx-card idx-thumb sys" aria-hidden="true"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><span class="pipes"><span><span class="mono">HoneyBook</span><span class="pipe"><span class="done">Inquiry received</span><span class="done">Proposal sent</span><span class="done">Contract signed</span><span>Invoice paid</span></span></span><span><span class="mono">Mailchimp</span><span class="pipe"><span class="done">New subscriber</span><span class="done">Welcome email sent</span><span class="done">Day 3 follow-up</span><span>Added to newsletter</span></span></span></span></span></a></li>
+              <li><a class="idx-row is-active" href="/services/video/" data-i="0"><span class="idx-name">Video &amp; Photo</span><span class="idx-plat">Production</span><span class="idx-what">Interviews, brand films, product videos and photography. I shoot it and I edit it.</span><span class="idx-go">Video &amp; Photo</span><img class="idx-thumb" src="/Images/Interview Reel Poster.webp?v=2" alt="" loading="lazy" width="1280" height="720"></a></li>
+              <li><a class="idx-row" href="/services/web/" data-i="1"><span class="idx-name">Web Design</span><span class="idx-plat">Development</span><span class="idx-what">New sites, or fixing the one you have. WordPress, Squarespace, Wix, GoDaddy.</span><span class="idx-go">Web Design</span><img class="idx-thumb" src="/Images/Don Ruperto Homepage.webp" alt="" loading="lazy" width="4164" height="2206" style="object-position:top"></a></li>
+              <li><a class="idx-row" href="/services/content/" data-i="2"><span class="idx-name">Copy &amp; Content</span><span class="idx-plat">Writing</span><span class="idx-what">Blogs, emails, LinkedIn and website copy, written in your voice.</span><span class="idx-go">Copy &amp; Content</span><span class="idx-card idx-thumb" aria-hidden="true"><img class="idx-card-bg" src="/Images/HBZ Blog 3.webp" alt="" loading="lazy" width="1280" height="853"><span class="idx-card-shade"></span><span class="mono">HBZ Media blog</span><p>&ldquo;They need visibility, consistency, and story.&rdquo;</p></span></a></li>
+              <li><a class="idx-row" href="/services/design/" data-i="3"><span class="idx-name">Design &amp; Print</span><span class="idx-plat">Print</span><span class="idx-what">Catalogs, brochures, pricing guides and business cards, ready for the printer.</span><span class="idx-go">Design &amp; Print</span><img class="idx-thumb" src="/Images/Don Ruperto Catalog Example.webp" alt="" loading="lazy" width="2562" height="1654"></a></li>
+              <li><a class="idx-row" href="/services/strategy/" data-i="4"><span class="idx-name">Strategy &amp; Systems</span><span class="idx-plat">Consulting</span><span class="idx-what">HoneyBook, Mailchimp, email and domains, set up so they run without you.</span><span class="idx-go">Strategy &amp; Systems</span><span class="idx-card idx-thumb sys" aria-hidden="true"><img class="idx-card-bg" src="/Images/Helping Zach.webp" alt="" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"><span class="idx-card-shade grid"></span><span class="pipes"><span><span class="mono">HoneyBook</span><span class="pipe"><span class="done">Inquiry received</span><span class="done">Proposal sent</span><span class="done">Contract signed</span><span>Invoice paid</span></span></span><span><span class="mono">Mailchimp</span><span class="pipe"><span class="done">New subscriber</span><span class="done">Welcome email sent</span><span class="done">Day 3 follow-up</span><span>Added to newsletter</span></span></span></span></span></a></li>
             </ul>
             <figure class="idx-preview">
               <video class="on" aria-hidden="true" muted loop playsinline preload="none" poster="/Images/Interview Reel Poster.webp?v=2" data-src="https://pub-2f2e0b2928ae4124b5355c23ee1fa57d.r2.dev/FCS%20Interviews%202026.mp4#t=0.5"></video>
@@ -235,7 +232,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
         </div>
         <div class="stage-foot">
           <p class="stage-note">Most clients start with one and add the rest later.</p>
-          <a class="section-btn" href="/services/">All services &rarr;</a>
+          <a class="section-btn" href="/services/">All services</a>
         </div>
       </div>
     </div>
@@ -280,7 +277,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   </div><!-- closes video-paths -->
     </div><!-- closes flex column -->
   </div><!-- closes with-rail -->
-  <div class="section-btn-wrap"><a href="/services/video/" class="section-btn">Learn More &rarr;</a></div>
+  <div class="section-btn-wrap"><a href="/services/video/" class="section-btn">Learn More</a></div>
 </section>
 
 <!-- WEB DESIGN -->
@@ -294,23 +291,23 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       <p class="body-lg dark" style="max-width:48ch;margin-bottom:2rem">WordPress, Squarespace, Wix, GoDaddy: the right platform for your goals, built to reflect who you are and convert the people who find you.</p>
       <div class="project">
         <div class="project-video"><iframe title="Don Ruperto Cigars website walkthrough" src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-        <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Don Ruperto Cigars</div><p class="project-desc">Luxury landing page for a premium cigar brand. Custom cursor, subtle animations, high-end photography. Built to feel as refined as the product.</p><a href="/blog/don-ruperto/" class="project-learn">Read the Post <span class="project-arrow">&rarr;</span></a></div>
+        <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Don Ruperto Cigars</div><p class="project-desc">Luxury landing page for a premium cigar brand. Custom cursor, subtle animations, high-end photography. Built to feel as refined as the product.</p><a href="/blog/don-ruperto/" class="project-learn">Read the Post</a></div>
       </div>
       <div class="project flip">
         <div class="project-video"><iframe title="HBZ Media website walkthrough" src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-        <div class="project-info"><div class="project-plat">Wix &middot; Branding</div><div class="project-client">HBZ Media</div><p class="project-desc">Full rebrand and site build. Defined target markets and verticals first, then built the entire site around those findings. Ongoing retainer since 2023.</p><a href="/blog/hbz-media-relaunch/" class="project-learn">Read the Post <span class="project-arrow">&rarr;</span></a></div>
+        <div class="project-info"><div class="project-plat">Wix &middot; Branding</div><div class="project-client">HBZ Media</div><p class="project-desc">Full rebrand and site build. Defined target markets and verticals first, then built the entire site around those findings. Ongoing retainer since 2023.</p><a href="/blog/hbz-media-relaunch/" class="project-learn">Read the Post</a></div>
       </div>
       <div class="project">
         <div class="project-video"><iframe title="Jennings Canine Consulting website walkthrough" src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-        <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Jennings Canine Consulting</div><p class="project-desc">Full rebrand for a canine consulting practice: new logo, new color palette, and a clean site build. Migrated 150+ existing blog posts to the new platform and format.</p><a href="/services/web/" class="project-learn">Learn More <span class="project-arrow">&rarr;</span></a></div>
+        <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Jennings Canine Consulting</div><p class="project-desc">Full rebrand for a canine consulting practice: new logo, new color palette, and a clean site build. Migrated 150+ existing blog posts to the new platform and format.</p><a href="/services/web/" class="project-learn">Learn More</a></div>
       </div>
       <div class="project flip">
         <div class="project-video"><iframe title="Chris McLernon website walkthrough" src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-        <div class="project-info"><div class="project-plat">Squarespace &middot; Branding</div><div class="project-client">Chris McLernon</div><p class="project-desc">35+ years of work organized into one site for the bassist of gold-selling artist Saigon Kick. Includes a fully rebuilt oldschool HTML site, hidden inside Squarespace as a secret second site.</p><a href="/services/web/" class="project-learn">Learn More <span class="project-arrow">&rarr;</span></a></div>
+        <div class="project-info"><div class="project-plat">Squarespace &middot; Branding</div><div class="project-client">Chris McLernon</div><p class="project-desc">35+ years of work organized into one site for the bassist of gold-selling artist Saigon Kick. Includes a fully rebuilt oldschool HTML site, hidden inside Squarespace as a secret second site.</p><a href="/services/web/" class="project-learn">Learn More</a></div>
       </div>
     </div>
   </div>
-  <div class="section-btn-wrap"><a href="/services/web/" class="section-btn">Learn More &rarr;</a></div>
+  <div class="section-btn-wrap"><a href="/services/web/" class="section-btn">Learn More</a></div>
 </section>
 
 <!-- DESIGN / PHOTO -->
@@ -335,7 +332,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       </div>
     </div>
   </div>
-  <div class="section-btn-wrap"><a href="/services/design/" class="section-btn">Learn More &rarr;</a></div>
+  <div class="section-btn-wrap"><a href="/services/design/" class="section-btn">Learn More</a></div>
 </section>
 
 <!-- ABOUT + STORY — light break before testimonials -->
@@ -364,7 +361,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       <p class="as-p">Every relationship at FCS is built on one principle: treat their business like your own. That means showing up with real opinions, pushing back when something isn&rsquo;t right, and staying invested long after the deliverable is done. Most clients find FCS through referrals from people who&rsquo;ve experienced exactly that, and want their network to experience it too.</p>
     </div>
   </div>
-  <div class="section-btn-wrap"><a href="/about/" class="section-btn">Learn More &rarr;</a></div>
+  <div class="section-btn-wrap"><a href="/about/" class="section-btn">Learn More</a></div>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -431,7 +428,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       </div>
     </div>
   </div>
-  <div class="section-btn-wrap"><a href="/blog/" class="section-btn">View All Posts &rarr;</a></div>
+  <div class="section-btn-wrap"><a href="/blog/" class="section-btn">View All Posts</a></div>
 </section>
 
 <!-- CONTACT -->
@@ -443,7 +440,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 <div class="eyebrow" style="margin-bottom:0.75rem">Get in Touch</div>
   <h2 class="h-disp" style="margin-bottom:0.85rem">Sometimes a great idea<br>just needs a push.</h2>
   <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
-  <a href="/contact/" class="btn-p">Let&rsquo;s talk &rarr;</a>
+  <a href="/contact/" class="btn-p">Let&rsquo;s talk</a>
   </div>
 </section>
 

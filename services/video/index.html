@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=21">
+<link rel="stylesheet" href="/style.css?v=23">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -188,9 +188,10 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 }
 .vi-link{
   font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;
-  letter-spacing:0.05em;color:var(--ink);text-decoration:none;
+  letter-spacing:0.05em;color:var(--ink);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:3px;
+  transition:background-size .35s cubic-bezier(.22,1,.36,1);
 }
-.vi-link:hover{opacity:0.6}
+.vi-link:hover{background-size:100% 1px}
 
 /* Matec double island — 2x2 grid */
 .vid-island-double{
@@ -378,7 +379,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
           <div class="vi-type">Corporate &middot; Interview</div>
           <div class="vi-client">Tata &amp; Howard</div>
           <p class="vi-desc">Multi-day corporate interview shoot. 13 executive interviews captured across two locations. Final delivery includes individual cuts and a corporate overview edit.</p>
-          <a href="/work/" class="vi-link">View All Work &rarr;</a>
+          <a href="/work/" class="vi-link">View All Work</a>
         </div>
       </div>
 
@@ -389,7 +390,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
           <div class="vi-type">Commercial</div>
           <div class="vi-client">DIENES</div>
           <p class="vi-desc">Commercial spot for a precision industrial cutting manufacturer. Technical product, cinematic treatment, built to run across digital and broadcast channels.</p>
-          <a href="/work/" class="vi-link">View All Work &rarr;</a>
+          <a href="/work/" class="vi-link">View All Work</a>
         </div>
       </div>
 
@@ -400,7 +401,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
           <div class="vi-type">Commercial &middot; Machine Walkthrough</div>
           <div class="vi-client">DIENES &mdash; Quickset Dual Station</div>
           <p class="vi-desc">Product walkthrough for the Quickset Dual Station. Precision cutting technology made accessible: clear operation, clean execution, built for a technical sales audience.</p>
-          <a href="/work/" class="vi-link">View All Work &rarr;</a>
+          <a href="/work/" class="vi-link">View All Work</a>
         </div>
       </div>
 
@@ -411,7 +412,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
           <div class="vi-type">Brand &middot; Relaunch</div>
           <div class="vi-client">HBZ Media</div>
           <p class="vi-desc">Relaunch video for HBZ Media&rsquo;s rebrand. Brand announcement, new identity, new direction, built to introduce the new HBZ to their existing audience and beyond.</p>
-          <a href="/work/" class="vi-link">View All Work &rarr;</a>
+          <a href="/work/" class="vi-link">View All Work</a>
         </div>
       </div>
 
@@ -421,14 +422,14 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
           <div class="vi-type">Industrial &middot; Product</div>
           <div class="vi-client">Matec Instrument Companies</div>
           <p class="vi-desc">Three-part industrial video series documenting Matec&rsquo;s precision equipment line: fan blade development, R&amp;D tank testing, and immersion systems. Complex engineering made visually compelling for technical and executive audiences alike.</p>
-          <a href="/work/" class="vi-link">View All Work &rarr;</a>
+          <a href="/work/" class="vi-link">View All Work</a>
         </div>
         <div class="vi-quad-video"><iframe title="Matec fan blade immersion tank video" src="https://www.youtube-nocookie.com/embed/QxO50go38v4?controls=1&rel=0" allowfullscreen></iframe></div>
         <div class="vi-quad-video"><iframe title="Matec R&amp;D tank video" src="https://www.youtube-nocookie.com/embed/hFuJOdrLAL8?controls=1&rel=0" allowfullscreen></iframe></div>
         <div class="vi-quad-video"><iframe title="Matec immersion tank video" src="https://www.youtube-nocookie.com/embed/Ci3Z83rq-Zs?controls=1&rel=0" allowfullscreen></iframe></div>
       </div>
 
-      <div class="section-btn-wrap"><a href="/work/" class="section-btn">View All Work &rarr;</a></div>
+      <div class="section-btn-wrap"><a href="/work/" class="section-btn">View All Work</a></div>
     </div>
   </div>
 </section>
@@ -443,7 +444,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
     <div class="eyebrow" style="margin-bottom:0.75rem">Start a Project</div>
     <h2 class="h-disp" style="margin-bottom:0.85rem">Let&rsquo;s make something<br>worth watching.</h2>
     <p class="body-lg" style="max-width:380px;margin:0 auto 2.5rem">Tell me what you&rsquo;re working on. Every project starts with a conversation.</p>
-    <a href="/contact/" class="btn-p">Get in touch &rarr;</a>
+    <a href="/contact/" class="btn-p">Get in touch</a>
   </div>
 </section>
 

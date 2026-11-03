@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=21">
+<link rel="stylesheet" href="/style.css?v=23">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -261,7 +261,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
             <label class="form-label" for="referral">Referred By (optional)</label>
             <input class="form-input" type="text" id="referral" name="referral" placeholder="Name of the person who referred you">
           </div>
-          <button class="form-submit" type="submit" id="form-btn">Send Message &rarr;</button>
+          <button class="form-submit" type="submit" id="form-btn">Send Message</button>
           <p class="form-error" id="form-error" role="alert" hidden></p>
         </form>
         <div id="form-success" style="display:none;padding:3rem 0;text-align:left">
@@ -304,7 +304,7 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   var errorEl = document.getElementById('form-error');
   if(!form) return;
   var showError = function(){
-    btn.textContent = 'Send Message \u2192';
+    btn.textContent = 'Send Message';
     btn.disabled = false;
     errorEl.textContent = 'That didn\u2019t send. Your message is still here, so give it another try in a moment.';
     errorEl.hidden = false;
