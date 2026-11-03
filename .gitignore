@@ -17,3 +17,7 @@ ehthumbs.db
 fcs-v7.html
 logo-export.html
 FCS_CLAUDE_CODE_BRIEFING.md
+
+# Build output and tools
+node_modules/
+dist/
