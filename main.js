@@ -270,9 +270,11 @@ window.fcsCalm=window.fcsCalm||function(){return window.matchMedia('(prefers-red
 // With less motion asked for, they load paused instead, and the button says Play.
 (function(){
   var calm=window.fcsCalm();
-  [].forEach.call(document.querySelectorAll('iframe[src*="autoplay=1"]'),function(f){
-    if(calm) f.src=f.src.replace('autoplay=1','autoplay=0');
-    if(f.src.indexOf('enablejsapi=1')<0) return;
+  // the homepage holds its embeds in data-src until the hero intro has finished, then loads them
+  [].forEach.call(document.querySelectorAll('iframe[src*="autoplay=1"],iframe[data-src*="autoplay=1"]'),function(f){
+    var attr=f.hasAttribute('data-src')?'data-src':'src';
+    if(calm) f.setAttribute(attr,f.getAttribute(attr).replace('autoplay=1','autoplay=0'));
+    if(f.getAttribute(attr).indexOf('enablejsapi=1')<0) return;
     var box=f.parentElement, playing=!calm;
     box.classList.add('yt-box');
     var btn=document.createElement('button');

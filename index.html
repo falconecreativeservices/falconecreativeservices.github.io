@@ -25,7 +25,7 @@
 <link rel="preload" href="/Images/On Set.webp" as="image" fetchpriority="high">
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=25">
+<link rel="stylesheet" href="/style.css?v=26">
 <script>
 /* Display settings (footer link): apply saved choices before the page paints. fcsCalm() is true when
    the visitor asked for less motion, either on their device or in Display settings. */
@@ -195,7 +195,12 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
    load, the hero still appears as normal. */
 (function(){var h=document.getElementById("hero"),seen=false;try{seen=sessionStorage.getItem("fcs-hero-intro")==="played"}catch(e){}
 if(/[?&]intro\b/.test(location.search))seen=false;
-if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__introFailsafe=setTimeout(function(){h.classList.remove("intro-playing")},4000);})();
+/* The project walkthrough videos further down wait until the intro is done, so their YouTube player chrome never
+   shows mid-load: the intro calls fcsLoadVideos after it hands over. Without an intro they load once the page has. */
+window.fcsLoadVideos=function(){[].forEach.call(document.querySelectorAll("iframe[data-src]"),function(f){f.src=f.getAttribute("data-src");f.removeAttribute("data-src");});};
+addEventListener("load",function(){setTimeout(function(){if(!h.classList.contains("intro-playing"))fcsLoadVideos();},600);});
+setTimeout(function(){fcsLoadVideos();},20000);
+if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__introFailsafe=setTimeout(function(){h.classList.remove("intro-playing");fcsLoadVideos();},4000);})();
 </script>
   <div class="hero-intro" id="hero-intro" aria-hidden="true"><div class="stagewrap" id="intro-stage"></div></div>
   <button type="button" class="intro-skip" id="intro-skip" hidden>Skip intro</button>
@@ -320,19 +325,19 @@ if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__intro
       <h2 class="h-sec dark" style="margin-bottom:0.5rem">Sites that work as hard as <br>the people behind them.</h2>
       <p class="body-lg dark" style="max-width:48ch;margin-bottom:2rem">WordPress, Squarespace, Wix, GoDaddy: the right platform for your goals, built to reflect who you are and convert the people who find you.</p>
       <div class="project">
-        <div class="project-video"><iframe loading="lazy" title="Don Ruperto Cigars website walkthrough" src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="Don Ruperto Cigars website walkthrough" data-src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Don Ruperto Cigars</div><p class="project-desc">Luxury landing page for a premium cigar brand. Custom cursor, subtle animations, high-end photography. Built to feel as refined as the product.</p><a href="/blog/don-ruperto/" class="project-learn">Read the Post</a></div>
       </div>
       <div class="project flip">
-        <div class="project-video"><iframe loading="lazy" title="HBZ Media website walkthrough" src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="HBZ Media website walkthrough" data-src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">Wix &middot; Branding</div><div class="project-client">HBZ Media</div><p class="project-desc">Full rebrand and site build. Defined target markets and verticals first, then built the entire site around those findings. Ongoing retainer since 2023.</p><a href="/blog/hbz-media-relaunch/" class="project-learn">Read the Post</a></div>
       </div>
       <div class="project">
-        <div class="project-video"><iframe loading="lazy" title="Jennings Canine Consulting website walkthrough" src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="Jennings Canine Consulting website walkthrough" data-src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Jennings Canine Consulting</div><p class="project-desc">Full rebrand for a canine consulting practice: new logo, new color palette, and a clean site build. Migrated 150+ existing blog posts to the new platform and format.</p><a href="/services/web/" class="project-learn">Learn More</a></div>
       </div>
       <div class="project flip">
-        <div class="project-video"><iframe loading="lazy" title="Chris McLernon website walkthrough" src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe title="Chris McLernon website walkthrough" data-src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">Squarespace &middot; Branding</div><div class="project-client">Chris McLernon</div><p class="project-desc">35+ years of work organized into one site for the bassist of gold-selling artist Saigon Kick. Includes a fully rebuilt oldschool HTML site, hidden inside Squarespace as a secret second site.</p><a href="/services/web/" class="project-learn">Learn More</a></div>
       </div>
     </div>
@@ -492,6 +497,7 @@ if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__intro
     <span class="ft-social">
       <a class="ft-icon" href="https://www.linkedin.com/company/falcone-creative-services" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.1zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
       <a class="ft-icon" href="https://www.instagram.com/falconecreativeservices/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2zm5.1-8.2a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3z"/></svg></a>
+      <a class="ft-icon" href="https://www.facebook.com/profile.php?id=61596352377304" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21.9v-7.7h2.6l.4-3h-3V9.3c0-.9.2-1.5 1.5-1.5h1.6V5.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6v7.7C5.6 21.2 2 17 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10c0 5-3.7 9.2-8.5 9.9z"/></svg></a>
     </span>
   </div>
 </footer>
@@ -505,7 +511,7 @@ if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__intro
   <div class="lb-body"><video id="lb-video" controls></video></div>
 </div>
 
-<script src="/main.js?v=12"></script>
+<script src="/main.js?v=13"></script>
 <script>
 // Services index: hover, focus or tap picks a service. The video preview plays on its own while
 // it's the active row and on screen, pauses when another service is picked or it scrolls away,
@@ -601,6 +607,8 @@ if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__intro
       .to(glow, { opacity: small ? 0.3 : 0.42, duration: 1.4 * d, ease: 'sine.inOut' }, 0)
       .to(tint, { opacity: small ? 0.35 : 0.5, duration: 1.4 * d, ease: 'sine.inOut' }, 0)
       .call(() => hero.classList.remove('intro-playing'), null, 0.5 * d);
+    // once the headline is in, load the walkthrough videos further down so they're ready before anyone scrolls to them
+    if (!instant) setTimeout(window.fcsLoadVideos, 1800);
   }
   addEventListener('resize', () => { if (handedOver) gsap.set(stage, { scale: bgScale() }); });
   // hand over while the light is still warming, so the headline arrives on the glow rather than after it
@@ -624,7 +632,11 @@ if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__intro
   const ambient = story.light.ambient;
   let heroVisible = true;
   const ambientAllowed = () => !window.fcsCalm() && heroVisible && story.tl.progress() >= 1;
-  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; if (ambientAllowed()) ambient.play(); else ambient.pause(); }).observe(hero);
+  new IntersectionObserver(([e]) => {
+    heroVisible = e.isIntersecting;
+    if (!heroVisible) window.fcsLoadVideos();   // scrolled down before the intro finished: the videos are needed now
+    if (ambientAllowed()) ambient.play(); else ambient.pause();
+  }).observe(hero);
   const calmNow = () => { if (window.fcsCalm()) { ambient.pause(); if (story.tl.isActive()) { story.tl.progress(1, true); handOver(true); } } };
   new MutationObserver(calmNow).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
   matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', calmNow);

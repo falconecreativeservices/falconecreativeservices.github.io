@@ -394,6 +394,7 @@ footer{background:#0A0F17;padding:2rem var(--g);display:grid;grid-template-colum
 .ft-links .ft-icon{display:inline-flex;align-items:center}
 .ft-links .ft-icon svg{width:15px;height:15px;fill:currentColor;display:block}
 .ft-links .ft-icon[aria-label=Instagram] svg{width:17px;height:17px}
+.ft-links .ft-icon[aria-label=Facebook] svg{width:16px;height:16px}
 /* desktop: name, legal links and nav share one baseline; at 1400px+ the copyright gets its own centered row underneath */
 @media(min-width:1025px){
   footer{align-items:baseline}
