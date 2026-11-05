@@ -160,11 +160,19 @@
     const body = el('g', { stroke: 'var(--mark)', 'stroke-linecap': 'round', fill: 'none', class: 'walker-body' }, parent);
     const parts = {};
     const order = ['uaB', 'faB', 'thB', 'shB', 'ftB', 'torso', 'head', 'thF', 'shF', 'ftF', 'uaF', 'faF'];
+    // the torso is a curved, tapered shape (so the back can slouch into the logo's pose): [ribbon, hip cap, neck cap] per layer
+    const torsoLayer = (layer, isShadow) => [
+      el('path', isShadow ? { fill: outline, stroke: outline, 'stroke-width': 5.2, 'stroke-linejoin': 'round' } : { fill: 'var(--mark)', stroke: 'none' }, layer),
+      el('circle', { fill: isShadow ? outline : 'var(--mark)', stroke: 'none' }, layer),
+      el('circle', { fill: isShadow ? outline : 'var(--mark)', stroke: 'none' }, layer)
+    ];
     const widths = { uaB: W.ua, faB: W.fa, thB: W.th, shB: W.sh, ftB: W.ft, torso: W.torso, thF: W.th, shF: W.sh, ftF: W.ft, uaF: W.ua, faF: W.fa };
     for (const k of order) {
       // each part is [body] or [outline, body]; the body is always last
       if (k === 'head') {
         parts.head = [shadow && el('circle', { r: L.hr + 2.6, fill: outline, stroke: 'none' }, shadow), el('circle', { r: L.hr, fill: 'var(--mark)', stroke: 'none' }, body)].filter(Boolean);
+      } else if (k === 'torso') {
+        parts.torso = [shadow && torsoLayer(shadow, true), torsoLayer(body, false)].filter(Boolean);
       } else {
         parts[k] = [shadow && el('line', { 'stroke-width': widths[k] + 5.2 }, shadow), el('line', { 'stroke-width': widths[k] }, body)].filter(Boolean);
       }
@@ -172,10 +180,11 @@
     // sitting down, in three held poses after the stop: lean in, drop the hips, settle and hug the knees
     const KEYS = [
       null, // filled in from the standing pose where the walk ends
-      { dx: 3, dy: 6, tt: -18, thF: 30, shF: -14, ftF: 0, thB: 26, shB: -18, ftB: 0, uaF: -16, faF: -12, uaB: -17, faB: -13 },   // arms along the body as they lean in
-      { x: 446, y: 594, tt: -8, thF: 100, shF: 22, ftF: 2, thB: 94, shB: 20, ftB: 2, uaF: -4, faF: 40, uaB: -5, faB: 38 },   // hands come to rest on the thighs
+      // the back starts to round as they lean in, and keeps curving as they sit, so it arrives at the logo's slouch
+      { dx: 3, dy: 6, tt: -18, thF: 30, shF: -14, ftF: 0, thB: 26, shB: -18, ftB: 0, uaF: -16, faF: -12, uaB: -17, faB: -13, bend: 2.5, wH: 23, wN: 21, hd: 15 },   // arms along the body as they lean in
+      { x: 446, y: 594, tt: -10, thF: 100, shF: 22, ftF: 2, thB: 94, shB: 20, ftB: 2, uaF: -4, faF: 40, uaB: -5, faB: 38, bend: 5, wH: 23.2, wN: 20, hd: 14.6 },   // hands come to rest on the thighs
       // the last pose is fitted to the logo's seated figure (work/fitsit.py), so the hand-off to the real artwork is seamless
-      { x: 451.1, y: 606.0, tt: -31.4, thF: 164.6, shF: 45.6, ftF: 0, thB: 105.0, shB: 50.2, ftB: 0, uaF: 34.4, faF: 55.6, uaB: 30.7, faB: 58.8, hr: 14.4, tw: 24.0 }
+      { x: 446.0, y: 605.5, tt: -21.8, thF: 172.5, shF: 41.9, ftF: 0, thB: 94.5, shB: 52.6, ftB: 0, uaF: 33.2, faF: 52.3, uaB: 29.2, faB: 57.4, hr: 13.7, bend: 6.7, wH: 23.2, wN: 18.9, hd: 14.4 }
     ];
     const state = { x: from, sit: 0, stopX: from };
     const pose = {};
@@ -193,7 +202,7 @@
         thF, shF, ftF, thB, shB, ftB,
         uaF, faF: uaF + 6 + amp * 10 * Math.max(0, Math.cos(2 * Math.PI * (p + 0.5))),
         uaB, faB: uaB + 6 + amp * 10 * Math.max(0, Math.cos(2 * Math.PI * p)),
-        hr: L.hr, tw: W.torso
+        hr: L.hr, bend: 0, wH: W.torso, wN: W.torso, hd: L.hr + 2
       };
     }
     const seg = (a, b, k) => { const o = {}; for (const key in a) o[key] = a[key] + ((b[key] ?? a[key]) - a[key]) * k; return o; };
@@ -214,19 +223,36 @@
       }
       Object.assign(pose, P);
       const hx = P.x, hy = P.y;
+      // spine: a curve from the hip to the neck, bowed backward by P.bend, tapering from wH to wN
       const tdir = [Math.sin(rad(P.tt)), -Math.cos(rad(P.tt))];
       const nx = hx + tdir[0] * L.to, ny = hy + tdir[1] * L.to;
-      set('torso', hx, hy, nx, ny);
+      const cx0 = (hx + nx) / 2 - tdir[1] * P.bend, cy0 = (hy + ny) / 2 + tdir[0] * P.bend;
+      const at = t => { const a = (1 - t) * (1 - t), b = 2 * (1 - t) * t, c = t * t;
+        const dx = 2 * (1 - t) * (cx0 - hx) + 2 * t * (nx - cx0), dy = 2 * (1 - t) * (cy0 - hy) + 2 * t * (ny - cy0), l = Math.hypot(dx, dy) || 1;
+        return [a * hx + b * cx0 + c * nx, a * hy + b * cy0 + c * ny, dx / l, dy / l]; };
+      const Ls = [], Rs = [];
+      for (let i = 0; i <= 12; i++) {
+        const [x, y, tx, ty] = at(i / 12), w = (P.wH + (P.wN - P.wH) * i / 12) / 2;
+        Ls.push(`${fmt(x - ty * w)} ${fmt(y + tx * w)}`); Rs.push(`${fmt(x + ty * w)} ${fmt(y - tx * w)}`);
+      }
+      const ribbon = `M${Ls.join(' L')} L${Rs.reverse().join(' L')} Z`;
+      const [ex, ey, etx, ety] = at(1);
       const top = parts.head.length - 1;
-      parts.torso.forEach((n, i) => n.setAttribute('stroke-width', fmt(P.tw + (i === top ? 0 : 5.2))));
-      parts.head.forEach((n, i) => { n.setAttribute('cx', fmt(nx + tdir[0] * (P.hr + 2))); n.setAttribute('cy', fmt(ny + tdir[1] * (P.hr + 2))); n.setAttribute('r', fmt(P.hr + (i === top ? 0 : 2.6))); });
+      parts.torso.forEach(([ribbonEl, hipCap, neckCap], i) => {
+        const grow = i === top ? 0 : 2.6;
+        ribbonEl.setAttribute('d', ribbon);
+        hipCap.setAttribute('cx', fmt(hx)); hipCap.setAttribute('cy', fmt(hy)); hipCap.setAttribute('r', fmt(P.wH / 2 + grow));
+        neckCap.setAttribute('cx', fmt(ex)); neckCap.setAttribute('cy', fmt(ey)); neckCap.setAttribute('r', fmt(P.wN / 2 + grow));
+      });
+      // the head sits on the end of the spine, so a slouch carries it forward and down
+      parts.head.forEach((n, i) => { n.setAttribute('cx', fmt(ex + etx * P.hd)); n.setAttribute('cy', fmt(ey + ety * P.hd)); n.setAttribute('r', fmt(P.hr + (i === top ? 0 : 2.6))); });
       for (const s of ['F', 'B']) {
         const [ax, ay] = dir(P['th' + s]), kx = hx + ax * L.th, ky = hy + ay * L.th;
         const [bx, by] = dir(P['sh' + s]), anx = kx + bx * L.sh, any = ky + by * L.sh;
         const fa = rad(P['ft' + s]);
         set('th' + s, hx, hy, kx, ky); set('sh' + s, kx, ky, anx, any);
         set('ft' + s, anx, any, anx - Math.cos(fa) * L.ft, any - Math.sin(fa) * L.ft);
-        const sx = hx + tdir[0] * (L.to - 5), sy = hy + tdir[1] * (L.to - 5);
+        const [sx, sy] = at(10 / 12);   // shoulders, near the top of the spine
         const [cx, cy] = dir(P['ua' + s]), ex = sx + cx * L.ua, ey = sy + cy * L.ua;
         const [dx, dy] = dir(P['fa' + s]);
         set('ua' + s, sx, sy, ex, ey); set('fa' + s, ex, ey, ex + dx * L.fa, ey + dy * L.fa);
