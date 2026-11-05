@@ -114,6 +114,26 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   gtag('js', new Date());
   gtag('config', 'G-K21Y2BPWPS');
 </script>
+<style>
+/* ── Hero intro: the lightbulb grows from specks of light, then settles in as the hero's background ── */
+:root{--mark:#F5F0E8}
+.hero-left{position:relative;z-index:1}
+.hero-intro{position:absolute;inset:0;z-index:0;display:grid;place-items:center;pointer-events:none}
+.hero-intro .stagewrap{width:min(80vh,88vw);aspect-ratio:1;transform-origin:50% 50%}
+/* feathered edges, so close-up light never stops at a hard line */
+.hero-intro svg.bulb{width:100%;height:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);mask-composite:intersect}
+/* the animated bulb replaces the static background mark */
+#hero.intro-on .hero-mark-bg{display:none}
+/* hold the hero copy and photo until the intro hands over */
+#hero.intro-playing .hero-tag,#hero.intro-playing h1,#hero.intro-playing .hero-sub,#hero.intro-playing .hero-ctas,#hero.intro-playing .hero-right,#hero.intro-playing .hero-strip{animation-play-state:paused}
+#hero.intro-playing .hero-strip{opacity:0}
+.hero-strip{transition:opacity .8s ease}
+.intro-skip{position:absolute;right:var(--g);bottom:5.5rem;z-index:3;font:500 0.72rem 'Sora',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--platinum);background:rgba(15,20,27,0.45);border:1px solid rgba(183,194,204,0.3);border-radius:999px;padding:0.6rem 1.1rem;min-height:40px;transition:border-color .2s,color .2s}
+.intro-skip:hover{color:var(--paper);border-color:var(--platinum)}
+.intro-skip:focus-visible{outline:2px solid var(--platinum);outline-offset:3px}
+.intro-skip[hidden]{display:none}
+@media(max-width:1024px){.intro-skip{bottom:1.5rem}}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-nav">Skip to main content</a>
@@ -169,6 +189,16 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
 <main>
 <div id="main-content" tabindex="-1" style="position:absolute;top:0"></div>
 <section id="hero">
+<script>
+/* The intro plays once per visit, and not at all for visitors who've asked for less motion. Only when it will play,
+   hold the headline and photo for it, and never for more than a few seconds: if the animation scripts fail to
+   load, the hero still appears as normal. */
+(function(){var h=document.getElementById("hero"),seen=false;try{seen=sessionStorage.getItem("fcs-hero-intro")==="played"}catch(e){}
+if(/[?&]intro\b/.test(location.search))seen=false;
+if(seen||window.fcsCalm())return;h.classList.add("intro-playing");window.__introFailsafe=setTimeout(function(){h.classList.remove("intro-playing")},4000);})();
+</script>
+  <div class="hero-intro" id="hero-intro" aria-hidden="true"><div class="stagewrap" id="intro-stage"></div></div>
+  <button type="button" class="intro-skip" id="intro-skip" hidden>Skip intro</button>
   <img class="hero-mark-bg" src="/Images/fcs-mark.webp" alt="Falcone Creative Services lightbulb logo" aria-hidden="true" width="1024" height="1024">
   <div class="hero-left" style="padding-left:56px">
     <div class="hero-tag">Independent Creative Studio &middot; By Referral</div>
@@ -290,19 +320,19 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
       <h2 class="h-sec dark" style="margin-bottom:0.5rem">Sites that work as hard as <br>the people behind them.</h2>
       <p class="body-lg dark" style="max-width:48ch;margin-bottom:2rem">WordPress, Squarespace, Wix, GoDaddy: the right platform for your goals, built to reflect who you are and convert the people who find you.</p>
       <div class="project">
-        <div class="project-video"><iframe title="Don Ruperto Cigars website walkthrough" src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe loading="lazy" title="Don Ruperto Cigars website walkthrough" src="https://www.youtube-nocookie.com/embed/ukTQGYn_d5U?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=ukTQGYn_d5U" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Don Ruperto Cigars</div><p class="project-desc">Luxury landing page for a premium cigar brand. Custom cursor, subtle animations, high-end photography. Built to feel as refined as the product.</p><a href="/blog/don-ruperto/" class="project-learn">Read the Post</a></div>
       </div>
       <div class="project flip">
-        <div class="project-video"><iframe title="HBZ Media website walkthrough" src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe loading="lazy" title="HBZ Media website walkthrough" src="https://www.youtube-nocookie.com/embed/6h6BxgHyENM?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=6h6BxgHyENM" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">Wix &middot; Branding</div><div class="project-client">HBZ Media</div><p class="project-desc">Full rebrand and site build. Defined target markets and verticals first, then built the entire site around those findings. Ongoing retainer since 2023.</p><a href="/blog/hbz-media-relaunch/" class="project-learn">Read the Post</a></div>
       </div>
       <div class="project">
-        <div class="project-video"><iframe title="Jennings Canine Consulting website walkthrough" src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe loading="lazy" title="Jennings Canine Consulting website walkthrough" src="https://www.youtube-nocookie.com/embed/4U0V5bbmgIA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=4U0V5bbmgIA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">WordPress &middot; Elementor &middot; Branding</div><div class="project-client">Jennings Canine Consulting</div><p class="project-desc">Full rebrand for a canine consulting practice: new logo, new color palette, and a clean site build. Migrated 150+ existing blog posts to the new platform and format.</p><a href="/services/web/" class="project-learn">Learn More</a></div>
       </div>
       <div class="project flip">
-        <div class="project-video"><iframe title="Chris McLernon website walkthrough" src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        <div class="project-video"><iframe loading="lazy" title="Chris McLernon website walkthrough" src="https://www.youtube-nocookie.com/embed/MEyVo2l9mAA?controls=0&rel=0&autoplay=1&enablejsapi=1&mute=1&loop=1&playlist=MEyVo2l9mAA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         <div class="project-info"><div class="project-plat">Squarespace &middot; Branding</div><div class="project-client">Chris McLernon</div><p class="project-desc">35+ years of work organized into one site for the bassist of gold-selling artist Saigon Kick. Includes a fully rebuilt oldschool HTML site, hidden inside Squarespace as a secret second site.</p><a href="/services/web/" class="project-learn">Learn More</a></div>
       </div>
     </div>
@@ -538,6 +568,66 @@ window.fcsCalm=function(){return document.documentElement.classList.contains('a1
   vid.addEventListener('play',setBtn); vid.addEventListener('pause',setBtn);
   new IntersectionObserver(function(es){ inView=es[0].isIntersecting; sync(); },{threshold:0.35}).observe(fig);
   setBtn();
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="/bulb/bulb-data.js"></script>
+<script src="/bulb/story-kit.js"></script>
+<script src="/bulb/seed-story.js"></script>
+<script>
+/* Hero intro: specks of light gather on the ground, a tree grows, the bulb forms around it, someone steps out and
+   sits, and the light comes on. Then it shrinks into place as the background mark (keeping the warm light and
+   drifting specks) and the headline and photo come in. Plays once per visit; ?intro replays it. */
+(function () {
+  if (!window.gsap || !window.SeedStory) return;   // scripts didn't load: the static hero stays as it is
+  const hero = document.getElementById('hero'), stage = document.getElementById('intro-stage'), skip = document.getElementById('intro-skip');
+  const story = SeedStory.mount(stage, { pace: 0.7, follow: hero });
+  clearTimeout(window.__introFailsafe);   // the intro is running, so it takes over from the fallback
+  hero.classList.add('intro-on');
+  const svg = story.svg, mark = svg.querySelector('#mark'), glow = svg.querySelector('#glow'), tint = svg.querySelector('#glass-tint');
+  let handedOver = false;
+  // the size the static background mark has always had
+  const bgScale = () => Math.min(Math.max(340, innerWidth * 0.46), 620) / stage.offsetWidth;
+  function handOver(instant) {
+    if (handedOver) return;
+    handedOver = true;
+    skip.hidden = true;
+    const d = instant ? 0 : 1;
+    // on phones and tablets the bulb sits right behind the headline, so it settles dimmer there
+    const small = innerWidth <= 1024;
+    gsap.timeline()
+      .to(stage, { scale: bgScale(), duration: 1.5 * d, ease: 'power3.inOut' }, 0)
+      .to(mark, { opacity: small ? 0.1 : 0.16, duration: 1.4 * d, ease: 'sine.inOut' }, 0)
+      .to(glow, { opacity: small ? 0.3 : 0.42, duration: 1.4 * d, ease: 'sine.inOut' }, 0)
+      .to(tint, { opacity: small ? 0.35 : 0.5, duration: 1.4 * d, ease: 'sine.inOut' }, 0)
+      .call(() => hero.classList.remove('intro-playing'), null, 0.5 * d);
+  }
+  addEventListener('resize', () => { if (handedOver) gsap.set(stage, { scale: bgScale() }); });
+  // hand over while the light is still warming, so the headline arrives on the glow rather than after it
+  story.tl.call(() => handOver(false), null, 'light+=0.9');
+  skip.addEventListener('click', () => { story.tl.progress(1); story.light.ambient.play(); handOver(false); });
+
+  let seen = false;
+  try { seen = sessionStorage.getItem('fcs-hero-intro') === 'played'; sessionStorage.setItem('fcs-hero-intro', 'played'); } catch (e) {}
+  if (/[?&]intro\b/.test(location.search)) seen = false;
+  if (seen || window.fcsCalm()) {
+    // straight to the finished hero, without firing the timeline's callbacks; specks only for visitors who allow motion
+    story.tl.progress(1, true); handOver(true);
+    if (!window.fcsCalm()) story.light.ambient.play();
+  } else {
+    skip.hidden = false;
+    BulbKit.startWhenReady(() => story.tl.play());
+  }
+
+  // the specks drift forever, so pause them whenever the hero is off screen,
+  // and stop them for good if the visitor turns on reduced motion (device setting or Display settings)
+  const ambient = story.light.ambient;
+  let heroVisible = true;
+  const ambientAllowed = () => !window.fcsCalm() && heroVisible && story.tl.progress() >= 1;
+  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; if (ambientAllowed()) ambient.play(); else ambient.pause(); }).observe(hero);
+  const calmNow = () => { if (window.fcsCalm()) { ambient.pause(); if (story.tl.isActive()) { story.tl.progress(1, true); handOver(true); } } };
+  new MutationObserver(calmNow).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', calmNow);
 })();
 </script>
 </body>
